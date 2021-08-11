@@ -7,15 +7,7 @@ COPY ./requirements.txt /requirements.txt
 
 RUN pip install -r requirements.txt
 
-RUN mkdir /app
-RUN mkdir /app/material
-
+RUN mkdir /app /app/material /app/docker /app/test
 WORKDIR /app
-COPY ./app /app
-COPY ./material /app/material
-COPY ./docker /app/docker
-COPY ./tests /app/test
-
-RUN chmod +x /app/docker/start.sh
 
 CMD ["/app/docker/start.sh"]
