@@ -10,16 +10,15 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name="django-material-admin",
-    version="1.8.5",
+    version="2021.8.13",
     license='MIT License',
     packages=find_packages(),
-    author="Anton Maistrenko",
+    author=["Anton Maistrenko", "Melvyn Sopacua"],
     include_package_data=True,
-    author_email="it2015maistrenko@gmail.com",
-    description="Material Design For Django Administration",
+    author_email=["it2015maistrenko@gmail.com", "melvyn@oviavo.com"],
+    description="Material Design For Oviavo's Backoffice",
     long_description=README,
-    long_description_content_type="text/markdown",
-    url="https://github.com/MaistrenkoAnton/django-material-admin",
+    url="https://github.com/oviavo/django-material-admin",
     classifiers=[
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",

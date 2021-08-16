@@ -4,7 +4,6 @@ const rename = require('gulp-rename');
 const uglify = require('gulp-uglify');
 const sass = require('gulp-dart-sass');
 const gulpautoprefixer = require('gulp-autoprefixer');
-const path = require('path');
 
 
 const paths = {
