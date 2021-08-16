@@ -2262,6 +2262,7 @@ a {
  * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
  */
 
+//noinspection CssOverwrittenProperties
 abbr[title] {
   border-bottom: none;
 
@@ -2716,8 +2717,6 @@ a {
 
 .hoverable {
   -webkit-transition: -webkit-box-shadow .25s;
-  transition: -webkit-box-shadow .25s;
-  transition: box-shadow .25s;
   transition: box-shadow .25s, -webkit-box-shadow .25s;
 
   &:hover {
@@ -2844,6 +2843,7 @@ img.responsive-img, video.responsive-video {
     color: rgba(255, 255, 255, 0.7);
     vertical-align: top;
     display: inline-block;
+    //noinspection CssNoGenericFontName
     font-family: 'Material Icons';
     font-weight: normal;
     font-style: normal;
@@ -2874,6 +2874,7 @@ img.responsive-img, video.responsive-video {
     bottom: 0;
     z-index: -1;
 
+    //noinspection CssOverwrittenProperties
     img {
       opacity: 0;
       position: absolute;
@@ -3012,7 +3013,7 @@ ul.staggered-list li {
     -webkit-justify-content: space-between;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    padding: 10px 0px;
+    padding: 10px 0;
     color: rgba(255, 255, 255, 0.8);
     background-color: rgba(51, 51, 51, 0.08);
   }
@@ -3489,6 +3490,7 @@ nav ul a span.badge {
   margin-left: 4px;
   line-height: 22px;
   height: 22px;
+  //noinspection CssInvalidPropertyValue
   -webkit-font-smoothing: auto;
 }
 
@@ -4964,6 +4966,7 @@ small {
   }
 }
 
+//noinspection CssOverwrittenProperties
 .scale-transition {
   -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.53, 0.01, 0.36, 1.63) !important;
   transition: -webkit-transform 0.3s cubic-bezier(0.53, 0.01, 0.36, 1.63) !important;
@@ -4985,6 +4988,7 @@ small {
   }
 }
 
+//noinspection CssOverwrittenProperties
 .card-panel {
   -webkit-transition: -webkit-box-shadow .25s;
   transition: -webkit-box-shadow .25s;
@@ -4996,6 +5000,7 @@ small {
   background-color: #fff;
 }
 
+//noinspection CssOverwrittenProperties
 .card {
   position: relative;
   margin: 0.5rem 0 1rem 0;
@@ -5208,7 +5213,7 @@ small {
 @media only screen and (max-width: 600px) {
   #toast-container {
     min-width: 100%;
-    bottom: 0%;
+    bottom: 0;
   }
 }
 
@@ -5409,7 +5414,6 @@ small {
   padding: 10px 8px;
   font-size: 1rem;
   z-index: 2000;
-  background-color: transparent;
   border-radius: 2px;
   color: #fff;
   min-height: 36px;
@@ -5434,8 +5438,8 @@ small {
   border-radius: 0 0 50% 50%;
   background-color: #323232;
   z-index: -1;
-  -webkit-transform-origin: 50% 0%;
-  transform-origin: 50% 0%;
+  -webkit-transform-origin: 50% 0;
+  transform-origin: 50% 0;
   visibility: hidden;
 }
 
@@ -5641,7 +5645,6 @@ button.btn-floating {
     ul {
       li {
         display: inline-block;
-        margin: 7.5px 15px 0 0;
         margin: 7.5px 0 0 15px;
       }
 
@@ -5927,6 +5930,7 @@ body.keyboard-focused .dropdown-content li:focus {
   -webkit-transition: .3s ease-out;
   transition: .3s ease-out;
 
+  //noinspection CssOverwrittenProperties
   .waves-ripple {
     position: absolute;
     border-radius: 50%;
@@ -5999,6 +6003,7 @@ body.keyboard-focused .dropdown-content li:focus {
 .waves-circle {
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
+  //noinspection CssInvalidPropertyValue
   -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
 }
 
@@ -6312,6 +6317,7 @@ body.keyboard-focused .dropdown-content li:focus {
   }
 }
 
+//noinspection CssOverwrittenProperties
 .prefix ~ .chips {
   margin-left: 3rem;
   width: 92%;
@@ -6326,7 +6332,6 @@ body.keyboard-focused .dropdown-content li:focus {
 
 .materialboxed {
   display: block;
-  cursor: -webkit-zoom-in;
   cursor: zoom-in;
   position: relative;
   -webkit-transition: opacity .4s;
@@ -6338,7 +6343,6 @@ body.keyboard-focused .dropdown-content li:focus {
   }
 
   &.active {
-    cursor: -webkit-zoom-out;
     cursor: zoom-out;
   }
 }
@@ -6363,7 +6367,7 @@ body.keyboard-focused .dropdown-content li:focus {
   left: 0;
   width: 100%;
   text-align: center;
-  padding: 0% 15%;
+  padding: 0 15%;
   height: 50px;
   z-index: 1000;
   -webkit-font-smoothing: antialiased;
@@ -6393,6 +6397,7 @@ label {
 
 /* Text inputs */
 
+//noinspection CssOverwrittenProperties
 input {
   &:not([type]), &[type=text]:not(.browser-default), &[type=password]:not(.browser-default), &[type=email]:not(.browser-default), &[type=url]:not(.browser-default), &[type=time]:not(.browser-default), &[type=date]:not(.browser-default), &[type=datetime]:not(.browser-default), &[type=datetime-local]:not(.browser-default), &[type=tel]:not(.browser-default), &[type=number]:not(.browser-default), &[type=search]:not(.browser-default) {
     background-color: transparent;
@@ -6416,6 +6421,7 @@ input {
   }
 }
 
+//noinspection CssOverwrittenProperties
 textarea.materialize-textarea {
   background-color: transparent;
   border: none;
@@ -7128,6 +7134,7 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
   }
 
   > {
+    //noinspection CssOverwrittenProperties
     label {
       color: #9e9e9e;
       position: absolute;
@@ -7139,8 +7146,8 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
       transition: color .2s ease-out, -webkit-transform .2s ease-out;
       transition: transform .2s ease-out, color .2s ease-out;
       transition: transform .2s ease-out, color .2s ease-out, -webkit-transform .2s ease-out;
-      -webkit-transform-origin: 0% 100%;
-      transform-origin: 0% 100%;
+      -webkit-transform-origin: 0 100%;
+      transform-origin: 0 100%;
       text-align: initial;
       -webkit-transform: translateY(12px);
       transform: translateY(12px);
@@ -7199,6 +7206,7 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
       color: #477091;
     }
 
+    //noinspection CssOverwrittenProperties
     ~ {
       input, textarea, label, .validate ~ label, .helper-text, .autocomplete-content {
         margin-left: 3rem;
@@ -7220,6 +7228,7 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
   }
 }
 
+//noinspection CssOverwrittenProperties
 @media only screen and (max-width: 992px) {
   .input-field .prefix ~ input {
     width: 86%;
@@ -7227,6 +7236,7 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
   }
 }
 
+//noinspection CssOverwrittenProperties
 @media only screen and (max-width: 600px) {
   .input-field .prefix ~ input {
     width: 80%;
@@ -7546,7 +7556,6 @@ textarea {
     margin-top: 3px;
     -webkit-transition: .2s;
     transition: .2s;
-    border: 0;
     -webkit-transform: scale(0);
     transform: scale(0);
   }
@@ -7650,7 +7659,7 @@ textarea {
         width: 20px;
         background-color: transparent;
         border: 2px solid #5a5a5a;
-        top: 0px;
+        top: 0;
         z-index: 0;
       }
     }
@@ -7772,12 +7781,12 @@ textarea {
       height: 14px;
       background-color: rgba(0, 0, 0, 0.38);
       border-radius: 15px;
-      margin-right: 10px;
       -webkit-transition: background 0.3s ease;
       transition: background 0.3s ease;
       vertical-align: middle;
       margin: 0 16px;
 
+      //noinspection CssOverwrittenProperties
       &:before, &:after {
         content: "";
         position: absolute;
@@ -7799,8 +7808,8 @@ textarea {
 
       &:after {
         background-color: #F1F1F1;
-        -webkit-box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
-        box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
       }
     }
   }
@@ -7970,6 +7979,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
 }
 
 .prefix ~ {
+  //noinspection CssOverwrittenProperties
   .select-wrapper {
     margin-left: 3rem;
     width: 92%;
@@ -8122,12 +8132,12 @@ input[type=range] {
     border: none;
   }
 
+  //noinspection CssOverwrittenProperties
   &::-webkit-slider-thumb {
     border: none;
     height: 14px;
     width: 14px;
     border-radius: 50%;
-    background: #477091;
     -webkit-transition: -webkit-box-shadow .3s;
     transition: -webkit-box-shadow .3s;
     transition: box-shadow .3s;
@@ -8161,6 +8171,7 @@ input[type=range] {
     border: 0;
   }
 
+  //noinspection CssOverwrittenProperties
   &::-moz-range-thumb {
     border: none;
     height: 14px;
@@ -8203,6 +8214,7 @@ input[type=range] {
     background: #ddd;
   }
 
+  //noinspection CssOverwrittenProperties
   &::-ms-thumb {
     border: none;
     height: 14px;
@@ -8240,8 +8252,7 @@ input[type=range] {
     padding-left: 16px;
     height: 1.5rem;
     line-height: 1.5rem;
-    letter-spacing: .4;
-    display: inline-block;
+    letter-spacing: .4px;
 
     &:hover {
       color: #a8a8a8;
@@ -8257,6 +8268,7 @@ input[type=range] {
   }
 }
 
+//noinspection CssOverwrittenProperties
 .sidenav {
   position: fixed;
   width: 300px;
@@ -9175,8 +9187,8 @@ input[type=range] {
   perspective: 500px;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
-  -webkit-transform-origin: 0% 50%;
-  transform-origin: 0% 50%;
+  -webkit-transform-origin: 0 50%;
+  transform-origin: 0 50%;
 
   &.carousel-slider {
     top: 0;
@@ -9272,6 +9284,7 @@ input[type=range] {
     -webkit-transition: visibility 0s;
     transition: visibility 0s;
 
+    //noinspection CssOverwrittenProperties
     .tap-target {
       -webkit-transform: scale(1);
       transform: scale(1);
@@ -9288,6 +9301,7 @@ input[type=range] {
         transform: scale(1);
       }
 
+      //noinspection CssOverwrittenProperties
       &::after {
         visibility: visible;
         -webkit-animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
@@ -9301,6 +9315,7 @@ input[type=range] {
   }
 }
 
+//noinspection CssOverwrittenProperties
 .tap-target {
   position: absolute;
   font-size: 1rem;
@@ -9339,6 +9354,7 @@ input[type=range] {
     background-color: #ffffff;
   }
 
+  //noinspection CssOverwrittenProperties
   &::before {
     -webkit-transform: scale(0);
     transform: scale(0);
@@ -9348,6 +9364,7 @@ input[type=range] {
     transition: transform .3s, -webkit-transform .3s;
   }
 
+  //noinspection CssOverwrittenProperties
   &::after {
     visibility: hidden;
     -webkit-transition: opacity .3s, visibility 0s, -webkit-transform .3s;
@@ -9386,6 +9403,7 @@ input[type=range] {
   overflow: visible;
   position: relative;
 
+  //noinspection CssOverwrittenProperties
   &::before {
     content: '';
     display: block;
@@ -9706,7 +9724,6 @@ input[type=range] {
 
 .timepicker-text-container {
   font-size: 4rem;
-  font-weight: bold;
   text-align: center;
   color: rgba(255, 255, 255, 0.6);
   font-weight: 400;
@@ -9753,9 +9770,7 @@ input[type=range] {
   height: 270px;
   overflow: visible;
   position: relative;
-  margin: auto;
-  margin-top: 25px;
-  margin-bottom: 5px;
+  margin: 25px auto 5px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -9790,6 +9805,7 @@ input[type=range] {
   }
 }
 
+//noinspection CssOverwrittenProperties
 .timepicker-dial {
   -webkit-transition: opacity 350ms, -webkit-transform 350ms;
   transition: opacity 350ms, -webkit-transform 350ms;

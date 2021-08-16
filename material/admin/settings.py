@@ -13,6 +13,14 @@ except AttributeError:
 def _get_setting(setting_name):
     return settings.get(setting_name) and settings[setting_name]
 
+def _get_setting_boolean(setting_name):
+    val = settings.get(setting_name, False)
+    assert isinstance(val, bool)
+    return val
+
+def _get_setting_default(setting_name, default):
+    return settings.get(setting_name, default)
+
 
 def _get_setting_static(setting_name):
     return settings.get(setting_name) and staticfiles(settings[setting_name])
@@ -27,7 +35,12 @@ MATERIAL_ADMIN_SITE = {
     'PROFILE_PICTURE':  _get_setting_static('PROFILE_PICTURE'),
     'PROFILE_BG':  _get_setting_static('PROFILE_BG'),
     'LOGIN_LOGO':  _get_setting_static('LOGIN_LOGO'),
+    'LOGIN_LOGO_WIDTH': int(_get_setting_default('LOGIN_LOGO_WIDTH', 300)),
+    'LOGIN_LOGO_HEIGHT': int(_get_setting_default('LOGIN_LOGO_HEIGHT', 300)),
+    'LOGIN_BYLINE': _get_setting('LOGIN_BYLINE'),
     'LOGOUT_BG':  _get_setting_static('LOGOUT_BG'),
+    'LOGOUT_BGCOLOR': _get_setting('LOGOUT_BGCOLOR'),
+    'NO_LOGOUT_BGIMAGE': _get_setting('NO_LOGOUT_BGIMAGE'),
     'SHOW_THEMES':  _get_setting('SHOW_THEMES'),
     'TRAY_REVERSE':  _get_setting('TRAY_REVERSE'),
     'NAVBAR_REVERSE':  _get_setting('NAVBAR_REVERSE'),

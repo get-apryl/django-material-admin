@@ -1,8 +1,8 @@
+from django.apps import apps
 from django.contrib.admin.sites import AdminSite
 from django.urls import NoReverseMatch, reverse, path
 from django.utils.functional import LazyObject
 from django.utils.module_loading import import_string
-from django.apps import apps
 from django.utils.text import capfirst
 
 from material.admin.options import MaterialModelAdminMixin
@@ -18,7 +18,12 @@ class MaterialAdminSite(AdminSite):
     profile_picture = None
     profile_bg = None
     login_logo = None
+    login_logo_width = None
+    login_logo_height = None
+    login_byline = None
     logout_bg = None
+    logout_bgcolor = None
+    no_logout_bgimage = False
     show_themes = False
     show_counts = False
 
@@ -42,9 +47,16 @@ class MaterialAdminSite(AdminSite):
         self.profile_picture = self.profile_picture or MATERIAL_ADMIN_SITE['PROFILE_PICTURE']
         self.profile_bg = self.profile_bg or MATERIAL_ADMIN_SITE['PROFILE_BG']
         self.login_logo = self.login_logo or MATERIAL_ADMIN_SITE['LOGIN_LOGO']
-        self.logout_bg = self.logout_bg or MATERIAL_ADMIN_SITE['LOGOUT_BG']
+        self.login_logo_width = self.login_logo_width or MATERIAL_ADMIN_SITE['LOGIN_LOGO_WIDTH']
+        self.login_logo_height = self.login_logo_height or MATERIAL_ADMIN_SITE['LOGIN_LOGO_HEIGHT']
+        self.login_byline = self.login_byline or MATERIAL_ADMIN_SITE['LOGIN_BYLINE']
+        self.logout_bgcolor = self.logout_bgcolor or MATERIAL_ADMIN_SITE['LOGOUT_BGCOLOR']
         self.show_themes = self.show_themes or MATERIAL_ADMIN_SITE['SHOW_THEMES']
         self.show_counts = self.show_counts or MATERIAL_ADMIN_SITE['SHOW_COUNTS']
+        self.no_logout_bgimage = self.no_logout_bgimage or MATERIAL_ADMIN_SITE['NO_LOGOUT_BGIMAGE']
+        if not self.no_logout_bgimage:
+            self.logout_bg = self.logout_bg or MATERIAL_ADMIN_SITE['LOGOUT_BG']
+
 
     def get_urls(self):
         urls = super().get_urls()
@@ -71,7 +83,12 @@ class MaterialAdminSite(AdminSite):
         context['profile_picture'] = self.profile_picture
         context['profile_bg'] = self.profile_bg
         context['login_logo'] = self.login_logo
+        context['login_byline'] = self.login_byline
+        context['login_logo_width'] = self.login_logo_width
+        context['login_logo_height'] = self.login_logo_height
         context['logout_bg'] = self.logout_bg
+        context['logout_bgcolor'] = self.logout_bgcolor
+        context['no_logout_bgimage'] = self.no_logout_bgimage
         context['show_themes'] = self.show_themes
         return context
 

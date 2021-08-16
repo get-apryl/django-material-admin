@@ -22,14 +22,15 @@
   height: 100%;
 
   img {
-    width: 120px;
-    height: auto;
     border-radius: 50%;
+  }
+
+  img.no-circle {
+    border-radius: unset;
   }
 }
 
 .text-content {
-  padding: 10px;
   text-align: center;
   margin: auto;
   width: 30%;

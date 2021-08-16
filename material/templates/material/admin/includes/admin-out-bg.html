@@ -1,25 +1,44 @@
 {% load static %}
 
 {% if current_theme %}
+  <style>
+      .side-bar {
+          background-color: {{ logout_bgcolor|default_if_none:'transparent' }};
+      {% if logout_bg %}
+          background-image: url({{ logout_bg }});
+      {% elif not no_logout_bgimage %}
+          background-image: url('{% static 'material/admin/images/login-bg-'|add:current_theme|add:'.jpg' %}');
+      {% endif %}
+      }
+      .side-bar img {
+          width: {{ login_logo_width }}px;
+          height: {{ login_logo_height }}px;
+      }
+      .login-logo-container {
+          display: inline-flex;
+          justify-content: space-around;
+          align-items: center;
+      }
+  </style>
   {% if error %}
-    <img src="{% static 'material/images/error.jpg' %}" alt="">
+    <img src="{% static 'material/admin/images/error.jpg' %}" alt="">
   {% else %}
     {% if login_logo %}
-      <img src="{{ login_logo }}" alt="Logo">
+        <h1 class="login-logo-container">
+            <img
+              src="{{ login_logo }}"
+              alt="{{ login_byline|default_if_none:'Logo' }}"
+              class="no-circle"
+            >
+            {{ login_byline }}
+        </h1>
     {% else %}
       <img src="{% static 'material/admin/images/login-logo-'|add:current_theme|add:'.jpg' %}" alt="Logo">
     {% endif %}
   {% endif %}
-  <style>
-    {% if logout_bg %}
-      .side-bar {background-image: url({{ logout_bg }})
-    {% else %}
-      .side-bar {background-image: url('{% static 'material/admin/images/login-bg-'|add:current_theme|add:'.jpg' %}'); }
-    {% endif %}
-  </style>
 {% else %}
   {% if error %}
-    <img src="{% static 'material/images/error.jpg' %}" alt="">
+    <img src="{% static 'material/admin/images/error.jpg' %}" alt="">
   {% else %}
     {% if login_logo %}
       <img src="{{ login_logo }}" alt="Logo">
