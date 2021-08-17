@@ -11,6 +11,63 @@
             font-weight: 400;
             src: url('{% static 'material/fonts/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2' %}') format('woff2');
         }
+
+        @font-face {
+            font-family: 'DM Sans';
+            font-style: normal;
+            font-weight: 400;
+            src: url('{% static "material/fonts/tFH5Omgb_3U8u6dDvZvJUqBWtTgxJJ9nwtdI8zRZWASGbd4uM7FHiaMYD8q5_U5n.woff2" %}') format('woff2');
+        }
+
+        @font-face {
+            font-family: 'DM Sans';
+            font-style: italic;
+            font-weight: 400;
+            src: url('{% static "material/fonts/FtxC2DoWXxcjniikUbmP027E8uJQpnf2WHiToc8SpYpyKkBPJISQhW4RrU5GxCWw.woff2" %}') format('woff2');
+        }
+
+        @font-face {
+            font-family: 'DM Sans';
+            font-style: normal;
+            font-weight: 500;
+            src: url('{% static "material/fonts/A4R3xu4X9eI-ZHt4PSOPfa6EqLSvQRp-k7QSxU2HA8-PfmUMKvF6dAEF1X09FeWk.woff2" %}') format('woff2');
+        }
+
+        @font-face {
+            font-family: 'DM Sans';
+            font-style: italic;
+            font-weight: 500;
+            src: url('{% static "material/fonts/2-nwU5eGFF7kj1htRH93f49Mjd5IsAQn8Z8g95_DJpQVYUxJHo69TFjR7e7QrdL-.woff2" %}') format('woff2');
+        }
+
+        @font-face {
+            font-family: 'DM Sans';
+            font-style: normal;
+            font-weight: 700;
+            src: url('{% static "material/fonts/gr9l4T7BF47FTT4zQZg37wYHrk3geibaMO8Y8mfzyZlA7gnkaxdx0_y0-irtAKEc.woff2" %}') format('woff2');
+        }
+
+        @font-face {
+            font-family: 'DM Sans';
+            font-style: italic;
+            font-weight: 700;
+            src: url('{% static "material/fonts/o8lvEI00B9ahgX04rvuHgbzoVWlCDUpSoTVG6w9hj54b0v8vLNFuwKMkXNd9mYs8.woff2" %}') format('woff2');
+        }
+
+        @font-face {
+            font-family: Spartan;
+            font-style: normal;
+            font-weight: 400;
+            src: url('{% static "material/fonts/M7N4zz9a7iAtP901KToY0yMa3_ANibx67_zfGafxoxVKiLrhW2IdpLhVTWnNcUo2.woff2" %}') format('woff2');
+        }
+
+        @font-face {
+            font-family: Spartan;
+            font-style: normal;
+            font-weight: 700;
+            src: url('{% static "material/fonts/Z1MqXR39g86CQiy-YwLFsko5H5bhgr9igA9zkVZgaUc89r4_CJ4HfXOvvJgi1yGp.woff2" %}') format('woff2');
+        }
+
     </style>
     <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/base_site.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/autocomplete.min.css' %}">
@@ -38,8 +95,15 @@
         {% elif main_bg_color and main_hover_color %}
             <style>
                 :root {
-                  --main-bg-color: {{ main_bg_color }};
-                  --main-hover-color: {{ main_hover_color }};
+                    --main-bg-color: {{ main_bg_color }};
+                    --main-hover-color: {{ main_hover_color }};
+                }
+
+                @media (prefers-color-scheme: dark) {
+                    :root {
+                        --main-bg-color: {{ main_hover_color }};
+                        --main-hover-color: {{ main_bg_color }};
+                    }
                 }
             </style>
             <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/base_site-theme.min.css' %}">
@@ -186,5 +250,5 @@
     <script src="{% static 'material/admin/js/tray.js' %}"></script>
     <script type="text/javascript" src="{% static 'material/admin/js/jquery.mousewheel.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'material/admin/js/jquery.jscrollpane.min.js' %}"></script>
-    <script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js'></script>
+    <script src="{% static 'material/js/jquery-ui.min.js' %}"></script>
 {% endblock %}

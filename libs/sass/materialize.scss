@@ -4,6 +4,9 @@
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
 
+@use "sass:map";
+@import './palette';
+
 .materialize-red {
   background-color: #e51c23 !important;
 }
@@ -1021,11 +1024,11 @@
 }
 
 .teal.lighten-1 {
-  background-color: #477091 !important;
+  background-color: $teal-lighten-1 !important;
 }
 
 .teal-text.text-lighten-1 {
-  color: #477091 !important;
+  color: $teal-lighten-1 !important;
 }
 
 .teal.darken-1 {
@@ -1973,11 +1976,11 @@
 }
 
 .blue-grey.lighten-4 {
-  background-color: #cfd8dc !important;
+  background-color: $blueGrey-lighten-4 !important;
 }
 
 .blue-grey-text.text-lighten-4 {
-  color: #cfd8dc !important;
+  color: $blueGrey-lighten-4 !important;
 }
 
 .blue-grey.lighten-3 {
@@ -2109,11 +2112,11 @@
 }
 
 .grey.darken-4 {
-  background-color: #212121 !important;
+  background-color: $grey-darken-4 !important;
 }
 
 .grey-text.text-darken-4 {
-  color: #212121 !important;
+  color: $grey-darken-4 !important;
 }
 
 .black {
@@ -2395,7 +2398,7 @@ svg:not(:root) {
  */
 
 button, input, optgroup, select, textarea {
-  font-family: sans-serif;
+  font-family: $text-font, sans-serif;
 
   /* 1 */
   font-size: 100%;
@@ -2637,7 +2640,10 @@ html {
 }
 
 button, input, optgroup, select, textarea {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-family: $text-font, sans-serif;
+  @media (prefers-color-scheme: dark) {
+    font-weight: 500;
+  }
 }
 
 ul:not(.browser-default) {
@@ -3203,7 +3209,7 @@ td, th {
     }
 
     &.active {
-      background-color: #477091;
+      background-color: map.get($theme-colors, "active");
       color: #eafaf9;
 
       .secondary-content {
@@ -3216,7 +3222,7 @@ td, th {
     display: block;
     -webkit-transition: .25s;
     transition: .25s;
-    color: #477091;
+    color: map.get($theme-colors, "secondary");
 
     &:not(.active):hover {
       background-color: #ddd;
@@ -3242,7 +3248,7 @@ td, th {
 
 .secondary-content {
   float: right;
-  color: #477091;
+  color: map.get($theme-colors, "secondary");
 }
 
 .collapsible .collection {
@@ -3280,13 +3286,13 @@ td, th {
     top: 0;
     left: 0;
     bottom: 0;
-    background-color: #477091;
+    background-color: map.get($theme-colors, "secondary");
     -webkit-transition: width .3s linear;
     transition: width .3s linear;
   }
 
   .indeterminate {
-    background-color: #477091;
+    background-color: map.get($theme-colors, "secondary");
 
     &:before {
       content: '';
@@ -3471,7 +3477,7 @@ span.badge {
     font-weight: 300;
     font-size: 0.8rem;
     color: #fff;
-    background-color: #477091;
+    background-color: map.get($theme-colors, "secondary");
     border-radius: 2px;
 
     &:after {
@@ -4744,11 +4750,11 @@ a {
   text-decoration: none;
 }
 
-html {
+html, body {
   line-height: 1.5;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-family: $text-font, sans-serif;
   font-weight: normal;
-  color: rgba(0, 0, 0, 0.87);
+  color: var(--body-fg);
 }
 
 @media only screen and (min-width: 0) {
@@ -4770,6 +4776,7 @@ html {
 }
 
 h1, h2, h3, h4, h5, h6 {
+  font-family: $header-font, sans-serif;
   font-weight: 400;
   line-height: 1.3;
 }
@@ -4819,7 +4826,7 @@ em {
 }
 
 strong {
-  font-weight: 500;
+  font-weight: 700;
 }
 
 small {
@@ -5517,8 +5524,8 @@ small {
 
 .btn, .btn-large, .btn-small {
   text-decoration: none;
-  color: #fff;
-  background-color: #477091;
+  color: var(--primary-fg);
+  background-color: var(--primary);
   text-align: center;
   letter-spacing: .5px;
   -webkit-transition: background-color .2s ease-out;
@@ -5540,7 +5547,7 @@ small {
   height: 40px;
   line-height: 40px;
   padding: 0;
-  background-color: #477091;
+  background-color: map.get($theme-colors, "secondary");
   border-radius: 50%;
   -webkit-transition: background-color .3s;
   transition: background-color .3s;
@@ -5548,7 +5555,7 @@ small {
   vertical-align: middle;
 
   &:hover {
-    background-color: #477091;
+    background-color: map.get($theme-colors, "secondary");
   }
 
   &:before {
@@ -5753,7 +5760,7 @@ button.btn-floating {
     z-index: -1;
     width: 40px;
     height: 40px;
-    background-color: #477091;
+    background-color: map.get($theme-colors, "secondary");
     border-radius: 50%;
     -webkit-transform: scale(0);
     transform: scale(0);
@@ -5853,7 +5860,7 @@ button.btn-floating {
     > {
       a {
         font-size: 16px;
-        color: #477091;
+        color: map.get($theme-colors, "secondary");
         display: block;
         line-height: 22px;
         padding: 14px 16px;
@@ -5861,7 +5868,7 @@ button.btn-floating {
 
       span {
         font-size: 16px;
-        color: #477091;
+        color: map.get($theme-colors, "secondary");
         display: block;
         line-height: 22px;
         padding: 14px 16px;
@@ -6249,7 +6256,7 @@ body.keyboard-focused .dropdown-content li:focus {
 
   &:focus {
     outline: none;
-    background-color: #477091;
+    background-color: var(--focus);
     color: #fff;
   }
 
@@ -6282,9 +6289,9 @@ body.keyboard-focused .dropdown-content li:focus {
   transition: all .3s;
 
   &.focus {
-    border-bottom: 1px solid #477091;
-    -webkit-box-shadow: 0 1px 0 0 #477091;
-    box-shadow: 0 1px 0 0 #477091;
+    border-bottom: 1px solid var(--focus);
+    -webkit-box-shadow: 0 1px 0 0 var(--focus);
+    box-shadow: 0 1px 0 0 var(--focus);
   }
 
   &:hover {
@@ -6385,6 +6392,9 @@ button:focus {
 label {
   font-size: 0.8rem;
   color: #9e9e9e;
+  @media (prefers-color-scheme: dark) {
+    font-weight: 500;
+  }
 }
 
 /* Text Inputs + Textarea
@@ -6618,26 +6628,26 @@ textarea.materialize-textarea {
 
 input {
   &:not([type]):focus:not([readonly]), &[type=text]:not(.browser-default):focus:not([readonly]), &[type=password]:not(.browser-default):focus:not([readonly]), &[type=email]:not(.browser-default):focus:not([readonly]), &[type=url]:not(.browser-default):focus:not([readonly]), &[type=time]:not(.browser-default):focus:not([readonly]), &[type=date]:not(.browser-default):focus:not([readonly]), &[type=datetime]:not(.browser-default):focus:not([readonly]), &[type=datetime-local]:not(.browser-default):focus:not([readonly]), &[type=tel]:not(.browser-default):focus:not([readonly]), &[type=number]:not(.browser-default):focus:not([readonly]), &[type=search]:not(.browser-default):focus:not([readonly]) {
-    border-bottom: 1px solid #477091;
-    -webkit-box-shadow: 0 1px 0 0 #477091;
-    box-shadow: 0 1px 0 0 #477091;
+    border-bottom: 1px solid var(--focus);
+    -webkit-box-shadow: 0 1px 0 0 var(--focus);
+    box-shadow: 0 1px 0 0 var(--focus);
   }
 }
 
 textarea.materialize-textarea:focus:not([readonly]) {
-  border-bottom: 1px solid #477091;
-  -webkit-box-shadow: 0 1px 0 0 #477091;
-  box-shadow: 0 1px 0 0 #477091;
+  border-bottom: 1px solid var(--focus);
+  -webkit-box-shadow: 0 1px 0 0 var(--focus);
+  box-shadow: 0 1px 0 0 var(--focus);
 }
 
 input {
   &:not([type]):focus:not([readonly]) + label, &[type=text]:not(.browser-default):focus:not([readonly]) + label, &[type=password]:not(.browser-default):focus:not([readonly]) + label, &[type=email]:not(.browser-default):focus:not([readonly]) + label, &[type=url]:not(.browser-default):focus:not([readonly]) + label, &[type=time]:not(.browser-default):focus:not([readonly]) + label, &[type=date]:not(.browser-default):focus:not([readonly]) + label, &[type=datetime]:not(.browser-default):focus:not([readonly]) + label, &[type=datetime-local]:not(.browser-default):focus:not([readonly]) + label, &[type=tel]:not(.browser-default):focus:not([readonly]) + label, &[type=number]:not(.browser-default):focus:not([readonly]) + label, &[type=search]:not(.browser-default):focus:not([readonly]) + label {
-    color: #477091;
+    color: var(--focus);
   }
 }
 
 textarea.materialize-textarea:focus:not([readonly]) + label {
-  color: #477091;
+  color: var(--focus);
 }
 
 input {
@@ -7203,7 +7213,7 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
 .input-field {
   .prefix {
     &.active {
-      color: #477091;
+      color: map.get($theme-colors, "active");
     }
 
     //noinspection CssOverwrittenProperties
@@ -7428,18 +7438,18 @@ textarea {
     }
 
     &:after {
-      border: 2px solid #477091;
+      border: 2px solid map.get($theme-colors, "active");
     }
   }
 
   &.with-gap:checked + span {
     &:before, &:after {
-      border: 2px solid #477091;
+      border: 2px solid map.get($theme-colors, "active");
     }
   }
 
   &:checked + span:after, &.with-gap:checked + span:after {
-    background-color: #477091;
+    background-color: map.get($theme-colors, "active");
   }
 
   &:checked + span:after {
@@ -7583,8 +7593,8 @@ textarea {
       height: 22px;
       border-top: 2px solid transparent;
       border-left: 2px solid transparent;
-      border-right: 2px solid #477091;
-      border-bottom: 2px solid #477091;
+      border-right: 2px solid map.get($theme-colors, "active");
+      border-bottom: 2px solid map.get($theme-colors, "active");
       -webkit-transform: rotate(40deg);
       transform: rotate(40deg);
       -webkit-backface-visibility: hidden;
@@ -7607,7 +7617,7 @@ textarea {
       height: 22px;
       border-top: none;
       border-left: none;
-      border-right: 2px solid #477091;
+      border-right: 2px solid map.get($theme-colors, "secondary");
       border-bottom: none;
       -webkit-transform: rotate(90deg);
       transform: rotate(90deg);
@@ -7684,8 +7694,8 @@ textarea {
         top: 0;
         width: 20px;
         height: 20px;
-        border: 2px solid #477091;
-        background-color: #477091;
+        border: 2px solid map.get($theme-colors, "active");
+        background-color: map.get($theme-colors, "active");
         z-index: 0;
       }
     }
@@ -7699,8 +7709,8 @@ textarea {
 
       &:checked:focus + span:not(.lever):after {
         border-radius: 2px;
-        background-color: #477091;
-        border-color: #477091;
+        background-color: var(--focus);
+        border-color: var(--focus);
       }
     }
 
@@ -7768,7 +7778,7 @@ textarea {
 
         &:after {
           left: 18px;
-          background-color: #477091;
+          background-color: map.get($theme-colors, "active");
         }
       }
     }
@@ -7897,7 +7907,7 @@ select {
     z-index: 1;
 
     &:focus {
-      border-bottom: 1px solid #477091;
+      border-bottom: 1px solid var(--focus);
     }
   }
 
@@ -8095,7 +8105,7 @@ input[type=range] {
     height: 0;
     width: 0;
     border-radius: 50%;
-    background-color: #477091;
+    background-color: var(--focus);
     margin-left: 7px;
     -webkit-transform-origin: 50% 50%;
     transform-origin: 50% 50%;
@@ -8106,7 +8116,7 @@ input[type=range] {
       display: block;
       width: 30px;
       text-align: center;
-      color: #477091;
+      color: var(--focus);
       font-size: 0;
       -webkit-transform: rotate(45deg);
       transform: rotate(45deg);
@@ -8143,7 +8153,7 @@ input[type=range] {
     transition: box-shadow .3s;
     transition: box-shadow .3s, -webkit-box-shadow .3s;
     -webkit-appearance: none;
-    background-color: #477091;
+    background-color: map.get($theme-colors, "secondary");
     -webkit-transform-origin: 50% 50%;
     transform-origin: 50% 50%;
     margin: -5px 0 0 0;
@@ -8177,7 +8187,7 @@ input[type=range] {
     height: 14px;
     width: 14px;
     border-radius: 50%;
-    background: #477091;
+    background: map.get($theme-colors, "secondary");
     -webkit-transition: -webkit-box-shadow .3s;
     transition: -webkit-box-shadow .3s;
     transition: box-shadow .3s;
@@ -8220,7 +8230,7 @@ input[type=range] {
     height: 14px;
     width: 14px;
     border-radius: 50%;
-    background: #477091;
+    background: map.get($theme-colors, "secondary");
     -webkit-transition: -webkit-box-shadow .3s;
     transition: -webkit-box-shadow .3s;
     transition: box-shadow .3s;
@@ -8341,7 +8351,7 @@ input[type=range] {
       }
 
       &.btn-floating:hover {
-        background-color: #477091;
+        background-color: map.get($theme-colors, "hover");
       }
 
       > {
@@ -8572,7 +8582,7 @@ input[type=range] {
   width: 100%;
   height: 100%;
   opacity: 0;
-  border-color: #477091;
+  border-color: map.get($theme-colors, "secondary");
 }
 
 .spinner-blue, .spinner-blue-only {
@@ -9543,7 +9553,7 @@ input[type=range] {
   -webkit-flex: 1 auto;
   -ms-flex: 1 auto;
   flex: 1 auto;
-  background-color: #477091;
+  background-color: map.get($theme-colors, "secondary");
   color: #fff;
   padding: 20px 22px;
   font-weight: 500;
@@ -9600,11 +9610,11 @@ input[type=range] {
     padding: 0;
 
     &.is-today {
-      color: #477091;
+      color: map.get($theme-colors, "secondary");
     }
 
     &.is-selected {
-      background-color: #477091;
+      background-color: map.get($theme-colors, "secondary");
       color: #fff;
     }
 
@@ -9648,7 +9658,7 @@ input[type=range] {
 }
 
 .datepicker-cancel, .datepicker-clear, .datepicker-today, .datepicker-done {
-  color: #477091;
+  color: map.get($theme-colors, "secondary");
   padding: 0 1rem;
 }
 
@@ -9717,7 +9727,7 @@ input[type=range] {
   -webkit-flex: 1 auto;
   -ms-flex: 1 auto;
   flex: 1 auto;
-  background-color: #477091;
+  background-color: map.get($theme-colors, "secondary");
   padding: 10px;
   font-weight: 300;
 }
@@ -9832,7 +9842,7 @@ input[type=range] {
   transition: opacity 175ms;
 
   line {
-    stroke: #477091;
+    stroke: map.get($theme-colors, "secondary");
     stroke-width: 4;
     stroke-linecap: round;
   }
@@ -9844,7 +9854,7 @@ input[type=range] {
 
 .timepicker-canvas-bearing, .timepicker-canvas-bg {
   stroke: none;
-  fill: #477091;
+  fill: map.get($theme-colors, "secondary");
 }
 
 /* Footer */
@@ -9867,7 +9877,7 @@ input[type=range] {
 }
 
 .timepicker-close {
-  color: #477091;
+  color: map.get($theme-colors, "secondary");
 }
 
 .timepicker-clear, .timepicker-close {

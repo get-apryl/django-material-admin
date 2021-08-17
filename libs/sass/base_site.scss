@@ -1,9 +1,12 @@
+@use "sass:map";
+@import './palette';
+
 * {
   box-sizing: border-box !important;
 }
 
 body {
-  background: #eeeeef;
+  background: var(--body-bg);
 }
 
 br.clear {
@@ -12,11 +15,21 @@ br.clear {
 
 a {
   text-decoration: none;
-  color: #417690;
+  color: var(--link-fg);
 
-  &:hover, &:active, &:link, &:visited, &:focus {
+  &:hover {
     text-decoration: none;
-    color: #417690;
+    color: var(--link-hover-color);
+  }
+
+  &:active, &:focus {
+    text-decoration: none;
+    color: var(--link-selected-fg);
+  }
+
+  &:link, &:visited {
+    text-decoration: none;
+    color: var(--link-fg);
   }
 }
 
@@ -56,7 +69,7 @@ ul {
 }
 
 #content-main {
-  background-color: #eeeeef;
+  background-color: var(--body-bg);
   padding: 5px;
   display: flex;
 

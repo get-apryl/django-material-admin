@@ -5,9 +5,18 @@
     <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/admin-out.min.css' %}">
 {% elif main_bg_color and main_hover_color %}
     <style>
-        :root {
-          --main-color: {{ main_bg_color }};
-          --main-hover-color: {{ main_hover_color }};
+        {#@media (prefers-color-scheme: dark) {#}
+            :root {
+                --main-color: {{ main_bg_color }};
+                --main-hover-color: {{ main_hover_color }};
+            }
+        {#}#}
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --main-color: {{ main_hover_color }};
+                --main-hover-color: {{ main_bg_color }};
+            }
         }
     </style>
     <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/admin-out.min.css' %}">

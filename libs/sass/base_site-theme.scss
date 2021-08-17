@@ -10,14 +10,14 @@
 }
 
 div.breadcrumbs {
-  background: var(--main-hover-color);
+  background: var(--breadcrumbs-bg);
   opacity: 0.8;
-  color: white;
+  color: var(--breadcrumbs-fg);
 
   a:hover {
-    background: var(--main-hover-color);
+    background: transparent;
     opacity: 0.8;
-    color: white;
+    color: var(--link-hover-color);
   }
 }
 

@@ -1,0 +1,84 @@
+@use "sass:map";
+
+/* Fonts */
+$header-font: Spartan;
+$text-font: "DM Sans";
+
+/* Color names */
+$teal-lighten-1: #477091;
+$grey-darken-4: #212121;
+$blueGrey-lighten-4: #cfd8dc;
+
+$brand-colors: (
+  "darkCornFlowerBlue": #2D3E91,
+  "middleBlue": #91CED2,
+  "lightCoral": #F86969,
+  "darkGray": #403F3F,
+  "white": #fff,
+);
+
+$theme-colors: (
+  "primary": map.get($brand-colors, "darkCornFlowerBlue"),
+  "primary-dark": map.get($brand-colors, "middleBlue"),
+  "primary-fg": map.get($brand-colors, "white"),
+  "primary-fg-dark": map.get($brand-colors, "darkGray"),
+  "body-fg": map.get($brand-colors, "darkGray"),
+  "body-fg-dark": $blueGrey-lighten-4,
+  "body-bg": map.get($brand-colors, "white"),
+  "body-bg-dark": $grey-darken-4,
+  "selected-bg": #1b1b1b,
+  "error-fg": map.get($brand-colors, "lightCoral"),
+  "link-fg": map.get($brand-colors, "darkCornFlowerBlue"),
+  "link-fg-dark": map.get($brand-colors, "middleBlue"),
+  "link-hover-color": lighten(map.get($brand-colors, "darkCornFlowerBlue"), 10%),
+  "link-hover-color-dark": lighten(map.get($brand-colors, "middleBlue"), 10%),
+  "link-selected-fg": lighten(map.get($brand-colors, "darkCornFlowerBlue"), 20%),
+  "link-selected-fg-dark": darken(map.get($brand-colors, "middleBlue"), 20%),
+  "message-error-bg": map.get($brand-colors, "lightCoral"),
+  "message-warning-bg": #FFBD5C,
+  "message-success-bg": #6ECC71,
+  "focus": darken(map.get($brand-colors, "darkCornFlowerBlue"), 10%),
+  "focus-dark": lighten(map.get($brand-colors, "middleBlue"), 10%),
+  "secondary": map.get($brand-colors, "middleBlue"),
+  "secondary-dark": map.get($brand-colors, "darkCornFlowerBlue"),
+);
+
+:root {
+  --primary: #{map.get($theme-colors, "primary")};
+  --primary-fg: #{map.get($theme-colors, "primary-fg")};
+  --body-fg: #{map.get($theme-colors, "body-fg")};
+  --body-bg: #{map.get($theme-colors, "body-bg")};
+  --breadcrumbs-bg: #{map.get($brand-colors, "middleBlue")};
+  --breadcrumbs-fg: #{map.get($brand-colors, "darkCornFlowerBlue")};
+  --breadcrumbs-link-fg: #{map.get($brand-colors, "darkCornFlowerBlue")};
+  --link-fg: #{map.get($theme-colors, "link-fg")};
+  --link-hover-color: #{map.get($theme-colors, "link-hover-color")};
+  --link-selected-fg: #{map.get($theme-colors, "link-selected-fg")};
+  --error-fg: #{map.get($theme-colors, "error-fg")};
+  --message-success-bg: #{map.get($theme-colors, "message-success-bg")};
+  --message-warning-bg: #{map.get($theme-colors, "message-warning-bg")};
+  --message-error-bg: #{map.get($theme-colors, "message-error-bg")};
+  --focus: #{map.get($theme-colors, "focus")};
+  --darkened-bg: #{map.get($theme-colors, "body-bg-dark")};
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary: #{map.get($theme-colors, "primary-dark")};
+    --primary-fg: #{map.get($theme-colors, "primary-fg-dark")};
+    --body-fg: #{map.get($theme-colors, "body-fg-dark")};
+    --body-bg: #{map.get($theme-colors, "body-bg-dark")};
+    --breadcrumbs-bg: #{map.get($brand-colors, "middleBlue")};
+    --breadcrumbs-fg: #{map.get($brand-colors, "darkCornFlowerBlue")};
+    --breadcrumbs-link-fg: #{map.get($brand-colors, "middleBlue")};
+    --link-fg: #{map.get($theme-colors, "link-fg-dark")};
+    --link-hover-color: #{map.get($theme-colors, "link-hover-color-dark")};
+    --link-selected-fg: #{map.get($theme-colors, "link-selected-fg-dark")};
+    --error-fg: #{map.get($theme-colors, "error-fg")};
+    --message-success-bg: #{map.get($theme-colors, "message-success-bg")};
+    --message-warning-bg: #{map.get($theme-colors, "message-warning-bg")};
+    --message-error-bg: #{map.get($theme-colors, "message-error-bg")};
+    --focus: #{map.get($theme-colors, "focus-dark")};
+    --darkened-bg: #{map.get($theme-colors, "body-bg-dark")};
+  }
+}
