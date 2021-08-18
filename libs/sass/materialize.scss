@@ -4755,6 +4755,7 @@ html, body {
   font-family: $text-font, sans-serif;
   font-weight: normal;
   color: var(--body-fg);
+  font-size: 16px !important;
 }
 
 @media only screen and (min-width: 0) {
@@ -5818,7 +5819,7 @@ button.btn-floating {
 }
 
 .dropdown-content {
-  background-color: #fff;
+  background-color: var(--body-bg);
   margin: 0;
   display: none;
   min-width: 100px;
@@ -5844,10 +5845,6 @@ button.btn-floating {
     width: 100%;
     text-align: left;
 
-    &:hover, &.active {
-      background-color: #eee;
-    }
-
     &:focus {
       outline: none;
     }
@@ -5858,17 +5855,17 @@ button.btn-floating {
     }
 
     > {
-      a {
-        font-size: 16px;
-        color: map.get($theme-colors, "secondary");
+      a, a:visited {
+        font-size: 1rem;
+        color: var(--body-fg);
         display: block;
         line-height: 22px;
         padding: 14px 16px;
       }
 
       span {
-        font-size: 16px;
-        color: map.get($theme-colors, "secondary");
+        font-size: 1rem;
+        color: var(--body-fg);
         display: block;
         line-height: 22px;
         padding: 14px 16px;
@@ -5909,7 +5906,7 @@ body.keyboard-focused .dropdown-content li:focus {
   }
 }
 
-.dropdown-trigger {
+.dropdown-trigger, .dropdown-menu {
   cursor: pointer;
 }
 

@@ -11,6 +11,7 @@ $blueGrey-lighten-4: #cfd8dc;
 
 $brand-colors: (
   "darkCornFlowerBlue": #2D3E91,
+  "middleBlueLight": #BAE4E7,
   "middleBlue": #91CED2,
   "lightCoral": #F86969,
   "darkGray": #403F3F,
@@ -48,7 +49,9 @@ $theme-colors: (
   --primary-fg: #{map.get($theme-colors, "primary-fg")};
   --body-fg: #{map.get($theme-colors, "body-fg")};
   --body-bg: #{map.get($theme-colors, "body-bg")};
-  --breadcrumbs-bg: #{map.get($brand-colors, "middleBlue")};
+  --header-bg: #{map.get($brand-colors, "darkCornFlowerBlue")};
+  --header-color: #{map.get($brand-colors, "white")};
+  --breadcrumbs-bg: #{map.get($brand-colors, "middleBlueLight")};
   --breadcrumbs-fg: #{map.get($brand-colors, "darkCornFlowerBlue")};
   --breadcrumbs-link-fg: #{map.get($brand-colors, "darkCornFlowerBlue")};
   --link-fg: #{map.get($theme-colors, "link-fg")};
@@ -68,7 +71,7 @@ $theme-colors: (
     --primary-fg: #{map.get($theme-colors, "primary-fg-dark")};
     --body-fg: #{map.get($theme-colors, "body-fg-dark")};
     --body-bg: #{map.get($theme-colors, "body-bg-dark")};
-    --breadcrumbs-bg: #{map.get($brand-colors, "middleBlue")};
+    --breadcrumbs-bg: #{map.get($brand-colors, "middleBlueLight")};
     --breadcrumbs-fg: #{map.get($brand-colors, "darkCornFlowerBlue")};
     --breadcrumbs-link-fg: #{map.get($brand-colors, "middleBlue")};
     --link-fg: #{map.get($theme-colors, "link-fg-dark")};

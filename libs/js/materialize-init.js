@@ -9,4 +9,15 @@ document.addEventListener('DOMContentLoaded', function() {
     if (timepickers.length) {
         M.Timepicker.init(timepickers, timeOptions);
     }
+
+    var dropdowns = document.querySelectorAll('.dropdown-menu');
+    if (dropdowns.length) {
+        M.Dropdown.init(dropdowns, {
+            alignment: 'right',
+            constrainWidth: false,
+            coverTrigger: false,
+            inDuration: 500,
+        });
+    }
+
 });

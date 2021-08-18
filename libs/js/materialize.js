@@ -2266,7 +2266,7 @@ $jscomp.polyfill = function (e, r, p, m) {
        * @prop {Function} onCloseStart - Function called when dropdown starts closing
        * @prop {Function} onCloseEnd - Function called when dropdown finishes closing
        */
-      _this9.options = $.extend({}, Dropdown.defaults, options);
+      _this9.options = Object.assign({}, Dropdown.defaults, options);
 
       /**
        * Describes open/close state of dropdown

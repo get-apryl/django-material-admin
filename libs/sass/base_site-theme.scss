@@ -1,6 +1,11 @@
-.btn.default, .btn-large.default, .btn-small.default, div.selector-chosen h2, #header, .btn-floating, .btn {
+#header {
+  background: var(--header-bg);
+  color: var(--header-color);
+}
+
+.btn.default, .btn-large.default, .btn-small.default, div.selector-chosen h2, .btn-floating, .btn {
   color: white;
-  background: var(--main-bg-color);
+  background: var(--primary);
 }
 
 .warning-toast {
@@ -11,153 +16,151 @@
 
 div.breadcrumbs {
   background: var(--breadcrumbs-bg);
-  opacity: 0.8;
   color: var(--breadcrumbs-fg);
 
   a:hover {
     background: transparent;
-    opacity: 0.8;
     color: var(--link-hover-color);
   }
 }
 
-.pagination li.active, #user-tools a:focus, .datepicker-date-display, .timepicker-digital-display, .active .collapsible-header, .scrollspy.active div.collapsible-header i {
+.pagination li.active, .datepicker-date-display, .timepicker-digital-display, .active .collapsible-header, .scrollspy.active div.collapsible-header i {
   color: white;
-  background: var(--main-bg-color);
+  background: var(--primary);
 }
 
 #side-bar .active .collapsible-header {
   i.material-icons {
     color: white;
-    background: var(--main-bg-color);
+    background: var(--primary);
   }
 
   color: white;
-  background: var(--main-bg-color);
+  background: var(--primary);
 }
 
 .delete i.material-icons {
-  color: var(--main-bg-color);
-  border-color: var(--main-bg-color);
+  color: var(--primary);
+  border-color: var(--primary);
 }
 
 ul#save-dropdown {
   li label {
     i.material-icons, input {
-      color: var(--main-bg-color);
-      border-color: var(--main-bg-color);
+      color: var(--primary);
+      border-color: var(--primary);
     }
   }
 
   a {
     i.material-icons {
-      color: var(--main-bg-color);
-      border-color: var(--main-bg-color);
+      color: var(--primary);
+      border-color: var(--primary);
     }
 
-    color: var(--main-bg-color);
-    border-color: var(--main-bg-color);
+    color: var(--primary);
+    border-color: var(--primary);
   }
 }
 
 .dropdown-content li > span, .collapsible-header {
-  color: var(--main-bg-color);
-  border-color: var(--main-bg-color);
+  color: var(--primary);
+  border-color: var(--primary);
 }
 
 .date-block i.material-icons {
   &.today, &.calendar {
-    color: var(--main-bg-color);
-    border-color: var(--main-bg-color);
+    color: var(--primary);
+    border-color: var(--primary);
   }
 }
 
 .time-block i.material-icons {
   &.now, &.clock {
-    color: var(--main-bg-color);
-    border-color: var(--main-bg-color);
+    color: var(--primary);
+    border-color: var(--primary);
   }
 }
 
 .input-field input {
   &[type=text]:not(.browser-default):focus:not([readonly]) {
-    color: var(--main-bg-color);
-    border-color: var(--main-bg-color);
+    color: var(--primary);
+    border-color: var(--primary);
 
     + label {
-      color: var(--main-bg-color);
-      border-color: var(--main-bg-color);
+      color: var(--primary);
+      border-color: var(--primary);
     }
   }
 
   &[type=number]:not(.browser-default):focus:not([readonly]), &[type=password]:not(.browser-default):focus:not([readonly]), &[type=url]:not(.browser-default):focus:not([readonly]) {
-    color: var(--main-bg-color);
-    border-color: var(--main-bg-color);
+    color: var(--primary);
+    border-color: var(--primary);
   }
 }
 
 textarea.materialize-textarea:focus:not([readonly]), div.collapsible-header i {
-  color: var(--main-bg-color);
-  border-color: var(--main-bg-color);
+  color: var(--primary);
+  border-color: var(--primary);
 }
 
 a {
-  color: var(--main-bg-color);
-  border-color: var(--main-bg-color);
+  color: var(--primary);
+  border-color: var(--primary);
 
   &:link, &:visited, &.choose-item.active i, &.remove-item.active i {
-    color: var(--main-bg-color);
-    border-color: var(--main-bg-color);
+    color: var(--primary);
+    border-color: var(--primary);
   }
 
   &.selector-choose-all.active, &.selector-clear-all.active {
-    color: var(--main-bg-color);
-    border-color: var(--main-bg-color);
+    color: var(--primary);
+    border-color: var(--primary);
 
     i {
-      color: var(--main-bg-color);
-      border-color: var(--main-bg-color);
+      color: var(--primary);
+      border-color: var(--primary);
     }
   }
 }
 
 i {
   &.minimize, &.material-icons.minimize.nav-bar {
-    color: var(--main-bg-color);
-    border-color: var(--main-bg-color);
+    color: var(--primary);
+    border-color: var(--primary);
   }
 }
 
 #side-bar i.material-icons, .material-icons.prefix {
-  color: var(--main-bg-color);
-  border-color: var(--main-bg-color);
+  color: var(--primary);
+  border-color: var(--primary);
 }
 
 .additional-submit-line i.minimize {
-  color: var(--main-bg-color);
-  border-color: var(--main-bg-color);
+  color: var(--primary);
+  border-color: var(--primary);
 
   &.submit-line {
-    color: var(--main-bg-color);
-    border-color: var(--main-bg-color);
+    color: var(--primary);
+    border-color: var(--primary);
   }
 }
 
 .side-wrapper-tools i.minimize.tools {
-  color: var(--main-bg-color);
-  border-color: var(--main-bg-color);
+  color: var(--primary);
+  border-color: var(--primary);
 }
 
 .datetime-block {
   &.date-input .material-icons.today {
-    color: var(--main-bg-color);
-    border-color: var(--main-bg-color);
+    color: var(--primary);
+    border-color: var(--primary);
   }
 
   .material-icons {
     &.now, &.calendar, &.clock {
-      color: var(--main-bg-color);
-      border-color: var(--main-bg-color);
+      color: var(--primary);
+      border-color: var(--primary);
     }
   }
 }
@@ -165,8 +168,8 @@ i {
 .collapsible-body span.badge,
 .app-list .app .card .app-item i,
 .card .card-content .card-title {
-  color: var(--main-bg-color);
-  border-color: var(--main-bg-color);
+  color: var(--primary);
+  border-color: var(--primary);
 }
 
 .card .card-content .card-app-name {
@@ -180,14 +183,14 @@ i {
 
 fieldset {
   &.collapse.collapsed h2, a.collapse-toggle, &.collapsed a.collapse-toggle {
-    color: var(--main-bg-color);
-    border-color: var(--main-bg-color);
+    color: var(--primary);
+    border-color: var(--primary);
   }
 }
 
 .module h2 {
-  color: var(--main-bg-color);
-  border-color: var(--main-bg-color);
+  color: var(--primary);
+  border-color: var(--primary);
 }
 
 #side-bar .sidenav .collapsible-body {
@@ -303,16 +306,16 @@ ul#save-dropdown {
 }
 
 input[type=checkbox]:checked + span:not(.lever):before {
-  border-right: 2px solid var(--main-bg-color);
-  border-bottom: 2px solid var(--main-bg-color);
+  border-right: 2px solid var(--primary);
+  border-bottom: 2px solid var(--primary);
 }
 
 .datetime-block.date-input i.material-icons {
   &.today, &.now {
-    border-color: var(--main-bg-color);
+    border-color: var(--primary);
   }
 }
 
 .ui-tabs .ui-tabs-nav li.ui-tabs-active.ui-state-active a {
-  background: var(--main-bg-color);
+  background: var(--primary);
 }

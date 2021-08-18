@@ -1,34 +1,54 @@
-#user-tools a {
-  border-bottom: 0;
-  color: #fff;
-  height: 100%;
-  display: inline-block;
-  padding: 0 5px;
-  font-weight: bold;
+#user-tools {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  // Reset base.css from core admin
+  float: unset;
+  margin: 0;
+  font-weight: initial;
+  font-size: inherit;
+  letter-spacing: normal;
+  text-transform: none;
+  text-align: unset;
 
-  &:hover {
-    color: #fff;
-    background-color: #205466;
+  a {
+    color: var(--header-color);
+    text-decoration: none;
+    border-bottom: unset;
+
+    &:hover, &:link, &:visited {
+      color: var(--header-color);
+      text-decoration: none;
+      border-bottom-color: unset;
+    }
+
+    i.material-icons {
+      font-size: 32px;
+      color: inherit;
+      line-height: 1.5;
+    }
   }
 
-  &:last-child {
-    position: relative;
-    padding-right: 30px;
+  #user-greeting {
+    margin: 0 1rem;
+    font-size: 16px;
+    letter-spacing: 0.01em;
   }
 
-  i {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
+  #user-menu-content {
+    a {
+      i.material-icons {
+        font-size: 24px;
+        line-height: 1;
+      }
+    }
   }
 }
 
 #header {
   height: 60px;
-  padding-top: 0;
+  padding-top: 10px;
   padding-bottom: 0;
-  line-height: 60px;
 
   #branding {
     display: flex;
@@ -38,6 +58,16 @@
       box-shadow: none;
       background-color: transparent;
     }
+  }
+}
+
+#topbar-container {
+  height: calc(60px + 1rem * 1.5 + 2 * 10px);
+
+  #topbar {
+    position: fixed;
+    width: 100%;
+    z-index: 10;
   }
 }
 
@@ -61,10 +91,6 @@ nav.nav-extended {
 
 #branding {
   word-break: break-all;
-}
-
-#user-tools {
-  flex-shrink: 0;
 }
 
 @media only screen and (min-width: 601px) {

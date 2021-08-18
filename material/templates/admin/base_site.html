@@ -16,7 +16,7 @@
             font-family: 'DM Sans';
             font-style: normal;
             font-weight: 400;
-            src: url('{% static "material/fonts/tFH5Omgb_3U8u6dDvZvJUqBWtTgxJJ9nwtdI8zRZWASGbd4uM7FHiaMYD8q5_U5n.woff2" %}') format('woff2');
+            src: url('{% static "material/fonts/QRaHQjc-5Z5XfZNrXdrg59XsSk7_wVstdYMSyQfdMxrGOrvcKe8a8axDEteCvFiY.woff" %}') format('woff');
         }
 
         @font-face {
@@ -44,7 +44,7 @@
             font-family: 'DM Sans';
             font-style: normal;
             font-weight: 700;
-            src: url('{% static "material/fonts/gr9l4T7BF47FTT4zQZg37wYHrk3geibaMO8Y8mfzyZlA7gnkaxdx0_y0-irtAKEc.woff2" %}') format('woff2');
+            src: url('{% static "material/fonts/OU3Ebg9nwa0VEwMntC-jcCJCAiG4GFAthqp43sE1S1cl1vgnLMZ2IHviYYXaddck.woff" %}') format('woff');
         }
 
         @font-face {
@@ -58,16 +58,15 @@
             font-family: Spartan;
             font-style: normal;
             font-weight: 400;
-            src: url('{% static "material/fonts/M7N4zz9a7iAtP901KToY0yMa3_ANibx67_zfGafxoxVKiLrhW2IdpLhVTWnNcUo2.woff2" %}') format('woff2');
+            src: url('{% static "material/fonts/B0ixn_0WUDNTyuQYH6Ucb17wY-8EdCDClQyWl94r5ltP8Lk5z0y6JDbHDpU5Rbgr.woff" %}') format('woff');
         }
 
         @font-face {
             font-family: Spartan;
             font-style: normal;
             font-weight: 700;
-            src: url('{% static "material/fonts/Z1MqXR39g86CQiy-YwLFsko5H5bhgr9igA9zkVZgaUc89r4_CJ4HfXOvvJgi1yGp.woff2" %}') format('woff2');
+            src: url('{% static "material/fonts/w_28bsIy_G8mJIwQJcAN5KMERcn4lygnGigyYPUXk0rhZ6Zbu1YFsxWPuvxFZvlD.woff" %}') format('woff');
         }
-
     </style>
     <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/base_site.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/autocomplete.min.css' %}">
@@ -126,28 +125,28 @@
 {% endblock %}
 
 {% block userlinks %}
-    {% block welcome-msg %}{% endblock %}
-    {% if site_url %}
-        <a href="{{ site_url }}">{% trans 'View site' %}</a>
-    {% endif %}
-        {% if show_themes %}
-            <a href="{% url 'admin:themes' %}">{% trans 'Themes' %}</a>
-        {% endif %}
-    {% if user.is_active and user.is_staff %}
-        {% url 'django-admindocs-docroot' as docsroot %}
-        {% if docsroot %}
-            <a href="{{ docsroot }}">{% trans 'Documentation' %}</a>
-        {% endif %}
-    {% endif %}
-    {% if user.has_usable_password %}
-        <a href="{% url 'admin:password_change' %}">
-            {% trans 'Change password' %}
-        </a>
-    {% endif %}
-    <a href="{% url 'admin:logout' %}">
-        {% trans 'Log out' %}
-        <i class="material-icons" aria-hidden="true">exit_to_app</i>
+  <div id="user-greeting">
+    {{ user.get_full_name }}
+  </div>
+  <div id="user-menu">
+    <a href="#" class="dropdown-menu" data-target="user-menu-content">
+      <i class="material-icons">account_circle</i>
+      <i class="material-icons">arrow_drop_down</i>
     </a>
+    <ul id="user-menu-content" class="dropdown-content no-autoinit">
+      <li>
+        <a href="{% url 'admin:password_change' %}">
+          {% trans 'Change password' %}
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'admin:logout' %}">
+          {% trans 'Log out' %}
+          <i class="material-icons" aria-hidden="true">exit_to_app</i>
+        </a>
+      </li>
+    </ul>
+  </div>
 {% endblock %}
 
 {% block side_nav %}
