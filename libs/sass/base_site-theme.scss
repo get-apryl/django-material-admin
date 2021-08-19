@@ -17,24 +17,9 @@
 div.breadcrumbs {
   background: var(--breadcrumbs-bg);
   color: var(--breadcrumbs-fg);
-
-  a:hover {
-    background: transparent;
-    color: var(--link-hover-color);
-  }
 }
 
 .pagination li.active, .datepicker-date-display, .timepicker-digital-display, .active .collapsible-header, .scrollspy.active div.collapsible-header i {
-  color: white;
-  background: var(--primary);
-}
-
-#side-bar .active .collapsible-header {
-  i.material-icons {
-    color: white;
-    background: var(--primary);
-  }
-
   color: white;
   background: var(--primary);
 }
@@ -131,11 +116,6 @@ i {
   }
 }
 
-#side-bar i.material-icons, .material-icons.prefix {
-  color: var(--primary);
-  border-color: var(--primary);
-}
-
 .additional-submit-line i.minimize {
   color: var(--primary);
   border-color: var(--primary);
@@ -193,16 +173,6 @@ fieldset {
   border-color: var(--primary);
 }
 
-#side-bar .sidenav .collapsible-body {
-  background: var(--main-hover-color);
-  color: white;
-
-  > div.active, a {
-    background: var(--main-hover-color);
-    color: white;
-  }
-}
-
 .btn {
   &:hover, &:focus {
     background: var(--main-hover-color);
@@ -224,62 +194,6 @@ ul#save-dropdown {
   }
 
   a:hover {
-    background: var(--main-hover-color);
-    color: white;
-  }
-}
-
-.collapsible-body > div {
-  &.active {
-    background: var(--main-hover-color);
-    color: white;
-  }
-
-  &:hover {
-    background: var(--main-hover-color);
-    color: white;
-
-    a, span.badge {
-      background: var(--main-hover-color);
-      color: white;
-    }
-  }
-}
-
-#side-bar {
-  .collapsible-header:hover {
-    background: var(--main-hover-color);
-    color: white;
-
-    i.material-icons {
-      background: var(--main-hover-color);
-      color: white;
-    }
-  }
-
-  .collapsible-body > div {
-    &:hover {
-      background: var(--main-hover-color);
-      color: white;
-    }
-
-    &.active {
-      &:hover, a {
-        background: var(--main-hover-color);
-        color: white;
-      }
-
-      background: var(--main-hover-color);
-      color: white;
-    }
-
-    &:hover a, &.active .badge, &:hover .badge {
-      background: var(--main-hover-color);
-      color: white;
-    }
-  }
-
-  i.minimize:hover {
     background: var(--main-hover-color);
     color: white;
   }

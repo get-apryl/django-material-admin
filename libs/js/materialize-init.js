@@ -16,7 +16,8 @@ document.addEventListener('DOMContentLoaded', function() {
             alignment: 'right',
             constrainWidth: false,
             coverTrigger: false,
-            inDuration: 500,
+            inDuration: 400,
+            outDuration: 300,
         });
     }
 

@@ -2016,11 +2016,11 @@
 }
 
 .blue-grey.darken-2 {
-  background-color: #455a64 !important;
+  background-color: $blueGrey-darken-2 !important;
 }
 
 .blue-grey-text.text-darken-2 {
-  color: #455a64 !important;
+  color: $blueGrey-darken-2 !important;
 }
 
 .blue-grey.darken-3 {
@@ -2032,11 +2032,11 @@
 }
 
 .blue-grey.darken-4 {
-  background-color: #263238 !important;
+  background-color: $blueGrey-darken-4 !important;
 }
 
 .blue-grey-text.text-darken-4 {
-  color: #263238 !important;
+  color: $blueGrey-darken-4 !important;
 }
 
 .grey {
@@ -4755,7 +4755,7 @@ html, body {
   font-family: $text-font, sans-serif;
   font-weight: normal;
   color: var(--body-fg);
-  font-size: 16px !important;
+  font-size: inherit !important;
 }
 
 @media only screen and (min-width: 0) {
@@ -6138,9 +6138,9 @@ body.keyboard-focused .dropdown-content li:focus {
 }
 
 .collapsible {
-  border-top: 1px solid #ddd;
-  border-right: 1px solid #ddd;
-  border-left: 1px solid #ddd;
+  border-top: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  border-left: 1px solid var(--border-color);
   margin: 0.5rem 0 1rem 0;
 }
 
@@ -6153,7 +6153,6 @@ body.keyboard-focused .dropdown-content li:focus {
   -webkit-tap-highlight-color: transparent;
   line-height: 1.5;
   padding: 1rem;
-  background-color: #fff;
   border-bottom: 1px solid #ddd;
 
   &:focus {
@@ -6175,7 +6174,7 @@ body.keyboard-focused .dropdown-content li:focus {
 
 .collapsible-body {
   display: none;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--border-color);
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   padding: 2rem;

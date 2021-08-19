@@ -5,7 +5,7 @@
   // Reset base.css from core admin
   float: unset;
   margin: 0;
-  font-weight: initial;
+  font-weight: 400;
   font-size: inherit;
   letter-spacing: normal;
   text-transform: none;
@@ -47,8 +47,6 @@
 
 #header {
   height: 60px;
-  padding-top: 10px;
-  padding-bottom: 0;
 
   #branding {
     display: flex;
