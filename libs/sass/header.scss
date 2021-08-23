@@ -36,10 +36,29 @@
   }
 
   #user-menu-content {
-    a {
-      i.material-icons {
-        font-size: 24px;
-        line-height: 1;
+    &.dropdown-content {
+      li {
+        &:hover {
+          background-color: var(--panel-fg);
+          color: var(--panel-bg);
+        }
+
+        > {
+          a {
+            &:visited, &:link {
+              color: var(--panel-fg);
+            }
+
+            &:hover {
+              color: inherit;
+            }
+
+            i.material-icons {
+              font-size: 24px;
+              line-height: 1;
+            }
+          }
+        }
       }
     }
   }

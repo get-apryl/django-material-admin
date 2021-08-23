@@ -5819,7 +5819,8 @@ button.btn-floating {
 }
 
 .dropdown-content {
-  background-color: var(--body-bg);
+  background-color: var(--panel-bg);
+  color: var(--panel-fg);
   margin: 0;
   display: none;
   min-width: 100px;
@@ -5857,7 +5858,7 @@ button.btn-floating {
     > {
       a, a:visited {
         font-size: 1rem;
-        color: var(--body-fg);
+        color: var(--panel-fg);
         display: block;
         line-height: 22px;
         padding: 14px 16px;
@@ -5865,7 +5866,7 @@ button.btn-floating {
 
       span {
         font-size: 1rem;
-        color: var(--body-fg);
+        color: var(--panel-fg);
         display: block;
         line-height: 22px;
         padding: 14px 16px;
@@ -5889,7 +5890,7 @@ button.btn-floating {
 }
 
 body.keyboard-focused .dropdown-content li:focus {
-  background-color: #dadada;
+  background-color: var(--darkened-bg);
 }
 
 .input-field {
