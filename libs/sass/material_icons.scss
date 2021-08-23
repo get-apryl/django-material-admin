@@ -1,4 +1,5 @@
 .material-icons {
+  //noinspection CssNoGenericFontName
   font-family: 'Material Icons';
   font-weight: normal;
   font-style: normal;
@@ -12,8 +13,6 @@
   direction: ltr;
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
-
-  &.prefix {
-    color: #477091;
-  }
+  background-color: transparent;
+  color: inherit;
 }

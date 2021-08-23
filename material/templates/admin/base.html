@@ -27,42 +27,26 @@
     <div {% block inside_container %}id="container"{% endblock %}>
 
       {% if not is_popup %}
-        <div id="topbar-container">
-          <!-- Topbar -->
-          <div id="topbar">
-            <!-- Header -->
-            <div id="header">
-              <div id="branding">
-                {% block tray %}
-                  <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons"
-                                                                                   aria-hidden="true">menu</i></a>
-                  {% if nav_bar_minimized %}
-                    <div id="tray">
-                      {% include 'material/admin/tray.html' %}
-                    </div>
-                  {% endif %}
-                {% endblock %}
-                {% block branding %}{% endblock %}
-              </div>
-              {% block usertools %}
-                {% if has_permission %}
-                  <div id="user-tools" style="">
-                    {% block userlinks %}{% endblock %}
-                  </div>
-                {% endif %}
-              {% endblock %}
-              {% block nav-global %}{% endblock %}
+        <!-- Header -->
+        <div id="header">
+          <div id="branding">
+            <div id="menu-trigger-container">
+              <a data-target="menu-bar" class="sidenav-trigger show-on-large" href="#">
+                <i class="material-icons">menu</i>
+              </a>
             </div>
-            <!-- END Header -->
-            {% block breadcrumbs %}
-              <div class="breadcrumbs">
-                <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
-                {% if title %} &rsaquo; {{ title }}{% endif %}
-              </div>
-            {% endblock %}
+            {% block branding %}{% endblock %}
           </div>
-          <!-- END Topbar -->
+          {% block usertools %}
+            {% if has_permission %}
+              <div id="user-tools" style="">
+                {% block userlinks %}{% endblock %}
+              </div>
+            {% endif %}
+          {% endblock %}
+          {% block nav-global %}{% endblock %}
         </div>
+        <!-- END Header -->
       {% endif %}
       {% block messages %}
         {% if messages %}
@@ -77,9 +61,12 @@
       <!-- Side Nav -->
       {% block side_nav %}
       {% endblock %}
-      <!-- End Side Nav -->
+      <!-- END Side Nav -->
       <!-- Content Wrapper -->
-      <div id="content-wrapper" class="{% if not nav_bar_minimized and not is_popup %} indent{% endif %}">
+      <div id="content-wrapper">
+        <!-- Action bar -->
+        <div id="action-bar"></div>
+        <!-- END Action bar -->
         <!-- Content -->
         <div id="content" class="{% block coltype %}colM{% endblock %}">
           {% block pretitle %}{% endblock %}

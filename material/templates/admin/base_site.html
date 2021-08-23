@@ -58,14 +58,28 @@
             font-family: Spartan;
             font-style: normal;
             font-weight: 400;
-            src: url('{% static "material/fonts/B0ixn_0WUDNTyuQYH6Ucb17wY-8EdCDClQyWl94r5ltP8Lk5z0y6JDbHDpU5Rbgr.woff" %}') format('woff');
+            src: url('{% static "material/fonts/hXGVRxOyQaAoze1NCzVpc85s2tY746CkhNssmkMdHI_oJDbrAz6ahi6RCLmJJOkU.woff2" %}') format('woff2');
+        }
+
+        @font-face {
+            font-family: Spartan;
+            font-style: normal;
+            font-weight: 500;
+            src: url('{% static "material/fonts/woR4tSuJlG3OlPd0Io3bEROVa99OpfokDwtn6bEnwkJC4twIgE-ptgwCQvvB_TCB.woff2" %}') format('woff2');
+        }
+
+        @font-face {
+            font-family: Spartan;
+            font-style: normal;
+            font-weight: 600;
+            src: url('{% static "material/fonts/JQD3mwfV2DWq9pqyn73ierVHzx9sh4AxZFPwIYem7bHChQ7vWQZ4PeJDxA-p2ltn.woff2" %}') format('woff2');
         }
 
         @font-face {
             font-family: Spartan;
             font-style: normal;
             font-weight: 700;
-            src: url('{% static "material/fonts/w_28bsIy_G8mJIwQJcAN5KMERcn4lygnGigyYPUXk0rhZ6Zbu1YFsxWPuvxFZvlD.woff" %}') format('woff');
+            src: url('{% static "material/fonts/woR4tSuJlG3OlPd0Io3bEROVa99OpfokDwtn6bEnwkJC4twIgE-ptgwCQvvB_TCB.woff2" %}') format('woff2');
         }
     </style>
     <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/base_site.min.css' %}">
@@ -73,8 +87,6 @@
     <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/app_content.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/side_nav.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/header.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/tray.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/tray-responsive.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/selector_relative.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/selector_relative-responsive.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/base_site-responsive.min.css' %}">
@@ -151,14 +163,9 @@
 
 {% block side_nav %}
     {% if not is_popup %}
-    {% if not nav_bar_minimized %}
-        <div id="side-bar" class="hide-on-med-and-down">
+        <div id="menu-bar-container">
             {% include 'material/admin/side_nav.html' with available_apps=available_apps app=app %}
         </div>
-    {% endif %}
-    <div id="mobile-demo" class="sidenav">
-        {% include 'material/admin/side_nav.html' with available_apps=available_apps app=app mobile=True %}
-    </div>
     {% endif %}
 {% endblock %}
 

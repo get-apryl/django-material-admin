@@ -12,6 +12,7 @@ $grey-lighten-3: #eeeeee;
 $blueGrey-lighten-4: #cfd8dc;
 $blueGrey-darken-4: #263238;
 $blueGrey-darken-2: #455a64;
+$grey-lighten-1: #bdbdbd;
 
 $brand-colors: (
   "darkCornFlowerBlue": #2D3E91,
@@ -34,7 +35,9 @@ $theme-colors: (
   "body-fg": map.get($brand-colors, "darkGray"),
   "body-fg-dark": $blueGrey-lighten-4,
   "body-bg": map.get($brand-colors, "white"),
-  "body-bg-dark": $grey-darken-4,
+  "body-bg-dark": darken($grey-darken-3, 10%),
+  "body-bg-darkened": $grey-lighten-1,
+  "body-bg-darkened-dark": $grey-darken-4,
   "error-fg": map.get($brand-colors, "lightCoral"),
   "link-fg": map.get($brand-colors, "darkCornFlowerBlue"),
   "link-fg-dark": map.get($brand-colors, "middleBlue"),
@@ -52,11 +55,23 @@ $theme-colors: (
   "selected-fg": map.get($brand-colors, "white"),
   "selected-fg-dark": map.get($brand-colors, "darkGray"),
   "panel-bg": $grey-lighten-3,
-  "panel-bg-dark": $grey-darken-3,
+  "panel-bg-dark": $blueGrey-darken-4,
   "panel-fg": map.get($brand-colors, "darkCornFlowerBlue"),
   "panel-fg-dark": map.get($brand-colors, "middleBlue"),
   "panel-bg-expanded": darken($grey-lighten-3, 10%),
   "panel-bg-expanded-dark": lighten($grey-darken-3, 10%),
+  "panel-icon-fg": desaturate(map.get($brand-colors, "darkCornFlowerBlue"), 25%),
+  "panel-icon-fg-dark": desaturate(map.get($brand-colors, "middleBlue"), 25%),
+  "top-shadow": rgba(0, 0, 0, 0.14),
+  "top-shadow-stronger": rgba(0, 0, 0, 0.16),
+  "top-shadow-active": rgba(0, 0, 0, 0.18),
+  "middle-shadow": rgba(0, 0, 0, 0.12),
+  "bottom-shadow": rgba(0, 0, 0, 0.2),
+  "top-shadow-dark": rgba(0, 0, 0, 0.86),
+  "top-shadow-stronger-dark": rgba(0, 0, 0, 0.84),
+  "top-shadow-active-dark": rgba(0, 0, 0, 0.82),
+  "middle-shadow-dark": rgba(0, 0, 0, 0.88),
+  "bottom-shadow-dark": rgba(0, 0, 0, 0.8),
 );
 
 :root {
@@ -68,6 +83,7 @@ $theme-colors: (
   --body-bg: #{map.get($theme-colors, "body-bg")};
   --header-bg: #{map.get($brand-colors, "darkCornFlowerBlue")};
   --header-color: #{map.get($brand-colors, "white")};
+  --header-link-color: #{map.get($brand-colors, "white")};
   --breadcrumbs-bg: #{map.get($brand-colors, "middleBlueLight")};
   --breadcrumbs-fg: #{map.get($brand-colors, "darkCornFlowerBlue")};
   --breadcrumbs-link-fg: #{map.get($brand-colors, "darkCornFlowerBlue")};
@@ -79,14 +95,20 @@ $theme-colors: (
   --message-warning-bg: #{map.get($theme-colors, "message-warning-bg")};
   --message-error-bg: #{map.get($theme-colors, "message-error-bg")};
   --focus: #{map.get($theme-colors, "focus")};
-  --darkened-bg: #{map.get($theme-colors, "body-bg-dark")};
+  --darkened-bg: #{map.get($theme-colors, "body-bg-darkened")};
   --selected-bg: #{map.get($theme-colors, "selected-bg")};
   --selected-fg: #{map.get($theme-colors, "selected-fg")};
   --panel-bg: #{map.get($theme-colors, "panel-bg")};
   --panel-fg: #{map.get($theme-colors, "panel-fg")};
   --panel-hover-bg: #{lighten(map.get($theme-colors, "panel-bg"), 10%)};
   --panel-hover-fg: #{lighten(map.get($theme-colors, "panel-fg"), 10%)};
-  --panel-bg-expanded: #{map.get($theme-colors, "panel-bg-expanded")}
+  --panel-bg-expanded: #{map.get($theme-colors, "panel-bg-expanded")};
+  --panel-icon-fg: #{map.get($theme-colors, "panel-icon-fg")};
+  --top-shadow: #{map.get($theme-colors, "top-shadow")};
+  --top-shadow-stronger: #{map.get($theme-colors, "top-shadow-stronger")};
+  --top-shadow-active: #{map.get($theme-colors, "top-shadow-active")};
+  --middle-shadow: #{map.get($theme-colors, "middle-shadow")};
+  --bottom-shadow: #{map.get($theme-colors, "bottom-shadow")};
 }
 
 @media (prefers-color-scheme: dark) {
@@ -108,13 +130,19 @@ $theme-colors: (
     --message-warning-bg: #{map.get($theme-colors, "message-warning-bg")};
     --message-error-bg: #{map.get($theme-colors, "message-error-bg")};
     --focus: #{map.get($theme-colors, "focus-dark")};
-    --darkened-bg: #{map.get($theme-colors, "body-bg-dark")};
+    --darkened-bg: #{map.get($theme-colors, "body-bg-darkened-dark")};
     --selected-bg: #{map.get($theme-colors, "selected-bg-dark")};
     --selected-fg: #{map.get($theme-colors, "selected-fg-dark")};
     --panel-bg: #{map.get($theme-colors, "panel-bg-dark")};
     --panel-fg: #{map.get($theme-colors, "panel-fg-dark")};
     --panel-hover-bg: #{lighten(map.get($theme-colors, "panel-bg-dark"), 10%)};
     --panel-hover-fg: #{lighten(map.get($theme-colors, "panel-fg-dark"), 10%)};
-    --panel-bg-expanded: #{map.get($theme-colors, "panel-bg-expanded-dark")}
+    --panel-icon-fg: #{map.get($theme-colors, "panel-icon-fg-dark")};
+    --panel-bg-expanded: #{map.get($theme-colors, "panel-bg-expanded-dark")};
+    --top-shadow: #{map.get($theme-colors, "top-shadow-dark")};
+    --top-shadow-stronger: #{map.get($theme-colors, "top-shadow-stronger-dark")};
+    --top-shadow-active: #{map.get($theme-colors, "top-shadow-active-dark")};
+    --middle-shadow: #{map.get($theme-colors, "middle-shadow-dark")};
+    --bottom-shadow: #{map.get($theme-colors, "bottom-shadow-dark")};
   }
 }

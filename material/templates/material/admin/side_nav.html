@@ -1,62 +1,64 @@
 {% load i18n material %}
 
-<div class="scroll-pane">
-    {% if available_apps %}
-      {% if not mobile %}
-        <div class="close">
-          <i class="material-icons minimize nav-bar" aria-hidden="true" title="{% trans 'Minimize' %}">close</i>
-        </div>
-      {% endif %}
-      <ul class="collapsible">
-            {#<li>#}
-            {#    <div class="card">#}
-            {#        <div class="card-image">#}
-            {#            {% if 'profile/user_picture.html'|template_exists %}#}
-            {#              {% include 'profile/user_picture.html' %}#}
-            {#            {% else %}#}
-            {#              {% include 'material/admin/user_picture.html' %}#}
-            {#            {% endif %}#}
-            {#        </div>#}
-            {#    </div>#}
-            {#</li>#}
-            {% for app in available_apps %}
-            <li class="scrollspy">
-                <div class="collapsible-header">
-                    <i class="material-icons" aria-hidden="true">{% if app.icon %}{{ app.icon }}{% else %}settings{% endif %}</i>
-                    {{ app.name }}
-                </div>
-                <div class="collapsible-body">
-                    {% for model in app.models %}
-                        {% if model.admin_url %}
-                            <div {% if model.admin_url in request.path %}class="active"{% endif %}>
-                                <a href="{{ model.admin_url }}">
-                                    {% if model.count != None %}
-                                        <span class="badge">
-                                            {{ model.count }}
-                                        </span>
-                                    {% endif %}
-                                    {{ model.name }}
-                                </a>
-                            </div>
-                        {% else %}
-                            <div class="disabled">{{ model.name }}
-                                {% if model.count != None %}
-                                    <span class="badge">{{ model.count }}</span>
-                                {% endif %}
-                            </div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-            </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-    <div class="app">
-        <div class="card">
-            <div class="card-content">
-                <p>{% trans "You don't have permission to view or edit anything." %}</>
-            </div>
-        </div>
+<ul id="menu-bar" class="sidenav">
+  <li>
+    <div class="user-view">
+      <div class="background">
+        <img src="{{ profile_bg }}" alt="{% trans 'Profile background' %}" />
+      </div>
+      <img class="circle" src="{{ profile_picture }}" alt="{% trans 'Profile picture' %}">
+      <a href="#"><span class="grey-text text-lighten-3 name">{{ user.first_name }} {{ user.last_name }}</span></a>
+      <a href="#"><span class="white-text text-lighten-1 email">{{ user.email }}</span></a>
     </div>
-    {% endif %}
-</div>
+  </li>
+  {% for app in available_apps %}
+    {% for model in app.models %}
+      <li{% if model.admin_url in request.path %} class="active"{% endif %}>
+        <a href="{{ model.admin_url }}">
+          <i class="material-icons prefix">{{ model.icon|default:'settings' }}</i>
+          {{ model.name }}
+        </a>
+      </li>
+    {% endfor %}
+  {% endfor %}
+</ul>
+{#<div class="scroll-pane">#}
+{#  {% if available_apps %}#}
+{#    <ul class="collapsible">#}
+{#      {% for app in available_apps %}#}
+{#        <li class="scrollspy">#}
+{#          <div class="collapsible-body">#}
+{#            {% for model in app.models %}#}
+{#              {% if model.admin_url %}#}
+{#                <div {% if model.admin_url in request.path %}class="active"{% endif %}>#}
+{#                  <a href="{{ model.admin_url }}">#}
+{#                    {% if model.count != None %}#}
+{#                      <span class="badge">#}
+{#                                            {{ model.count }}#}
+{#                                        </span>#}
+{#                    {% endif %}#}
+{#                    {{ model.name }}#}
+{#                  </a>#}
+{#                </div>#}
+{#              {% else %}#}
+{#                <div class="disabled">{{ model.name }}#}
+{#                  {% if model.count != None %}#}
+{#                    <span class="badge">{{ model.count }}</span>#}
+{#                  {% endif %}#}
+{#                </div>#}
+{#              {% endif %}#}
+{#            {% endfor %}#}
+{#          </div>#}
+{#        </li>#}
+{#      {% endfor %}#}
+{#    </ul>#}
+{#  {% else %}#}
+{#    <div class="app">#}
+{#      <div class="card">#}
+{#        <div class="card-content">#}
+{#          <p>{% trans "You don't have permission to view or edit anything." %}</>#}
+{#        </div>#}
+{#      </div>#}
+{#    </div>#}
+{#  {% endif %}#}
+{#</div>#}

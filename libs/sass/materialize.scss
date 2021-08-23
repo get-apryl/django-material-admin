@@ -2684,41 +2684,41 @@ a {
 /* 2dp elevation modified*/
 
 .z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-small, .btn-floating, .dropdown-content, .collapsible, .sidenav {
-  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 2px 2px 0 var(--top-shadow), 0 3px 1px -2px var(--middle-shadow), 0 1px 5px 0 var(--bottom-shadow);
+  box-shadow: 0 2px 2px 0 var(--top-shadow), 0 3px 1px -2px var(--middle-shadow), 0 1px 5px 0 var(--bottom-shadow);
 }
 
 .z-depth-1-half, .btn:hover, .btn-large:hover, .btn-small:hover, .btn-floating:hover {
-  -webkit-box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 3px 3px 0 var(--top-shadow), 0 1px 7px 0 var(--middle-shadow), 0 3px 1px -1px var(--bottom-shadow);
+  box-shadow: 0 3px 3px 0 var(--top-shadow), 0 1px 7px 0 var(--middle-shadow), 0 3px 1px -1px var(--bottom-shadow);
 }
 
 /* 6dp elevation modified*/
 
 .z-depth-2 {
-  -webkit-box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 4px 5px 0 var(--top-shadow), 0 1px 10px 0 var(--middle-shadow), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 5px 0 var(--top-shadow), 0 1px 10px 0 var(--middle-shadow), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
 }
 
 /* 12dp elevation modified*/
 
 .z-depth-3 {
-  -webkit-box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 8px 17px 2px var(--top-shadow), 0 3px 14px 2px var(--middle-shadow), 0 5px 5px -3px var(--bottom-shadow);
+  box-shadow: 0 8px 17px 2px var(--top-shadow), 0 3px 14px 2px var(--middle-shadow), 0 5px 5px -3px var(--bottom-shadow);
 }
 
 /* 16dp elevation */
 
 .z-depth-4 {
-  -webkit-box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -7px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -7px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 16px 24px 2px var(--top-shadow), 0 6px 30px 5px var(--middle-shadow), 0 8px 10px -7px var(--bottom-shadow);
+  box-shadow: 0 16px 24px 2px var(--top-shadow), 0 6px 30px 5px var(--middle-shadow), 0 8px 10px -7px var(--bottom-shadow);
 }
 
 /* 24dp elevation */
 
 .z-depth-5, .modal {
-  -webkit-box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 24px 38px 3px var(--top-shadow), 0 9px 46px 8px var(--middle-shadow), 0 11px 15px -7px var(--bottom-shadow);
+  box-shadow: 0 24px 38px 3px var(--top-shadow), 0 9px 46px 8px var(--middle-shadow), 0 11px 15px -7px var(--bottom-shadow);
 }
 
 .hoverable {
@@ -2726,8 +2726,8 @@ a {
   transition: box-shadow .25s, -webkit-box-shadow .25s;
 
   &:hover {
-    -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0 8px 17px 0 var(--bottom-shadow), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 8px 17px 0 var(--bottom-shadow), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 }
 
@@ -5012,7 +5012,7 @@ small {
 .card {
   position: relative;
   margin: 0.5rem 0 1rem 0;
-  background-color: #fff;
+  background-color: var(--body-bg);
   -webkit-transition: -webkit-box-shadow .25s;
   transition: -webkit-box-shadow .25s;
   transition: box-shadow .25s;
@@ -5142,7 +5142,7 @@ small {
     }
 
     .card-title {
-      color: #fff;
+      color: var(--body-fg);
       position: absolute;
       bottom: 0;
       left: 0;
@@ -6223,15 +6223,15 @@ body.keyboard-focused .dropdown-content li:focus {
   box-shadow: none;
 
   > li {
-    -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    -webkit-box-shadow: 0 2px 5px 0 var(--top-shadow-stronger), 0 2px 10px 0 var(--middle-shadow);
+    box-shadow: 0 2px 5px 0 var(--top-shadow-stronger), 0 2px 10px 0 var(--middle-shadow);
     margin: 0 24px;
     -webkit-transition: margin 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     transition: margin 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
     &.active {
-      -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
-      box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+      -webkit-box-shadow: 0 5px 11px 0 var(--top-shadow-active), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+      box-shadow: 0 5px 11px 0 var(--top-shadow-active), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
       margin: 16px 0;
     }
   }
@@ -7814,8 +7814,8 @@ textarea {
 
       &:after {
         background-color: #F1F1F1;
-        -webkit-box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
-        box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 3px 1px -2px var(--bottom-shadow), 0px 2px 2px 0px var(--top-shadow), 0px 1px 5px 0px var(--middle-shadow);
+        box-shadow: 0 3px 1px -2px var(--bottom-shadow), 0px 2px 2px 0px var(--top-shadow), 0px 1px 5px 0px var(--middle-shadow);
       }
     }
   }
@@ -8287,7 +8287,8 @@ input[type=range] {
   height: calc(100% + 60px);
   height: -moz-calc(100%);
   padding-bottom: 60px;
-  background-color: #fff;
+  background-color: var(--panel-bg);
+  color: var(--panel-fg);
   z-index: 999;
   overflow-y: auto;
   will-change: transform;
@@ -8314,11 +8315,11 @@ input[type=range] {
     line-height: 48px;
 
     &.active {
-      background-color: rgba(0, 0, 0, 0.05);
+      background-color: var(--panel-hover-bg);
     }
 
     > a {
-      color: rgba(0, 0, 0, 0.87);
+      color: var(--panel-fg);
       display: block;
       font-size: 14px;
       font-weight: 500;
@@ -8327,13 +8328,15 @@ input[type=range] {
       padding: 0 32px;
 
       &:hover {
-        background-color: rgba(0, 0, 0, 0.05);
+        background-color: var(--panel-hover-bg);
+        color: var(--panel-hover-fg);
       }
 
       &.btn, &.btn-large, &.btn-small, &.btn-large, &.btn-flat, &.btn-floating {
         margin: 10px 15px;
       }
 
+      // TODO: unused for now, but needs better colors
       &.btn, &.btn-large, &.btn-small, &.btn-large, &.btn-floating {
         color: #fff;
       }
@@ -8357,7 +8360,7 @@ input[type=range] {
           line-height: 48px;
           margin: 0 32px 0 0;
           width: 24px;
-          color: rgba(0, 0, 0, 0.54);
+          color: var(--panel-icon-fg);
         }
       }
 
@@ -8367,7 +8370,7 @@ input[type=range] {
         line-height: 48px;
         margin: 0 32px 0 0;
         width: 24px;
-        color: rgba(0, 0, 0, 0.54);
+        color: var(--panel-icon-fg);
       }
     }
   }
@@ -8379,7 +8382,7 @@ input[type=range] {
   .subheader {
     cursor: initial;
     pointer-events: none;
-    color: rgba(0, 0, 0, 0.54);
+    color: var(--panel-subheader-fg);
     font-size: 14px;
     font-weight: 500;
     line-height: 48px;
@@ -9327,8 +9330,8 @@ input[type=range] {
   font-size: 1rem;
   border-radius: 50%;
   background-color: #ee6e73;
-  -webkit-box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.14), 0 10px 50px 0 rgba(0, 0, 0, 0.12), 0 30px 10px -20px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.14), 0 10px 50px 0 rgba(0, 0, 0, 0.12), 0 30px 10px -20px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 20px 20px 0 var(--top-shadow), 0 10px 50px 0 var(--middle-shadow), 0 30px 10px -20px var(--bottom-shadow);
+  box-shadow: 0 20px 20px 0 var(--top-shadow), 0 10px 50px 0 var(--middle-shadow), 0 30px 10px -20px var(--bottom-shadow);
   width: 100%;
   height: 100%;
   opacity: 0;
