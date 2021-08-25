@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.contrib import admin
 from django.db import models
 from django.forms import SplitDateTimeField, forms
 
@@ -12,10 +13,11 @@ FORMFIELD_FOR_DBFIELD_MATERIAL = {
     },
     models.TimeField: {'widget': widgets.MaterialAdminTimeWidget},
     models.TextField: {'widget': widgets.MaterialAdminTextareaWidget},
+    models.IntegerField: {'widget': widgets.MaterialAdminNumberWidget},
 }
 
 
-class MaterialModelAdminMixin:
+class MaterialModelAdminMixin(admin.ModelAdmin):
     def __init__(self, model, admin_site):
         super().__init__(model, admin_site)
         self.formfield_overrides.update(FORMFIELD_FOR_DBFIELD_MATERIAL)

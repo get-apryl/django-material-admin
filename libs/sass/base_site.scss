@@ -81,18 +81,9 @@ ul {
 }
 
 .module {
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-  margin-right: 5px;
-}
-
-fieldset {
-  &.module {
-    box-shadow: none;
-  }
-
-  &.collapse.collapsed h2, a.collapse-toggle, &.collapsed a.collapse-toggle {
-    color: rgb(65, 118, 144);
-  }
+  margin: 0.5rem;
+  padding: 0.5rem;
+  box-shadow: 0 2px 2px 0 var(--top-shadow), 0 3px 1px -2px var(--middle-shadow), 0 1px 5px 0 var(--bottom-shadow);
 }
 
 .submit-row .deletelink-box a.deletelink {
@@ -143,6 +134,16 @@ input.valid[type=text]:not(.browser-default) {
   overflow: visible;
   display: flex;
   align-items: baseline;
+  font-size: 1rem;
+
+  label {
+    font-size: inherit;
+  }
+
+  .readonly-field > label {
+    transform: scale(0.8);
+    transform-origin: 0 24px;
+  }
 
   .input-field {
     &:not(:first-child) {
@@ -179,7 +180,6 @@ input.valid[type=text]:not(.browser-default) {
   h2, caption {
     background: none;
     color: rgb(65, 118, 144);
-    border-left: 3px solid rgb(65, 118, 144);
     font-weight: bold;
     font-size: 16px;
     text-transform: uppercase;

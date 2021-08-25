@@ -5876,6 +5876,9 @@ button.btn-floating {
           left: 0;
           height: 18px;
         }
+         &:hover {
+           color: var(--panel-hover-fg);
+         }
       }
 
       a > i {
@@ -7143,11 +7146,9 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
   > {
     //noinspection CssOverwrittenProperties
     label {
-      color: #9e9e9e;
       position: absolute;
       top: 0;
       left: 0;
-      font-size: 1rem;
       cursor: text;
       -webkit-transition: color .2s ease-out, -webkit-transform .2s ease-out;
       transition: color .2s ease-out, -webkit-transform .2s ease-out;
@@ -7972,16 +7973,19 @@ select:disabled {
 }
 
 body.keyboard-focused .select-dropdown.dropdown-content li:focus {
-  background-color: rgba(0, 0, 0, 0.08);
+  background-color: var(--panel-hover-bg);
+  color: var(--panel-hover-fg);
 }
 
 .select-dropdown.dropdown-content li {
   &:hover {
-    background-color: rgba(0, 0, 0, 0.08);
+    background-color: var(--panel-hover-bg);
+    color: var(--panel-hover-fg);
   }
 
   &.selected {
-    background-color: rgba(0, 0, 0, 0.03);
+    background-color: var(--panel-hover-bg);
+    color: var(--panel-hover-fg);
   }
 }
 

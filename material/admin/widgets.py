@@ -1,5 +1,7 @@
-from django.contrib.admin import widgets
+import typing as t
+
 from django import forms
+from django.contrib.admin import widgets
 
 
 class MaterialAdminDateWidget(widgets.AdminDateWidget):
@@ -57,3 +59,15 @@ class MaterialAdminTextareaWidget(widgets.AdminTextareaWidget):
 
     def __init__(self, attrs=None):
         super().__init__(attrs={'class': 'materialize-textarea', **(attrs or {})})
+
+
+class MaterialAdminNumberWidget(widgets.AdminTextInputWidget):
+    """Degrade NumberInput to TextInput for better UI, but set inputMode"""
+    def __init__(self, attrs: t.Optional[t.Dict[str, t.Any]] = None):
+        attrs = attrs or {}
+        if attrs:
+            attrs.pop('step', None)
+            attrs.pop('min', None)
+            attrs.pop('max', None)
+        attrs.update(type='text')
+        super(MaterialAdminNumberWidget, self).__init__(attrs=attrs)

@@ -1,3 +1,7 @@
+%icon-unknown {
+  background: url(data:image/svg;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iMTMiIHZpZXdCb3g9IjAgMCAxNzkyIDE3OTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHBhdGggZmlsbD0iI2ZmZmZmZiIgZD0iTTEwMjQgMTM3NnYtMTkycTAtMTQtOS0yM3QtMjMtOWgtMTkycS0xNCAwLTIzIDl0LTkgMjN2MTkycTAgMTQgOSAyM3QyMyA5aDE5MnExNCAwIDIzLTl0OS0yM3ptMjU2LTY3MnEwLTg4LTU1LjUtMTYzdC0xMzguNS0xMTYtMTcwLTQxcS0yNDMgMC0zNzEgMjEzLTE1IDI0IDggNDJsMTMyIDEwMHE3IDYgMTkgNiAxNiAwIDI1LTEyIDUzLTY4IDg2LTkyIDM0LTI0IDg2LTI0IDQ4IDAgODUuNSAyNnQzNy41IDU5cTAgMzgtMjAgNjF0LTY4IDQ1cS02MyAyOC0xMTUuNSA4Ni41dC01Mi41IDEyNS41djM2cTAgMTQgOSAyM3QyMyA5aDE5MnExNCAwIDIzLTl0OS0yM3EwLTE5IDIxLjUtNDkuNXQ1NC41LTQ5LjVxMzItMTggNDktMjguNXQ0Ni0zNSA0NC41LTQ4IDI4LTYwLjUgMTIuNS04MXptMzg0IDE5MnEwIDIwOS0xMDMgMzg1LjV0LTI3OS41IDI3OS41LTM4NS41IDEwMy0zODUuNS0xMDMtMjc5LjUtMjc5LjUtMTAzLTM4NS41IDEwMy0zODUuNSAyNzkuNS0yNzkuNSAzODUuNS0xMDMgMzg1LjUgMTAzIDI3OS41IDI3OS41IDEwMyAzODUuNXoiLz4KPC9zdmc+Cg==) 0 0 no-repeat;
+}
+
 form.change-form {
   flex: 1;
 }
@@ -12,16 +16,24 @@ form.change-form {
   color: #5f5e5e;
 }
 
-fieldset.module.aligned {
-  margin-bottom: 0;
+fieldset {
+  &.module {
+    box-shadow: none;
+    margin: 0 0 1rem;
+    padding: 2rem;
+  }
+
+  &.aligned {
+    border: 1px solid var(--primary);
+  }
+
+  &.collapse.collapsed h2, a.collapse-toggle, &.collapsed a.collapse-toggle {
+    color: rgb(65, 118, 144);
+  }
 }
 
 .input-field label + div {
   padding-top: 40px;
-}
-
-fieldset.aligned {
-  border: none;
 }
 
 .selector-available select, .selector-chosen select {
@@ -49,7 +61,7 @@ form .related-widget-wrapper {
 }
 
 .selector .help-icon {
-  background: url(../img/icon-unknown-alt.svg) 0 0 no-repeat;
+  @extend %icon-unknown
 }
 
 div.selector {
@@ -185,10 +197,6 @@ form .aligned {
   display: flex;
 }
 
-.aligned label + div.readonly {
-  padding-top: 20px;
-}
-
 .checkbox-label label {
   color: #666;
   font-size: 14px;
@@ -250,9 +258,4 @@ div.url {
 
 .inline-related.has_original .delete {
   display: none;
-}
-
-.readonly-label {
-    width: 170px;
-    height: 10px;
 }

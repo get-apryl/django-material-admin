@@ -35,7 +35,7 @@ $theme-colors: (
   "body-fg": map.get($brand-colors, "darkGray"),
   "body-fg-dark": $blueGrey-lighten-4,
   "body-bg": map.get($brand-colors, "white"),
-  "body-bg-dark": darken($grey-darken-3, 10%),
+  "body-bg-dark": $grey-darken-3,
   "body-bg-darkened": $grey-lighten-1,
   "body-bg-darkened-dark": $grey-darken-4,
   "error-fg": map.get($brand-colors, "lightCoral"),
@@ -50,10 +50,10 @@ $theme-colors: (
   "message-success-bg": #6ECC71,
   "focus": darken(map.get($brand-colors, "darkCornFlowerBlue"), 10%),
   "focus-dark": lighten(map.get($brand-colors, "middleBlue"), 10%),
-  "selected-bg": darken(map.get($brand-colors, "darkCornFlowerBlue"), 10%),
-  "selected-bg-dark": lighten(map.get($brand-colors, "middleBlue"), 10%),
-  "selected-fg": map.get($brand-colors, "white"),
-  "selected-fg-dark": map.get($brand-colors, "darkGray"),
+  "selected-bg": transparentize(map.get($brand-colors, "middleBlue"), 0.85),
+  "selected-bg-dark": transparentize(map.get($brand-colors, "darkCornFlowerBlue"), 0.85),
+  "selected-fg": map.get($brand-colors, "darkGray"),
+  "selected-fg-dark": map.get($brand-colors, "white"),
   "panel-bg": $grey-lighten-3,
   "panel-bg-dark": $blueGrey-darken-4,
   "panel-fg": map.get($brand-colors, "darkCornFlowerBlue"),
@@ -72,6 +72,8 @@ $theme-colors: (
   "top-shadow-active-dark": rgba(0, 0, 0, 0.82),
   "middle-shadow-dark": rgba(0, 0, 0, 0.88),
   "bottom-shadow-dark": rgba(0, 0, 0, 0.8),
+  "disabled-bg": rgba(0, 0, 0, 0.12),
+  "disabled-fg": rgba(0, 0, 0, 0.26),
 );
 
 :root {
@@ -109,6 +111,9 @@ $theme-colors: (
   --top-shadow-active: #{map.get($theme-colors, "top-shadow-active")};
   --middle-shadow: #{map.get($theme-colors, "middle-shadow")};
   --bottom-shadow: #{map.get($theme-colors, "bottom-shadow")};
+  --disabled-fg: #{map.get($theme-colors, "disabled-fg")};
+  --disabled-bg: #{map.get($theme-colors, "disabled-bg")};
+  --selected-row: #{map.get($theme-colors, "selected-bg")};
 }
 
 @media (prefers-color-scheme: dark) {
@@ -136,7 +141,7 @@ $theme-colors: (
     --panel-bg: #{map.get($theme-colors, "panel-bg-dark")};
     --panel-fg: #{map.get($theme-colors, "panel-fg-dark")};
     --panel-hover-bg: #{lighten(map.get($theme-colors, "panel-bg-dark"), 10%)};
-    --panel-hover-fg: #{lighten(map.get($theme-colors, "panel-fg-dark"), 10%)};
+    --panel-hover-fg: #{map.get($brand-colors, "middleBlueLight")};
     --panel-icon-fg: #{map.get($theme-colors, "panel-icon-fg-dark")};
     --panel-bg-expanded: #{map.get($theme-colors, "panel-bg-expanded-dark")};
     --top-shadow: #{map.get($theme-colors, "top-shadow-dark")};
@@ -144,5 +149,6 @@ $theme-colors: (
     --top-shadow-active: #{map.get($theme-colors, "top-shadow-active-dark")};
     --middle-shadow: #{map.get($theme-colors, "middle-shadow-dark")};
     --bottom-shadow: #{map.get($theme-colors, "bottom-shadow-dark")};
+    --selected-row: #{map.get($theme-colors, "selected-bg-dark")};
   }
 }

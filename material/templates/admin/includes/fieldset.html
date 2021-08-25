@@ -23,8 +23,10 @@
             </div>
           {% else %}
             {% if field.is_readonly %}
-              <div class="readonly-label">{{ field.label_tag }}</div>
-              <div class="readonly">{{ field.contents }}</div>
+              <div class="readonly-field">
+                {{ field.label_tag }}
+                <output>{{ field.contents }}</output>
+              </div>
             {% else %}
               {{ field.label_tag }}
               {{ field.field }}
