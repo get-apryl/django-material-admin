@@ -46,10 +46,6 @@ ul {
   margin: 0 !important;
 }
 
-.btn {
-  padding: 0 2rem;
-}
-
 .card .card-content {
   padding-top: 10px;
 }
@@ -239,4 +235,11 @@ input.valid[type=text]:not(.browser-default) {
 div.submit-row {
   display: flex;
   justify-content: flex-end;
+}
+
+/* Elements */
+.btn {
+  &:hover, &:focus {
+    background: var(--primary-lighter);
+  }
 }

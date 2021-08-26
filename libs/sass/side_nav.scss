@@ -1,5 +1,13 @@
 #menu-bar {
-  &.sidenav .user-view {
-    padding: 40px 40px 0;
+  &.sidenav {
+    .user-view {
+      padding: 40px 40px 0;
+    }
+
+    li > a {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
   }
 }

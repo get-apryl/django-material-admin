@@ -5,29 +5,69 @@
 {% endblock %}
 
 {% if cl.search_fields %}
-<div id="toolbar" class="actions"><form id="changelist-search" method="get">
-<div><!-- DIV needed for valid HTML -->
+  <script type="application/javascript">
+  function handleInput(elm) {
+    const resetButton = document.querySelector('#search-reset');
+    console.log(elm, elm.value.length);
+    if (elm.value.length > 0) {
+      if (resetButton.classList.contains('hidden')) {
+        resetButton.classList.remove('hidden')
+      }
+    } else {
+      resetButton.classList.add('hidden')
+    }
+  }
 
-<div class="card-content">
-  <div class="input-field col s6">
-    <input id="icon_prefix" class="validate" type="text" size="40" name="{{ search_var }}" value="{{ cl.query }}">
-    <label for="icon_prefix">{% trans 'Search' %} {{ cl.opts.verbose_name }}</label>
-    <button class="search-cta" type="submit"><i class="material-icons" aria-hidden="true">search</i></button>
-    {% if show_result_count %}
-    <span class="small quiet">
-      {% blocktrans count counter=cl.result_count %}{{ counter }}
-        result{% plural %}{{ counter }} results{% endblocktrans %}
-      (<a href="?{% if cl.is_popup %}_popup=1{% endif %}">
-      {% if cl.show_full_result_count %}
-        {% blocktrans with full_result_count=cl.full_result_count %}{{ full_result_count }} total{% endblocktrans %}
-      {% else %}{% trans "Show all" %}{% endif %}</a>)
-    </span>
-      {% endif %}
-      {% for pair in cl.params.items %}
+  function handleReset(elm) {
+    const resetButton = document.querySelector('#search-reset');
+
+    elm.form.elements['{{ search_var }}'].value = '';
+    elm.form.elements['{{ search_var }}'].focus();
+    resetButton.classList.add('hidden');
+  }
+
+  </script>
+  <div class="list-actions-bar-item" id="searchbar">
+    <form id="changelist-search" method="get">
+
+      <div class="input-field">
+        <button id="search-submit" type="submit" class="prefix">
+          <i class="material-icons">search</i>
+        </button>
+        <input
+          id="search-input"
+          class="validate"
+          type="text"
+          size="40"
+          name="{{ search_var }}"
+          value="{{ cl.query }}"
+          title="{% trans 'Search' %} {{ cl.opts.verbose_name }}"
+          placeholder="{% trans 'Search' %} {{ cl.opts.verbose_name }}"
+          oninput="handleInput(this)"
+        >
+        <button id="search-reset"{% if not cl.query %} class="hidden"{% endif %} type="button" onclick="handleReset(this)">
+          <i class="material-icons" aria-hidden="true">clear</i>
+        </button>
+        {% if show_result_count %}
+          <span class="small quiet">
+            {% blocktrans count counter=cl.result_count %}
+              {{ counter }} result{% plural %}{{ counter }} results
+            {% endblocktrans %}
+            (<a href="?{% if cl.is_popup %}_popup=1{% endif %}">
+              {% if cl.show_full_result_count %}
+                {% blocktrans with full_result_count=cl.full_result_count %}
+                  {{ full_result_count }} total
+                {% endblocktrans %}
+              {% else %}
+                {% trans "Show all" %}
+              {% endif %}
+            </a>)
+          </span>
+        {% endif %}
+        {% for pair in cl.params.items %}
           {% if pair.0 != search_var %}<input type="hidden" name="{{ pair.0 }}" value="{{ pair.1 }}">{% endif %}
-      {% endfor %}
+        {% endfor %}
+      </div>
+    </form>
   </div>
-</div>
-</div>
-</form></div>
 {% endif %}

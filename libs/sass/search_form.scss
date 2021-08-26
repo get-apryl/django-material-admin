@@ -1,26 +1,23 @@
-.search_form_icon {
-  position: absolute;
-  right: 0;
-  top: 10px;
-}
-
-.input-field.col label {
-  left: 0;
-}
-
-.search-cta {
+.input-field button {
   background-color: transparent;
   border: none;
   cursor: pointer;
-  position: absolute;
-  top: 12px;
-  right: 0;
-}
+  color: inherit;
 
-button.search-cta {
   &:active, &:hover, &:focus {
     background-color: transparent;
   }
+
+}
+
+#search-input {
+  font-size: .8rem;
+}
+
+#search-reset {
+  position: absolute;
+  top: 12px;
+  right: 0;
 }
 
 .select-wrapper.valid > input.select-dropdown {

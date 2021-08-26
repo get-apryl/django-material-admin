@@ -4,7 +4,7 @@
 }
 
 .btn.default, .btn-large.default, .btn-small.default, div.selector-chosen h2, .btn-floating, .btn {
-  color: white;
+  color: var(--primary-fg);
   background: var(--primary);
 }
 
@@ -171,13 +171,6 @@ fieldset {
 .module h2 {
   color: var(--primary);
   border-color: var(--primary);
-}
-
-.btn {
-  &:hover, &:focus {
-    background: var(--main-hover-color);
-    color: white;
-  }
 }
 
 .btn-floating:hover, .datepicker-table td.is-selected, .success-toast, .side-wrapper-tools i.minimize:hover, .additional-submit-line i.minimize.submit-line:hover {

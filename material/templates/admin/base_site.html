@@ -13,48 +13,6 @@
         }
 
         @font-face {
-            font-family: 'DM Sans';
-            font-style: normal;
-            font-weight: 400;
-            src: url('{% static "material/fonts/QRaHQjc-5Z5XfZNrXdrg59XsSk7_wVstdYMSyQfdMxrGOrvcKe8a8axDEteCvFiY.woff" %}') format('woff');
-        }
-
-        @font-face {
-            font-family: 'DM Sans';
-            font-style: italic;
-            font-weight: 400;
-            src: url('{% static "material/fonts/FtxC2DoWXxcjniikUbmP027E8uJQpnf2WHiToc8SpYpyKkBPJISQhW4RrU5GxCWw.woff2" %}') format('woff2');
-        }
-
-        @font-face {
-            font-family: 'DM Sans';
-            font-style: normal;
-            font-weight: 500;
-            src: url('{% static "material/fonts/A4R3xu4X9eI-ZHt4PSOPfa6EqLSvQRp-k7QSxU2HA8-PfmUMKvF6dAEF1X09FeWk.woff2" %}') format('woff2');
-        }
-
-        @font-face {
-            font-family: 'DM Sans';
-            font-style: italic;
-            font-weight: 500;
-            src: url('{% static "material/fonts/2-nwU5eGFF7kj1htRH93f49Mjd5IsAQn8Z8g95_DJpQVYUxJHo69TFjR7e7QrdL-.woff2" %}') format('woff2');
-        }
-
-        @font-face {
-            font-family: 'DM Sans';
-            font-style: normal;
-            font-weight: 700;
-            src: url('{% static "material/fonts/OU3Ebg9nwa0VEwMntC-jcCJCAiG4GFAthqp43sE1S1cl1vgnLMZ2IHviYYXaddck.woff" %}') format('woff');
-        }
-
-        @font-face {
-            font-family: 'DM Sans';
-            font-style: italic;
-            font-weight: 700;
-            src: url('{% static "material/fonts/o8lvEI00B9ahgX04rvuHgbzoVWlCDUpSoTVG6w9hj54b0v8vLNFuwKMkXNd9mYs8.woff2" %}') format('woff2');
-        }
-
-        @font-face {
             font-family: Spartan;
             font-style: normal;
             font-weight: 400;
@@ -82,7 +40,9 @@
             src: url('{% static "material/fonts/woR4tSuJlG3OlPd0Io3bEROVa99OpfokDwtn6bEnwkJC4twIgE-ptgwCQvvB_TCB.woff2" %}') format('woff2');
         }
     </style>
-    <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/base_site.min.css' %}">
+  {% include "material/admin/includes/font-roboto.html" %}
+{#  {% include "material/admin/includes/font-dm_sans.html" %}#}
+  <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/base_site.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/autocomplete.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/app_content.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/side_nav.min.css' %}">
