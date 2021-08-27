@@ -51,7 +51,7 @@
         {% block filters %}
           {% if cl.has_filters %}
             <div class="card-content" id="changelist-filter">
-            <label class="label">{% trans 'Filter' %}</label>
+            <h5>{% trans 'Filter' %}</h5>
             {% for spec in cl.filter_specs %}{% admin_list_filter cl spec %}{% endfor %}
             </div>
           {% endif %}

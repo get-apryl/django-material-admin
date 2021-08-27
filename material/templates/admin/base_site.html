@@ -2,86 +2,59 @@
 {% load static i18n material %}
 
 {% block extrastyle %}
-    <link rel="stylesheet" href="{% static 'material/admin/css/materialize.min.css' %}">
-    <link href="{% static 'material/admin/css/material_icons.min.css' %}" rel="stylesheet">
-    <style>
-        @font-face {
-            font-family: 'Material Icons';
-            font-style: normal;
-            font-weight: 400;
-            src: url('{% static 'material/fonts/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2' %}') format('woff2');
-        }
-
-        @font-face {
-            font-family: Spartan;
-            font-style: normal;
-            font-weight: 400;
-            src: url('{% static "material/fonts/hXGVRxOyQaAoze1NCzVpc85s2tY746CkhNssmkMdHI_oJDbrAz6ahi6RCLmJJOkU.woff2" %}') format('woff2');
-        }
-
-        @font-face {
-            font-family: Spartan;
-            font-style: normal;
-            font-weight: 500;
-            src: url('{% static "material/fonts/woR4tSuJlG3OlPd0Io3bEROVa99OpfokDwtn6bEnwkJC4twIgE-ptgwCQvvB_TCB.woff2" %}') format('woff2');
-        }
-
-        @font-face {
-            font-family: Spartan;
-            font-style: normal;
-            font-weight: 600;
-            src: url('{% static "material/fonts/JQD3mwfV2DWq9pqyn73ierVHzx9sh4AxZFPwIYem7bHChQ7vWQZ4PeJDxA-p2ltn.woff2" %}') format('woff2');
-        }
-
-        @font-face {
-            font-family: Spartan;
-            font-style: normal;
-            font-weight: 700;
-            src: url('{% static "material/fonts/woR4tSuJlG3OlPd0Io3bEROVa99OpfokDwtn6bEnwkJC4twIgE-ptgwCQvvB_TCB.woff2" %}') format('woff2');
-        }
-    </style>
+  <link rel="stylesheet" href="{% static 'material/admin/css/materialize.min.css' %}">
+  <link href="{% static 'material/admin/css/material_icons.min.css' %}" rel="stylesheet">
+  <style>
+      @font-face {
+          font-family: 'Material Icons';
+          font-style: normal;
+          font-weight: 400;
+          src: url('{% static 'material/fonts/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2' %}') format('woff2');
+      }
+  </style>
+  {% include "material/admin/includes/font-spartan.html" %}
   {% include "material/admin/includes/font-roboto.html" %}
-{#  {% include "material/admin/includes/font-dm_sans.html" %}#}
   <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/base_site.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/autocomplete.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/app_content.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/side_nav.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/header.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/selector_relative.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/selector_relative-responsive.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/base_site-responsive.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/clearable_file_input.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/jquery.jscrollpane.min.css' %}">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <script src="{% static 'material/admin/js/jquery.min.js' %}"></script>
-    {% if favicon %}
-        <link rel="icon" href="{{ favicon }}" />
-    {% endif %}
-    {% block theme %}
-        {% if current_theme and current_theme != 'default' %}
-            <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/base_site-'|add:current_theme|add:'.min.css' %}">
-            {% if current_theme != 'night' %}
-                <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/base_site-theme.min.css' %}">
-            {% endif %}
-        {% elif main_bg_color and main_hover_color %}
-            <style>
-                :root {
-                    --main-bg-color: {{ main_bg_color }};
-                    --main-hover-color: {{ main_hover_color }};
-                }
+  <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/autocomplete.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/app_content.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/side_nav.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/header.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/selector_relative.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/selector_relative-responsive.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/base_site-responsive.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/clearable_file_input.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/jquery.jscrollpane.min.css' %}">
+  {% block theme %}
+      {% if current_theme and current_theme != 'default' %}
+          <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/base_site-'|add:current_theme|add:'.min.css' %}">
+          {% if current_theme != 'night' %}
+              <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/base_site-theme.min.css' %}">
+          {% endif %}
+      {% elif main_bg_color and main_hover_color %}
+          <style>
+              :root {
+                  --main-bg-color: {{ main_bg_color }};
+                  --main-hover-color: {{ main_hover_color }};
+              }
 
-                @media (prefers-color-scheme: dark) {
-                    :root {
-                        --main-bg-color: {{ main_hover_color }};
-                        --main-hover-color: {{ main_bg_color }};
-                    }
-                }
-            </style>
-            <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/base_site-theme.min.css' %}">
-        {% endif %}
-    {% endblock %}
-{% endblock %}
-
+              @media (prefers-color-scheme: dark) {
+                  :root {
+                      --main-bg-color: {{ main_hover_color }};
+                      --main-hover-color: {{ main_bg_color }};
+                  }
+              }
+          </style>
+          <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/base_site-theme.min.css' %}">
+      {% endif %}
+  {% endblock theme %}
+{% endblock extrastyle%}
+{% block extrahead %}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script src="{% static 'material/admin/js/jquery.min.js' %}"></script>
+  {% if favicon %}
+    <link rel="icon" href="{{ favicon }}"/>
+  {% endif %}
+{% endblock extrahead %}
 {% block branding %}
     <nav class="nav-extended">
         <div class="nav-wrapper">

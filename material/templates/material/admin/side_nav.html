@@ -13,7 +13,7 @@
   </li>
   {% for app in available_apps %}
     {% for model in app.models %}
-      <li{% if model.admin_url in request.path %} class="active"{% endif %}>
+      <li{% if model.admin_url in request.path %} class="active"{% endif %} title="{{ model.name }}">
         <a href="{{ model.admin_url }}">
           <i class="material-icons prefix">{{ model.icon|default:'settings' }}</i>
           {{ model.name }}
@@ -22,43 +22,3 @@
     {% endfor %}
   {% endfor %}
 </ul>
-{#<div class="scroll-pane">#}
-{#  {% if available_apps %}#}
-{#    <ul class="collapsible">#}
-{#      {% for app in available_apps %}#}
-{#        <li class="scrollspy">#}
-{#          <div class="collapsible-body">#}
-{#            {% for model in app.models %}#}
-{#              {% if model.admin_url %}#}
-{#                <div {% if model.admin_url in request.path %}class="active"{% endif %}>#}
-{#                  <a href="{{ model.admin_url }}">#}
-{#                    {% if model.count != None %}#}
-{#                      <span class="badge">#}
-{#                                            {{ model.count }}#}
-{#                                        </span>#}
-{#                    {% endif %}#}
-{#                    {{ model.name }}#}
-{#                  </a>#}
-{#                </div>#}
-{#              {% else %}#}
-{#                <div class="disabled">{{ model.name }}#}
-{#                  {% if model.count != None %}#}
-{#                    <span class="badge">{{ model.count }}</span>#}
-{#                  {% endif %}#}
-{#                </div>#}
-{#              {% endif %}#}
-{#            {% endfor %}#}
-{#          </div>#}
-{#        </li>#}
-{#      {% endfor %}#}
-{#    </ul>#}
-{#  {% else %}#}
-{#    <div class="app">#}
-{#      <div class="card">#}
-{#        <div class="card-content">#}
-{#          <p>{% trans "You don't have permission to view or edit anything." %}</>#}
-{#        </div>#}
-{#      </div>#}
-{#    </div>#}
-{#  {% endif %}#}
-{#</div>#}

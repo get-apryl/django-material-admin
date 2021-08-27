@@ -18,11 +18,11 @@ $grey-300: #e0e0e0;
 
 $brand-colors: (
   "darkCornFlowerBlue": #2D3E91,
-  "darkCornFlowerBlueDark": #0A1A67,
   "darkCornFlowerBlueLight": #AEB8E8,
+  "darkCornFlowerBlueDark": #0A1A67,
   "darkCornFlowerBlueSelected": transparentize(#2D3E91, 0.85),
-  "middleBlueLight": #BAE4E7,
   "middleBlue": #91CED2,
+  "middleBlueLight": #BAE4E7,
   "middleBlueDark": #38999F,
   "middleBlueSelected": transparentize(#BAE4E7, 0.85),
   "lightCoral": #F86969,
@@ -43,6 +43,12 @@ $theme-colors: (
   "secondary-dark": map.get($brand-colors, "darkCornFlowerBlue"),
   "secondary-fg": map.get($brand-colors, "darkGray"),
   "secondary-fg-dark": map.get($brand-colors, "white"),
+  "secondary-lighter": map.get($brand-colors, "middleBlueLight"),
+  "secondary-lighter-dark": map.get($brand-colors, "darkCornFlowerBlueLight"),
+  "secondary-darker": map.get($brand-colors, "middleBlueDark"),
+  "secondary-darker-dark": map.get($brand-colors, "darkCornFlowerBlueDark"),
+  "secondary-selected": map.get($brand-colors, "middleBlueSelected"),
+  "secondary-selected-dark": map.get($brand-colors, "darkCornFlowerBlueSelected"),
   "body-fg": map.get($brand-colors, "darkGray"),
   "body-fg-dark": $blueGrey-lighten-4,
   "body-bg": $grey-lighten-3,
@@ -66,7 +72,7 @@ $theme-colors: (
   "focus": darken(map.get($brand-colors, "darkCornFlowerBlue"), 10%),
   "focus-dark": lighten(map.get($brand-colors, "middleBlue"), 10%),
   "selected-bg": map.get($brand-colors, "middleBlueSelected"),
-  "selected-bg-dark": transparentize(map.get($brand-colors, "darkCornFlowerBlue"), 0.85),
+  "selected-bg-dark": map.get($brand-colors, "darkCornFlowerBlueSelected"),
   "selected-fg": map.get($brand-colors, "darkGray"),
   "selected-fg-dark": map.get($brand-colors, "white"),
   "panel-bg": $grey-lighten-3,
@@ -100,6 +106,9 @@ $theme-colors: (
   --primary-darker: #{map.get($theme-colors, "primary-darker")};
   --secondary: #{map.get($theme-colors, "secondary")};
   --secondary-fg: #{map.get($theme-colors, "secondary-fg")};
+  --secondary-lighter: #{map.get($theme-colors, "secondary-lighter")};
+  --secondary-darker: #{map.get($theme-colors, "secondary-darker")};
+  --secondary-selected: #{map.get($theme-colors, "secondary-selected")};
   --body-fg: #{map.get($theme-colors, "body-fg")};
   --body-bg: #{map.get($theme-colors, "body-bg")};
   --card-bg: #{map.get($theme-colors, "card-bg")};
@@ -135,7 +144,7 @@ $theme-colors: (
   --disabled-fg: #{map.get($theme-colors, "disabled-fg")};
   --disabled-bg: #{map.get($theme-colors, "disabled-bg")};
   --selected-row: #{map.get($theme-colors, "selected-bg")};
-  --hover-row: #{map.get($theme-colors, "primary-lighter")};
+  --hover-row: #{map.get($brand-colors, "darkCornFlowerBlueSelected")};
   --divider: #{map.get($theme-colors, "divider")};
 }
 
@@ -147,6 +156,9 @@ $theme-colors: (
     --primary-darker: #{map.get($theme-colors, "primary-darker-dark")};
     --secondary: #{map.get($theme-colors, "secondary-dark")};
     --secondary-fg: #{map.get($theme-colors, "secondar-fg-dark")};
+    --secondary-lighter: #{map.get($theme-colors, "secondary-lighter-dark")};
+    --secondary-darker: #{map.get($theme-colors, "secondary-darker-dark")};
+    --secondary-selected: #{map.get($theme-colors, "secondary-selected-dark")};
     --body-fg: #{map.get($theme-colors, "body-fg-dark")};
     --body-bg: #{map.get($theme-colors, "body-bg-dark")};
     --card-bg: #{map.get($theme-colors, "card-bg-dark")};
@@ -177,7 +189,7 @@ $theme-colors: (
     --middle-shadow: #{map.get($theme-colors, "middle-shadow-dark")};
     --bottom-shadow: #{map.get($theme-colors, "bottom-shadow-dark")};
     --selected-row: #{map.get($theme-colors, "selected-bg-dark")};
-    --hover-row: #{map.get($theme-colors, "primary-darker-dark")};
+    --hover-row: #{map.get($brand-colors, "middleBlueSelected")};
     --divider: #{map.get($theme-colors, "divider-dark")};
   }
 }
