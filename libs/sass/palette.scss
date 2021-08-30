@@ -95,6 +95,8 @@ $theme-colors: (
   "bottom-shadow-dark": rgba(0, 0, 0, 0.8),
   "disabled-bg": rgba(0, 0, 0, 0.12),
   "disabled-fg": rgba(0, 0, 0, 0.26),
+  "disabled-bg-dark": rgba(255, 255, 255, 0.12),
+  "disabled-fg-dark": rgba(255, 255, 255, 0.40),
   "divider": $grey-300,
   "divider-dark": $grey-darken-3,
 );
@@ -188,6 +190,8 @@ $theme-colors: (
     --top-shadow-active: #{map.get($theme-colors, "top-shadow-active-dark")};
     --middle-shadow: #{map.get($theme-colors, "middle-shadow-dark")};
     --bottom-shadow: #{map.get($theme-colors, "bottom-shadow-dark")};
+    --disabled-fg: #{map.get($theme-colors, "disabled-fg-dark")};
+    --disabled-bg: #{map.get($theme-colors, "disabled-bg-dark")};
     --selected-row: #{map.get($theme-colors, "selected-bg-dark")};
     --hover-row: #{map.get($brand-colors, "middleBlueSelected")};
     --divider: #{map.get($theme-colors, "divider-dark")};

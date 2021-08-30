@@ -2780,13 +2780,12 @@ img.responsive-img, video.responsive-video {
 
 .pagination li {
   display: inline-block;
-  border-radius: 2px;
+  border-radius: 6px;
   text-align: center;
-  vertical-align: top;
-  height: 30px;
+  vertical-align: middle;
 
   a {
-    color: #444;
+    color: var(--body-fg);
     display: inline-block;
     font-size: 1.2rem;
     padding: 0 10px;
@@ -2795,19 +2794,20 @@ img.responsive-img, video.responsive-video {
 
   &.active {
     a {
-      color: #fff;
+      color: var(--card-bg);
     }
 
-    background-color: #ee6e73;
+    background-color: var(--primary);
   }
 
   &.disabled a {
     cursor: default;
-    color: #999;
+    color: var(--disabled-fg);
   }
 
   i {
-    font-size: 2rem;
+    padding-top: 8px;
+    font-size: 30px;
   }
 
   &.pages ul li {
@@ -3072,11 +3072,13 @@ tr {
 }
 
 td, th {
-  padding: 15px 5px;
+  padding: 0 8px;
   display: table-cell;
   text-align: left;
   vertical-align: middle;
   border-radius: 2px;
+  font-size: 1rem;
+  line-height: 1.2;
 }
 
 @media only screen and (max-width: 992px) {
@@ -4755,25 +4757,10 @@ html, body {
   font-family: $text-font, sans-serif;
   font-weight: normal;
   color: var(--body-fg);
-  font-size: inherit !important;
 }
 
-@media only screen and (min-width: 0) {
-  html {
-    font-size: 14px;
-  }
-}
-
-@media only screen and (min-width: 992px) {
-  html {
-    font-size: 14.5px;
-  }
-}
-
-@media only screen and (min-width: 1200px) {
-  html {
-    font-size: 15px;
-  }
+html {
+  font-size: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -5022,8 +5009,9 @@ small {
   border-radius: 2px;
 
   .card-title {
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: 300;
+    font-family: $header-font;
 
     &.activator {
       cursor: pointer;
@@ -9915,4 +9903,25 @@ input[type=range] {
     text-align: center;
     margin-top: 1.2rem;
   }
+}
+
+/* Django Admin Resets */
+li, dd, dt {
+  font-size: unset;
+  line-height: unset;
+}
+
+ul li {
+  padding: unset;
+}
+
+.module p, .module ul, .module h3, .module h4, .module dl, .module pre {
+  padding-left: unset;
+  padding-right: unset;
+}
+
+.paginator {
+  font-size: unset;
+  line-height: unset;
+
 }

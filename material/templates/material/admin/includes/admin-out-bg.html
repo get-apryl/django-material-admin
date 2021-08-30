@@ -14,10 +14,16 @@
           width: {{ login_logo_width }}px;
           height: {{ login_logo_height }}px;
       }
+
       .login-logo-container {
           display: inline-flex;
           justify-content: space-around;
           align-items: center;
+          color: white;
+          margin: 0;
+      }
+      .login-logo-container > span {
+          padding-top: 56px;
       }
   </style>
   {% if error %}
@@ -30,7 +36,7 @@
               alt="{{ login_byline|default_if_none:'Logo' }}"
               class="no-circle"
             >
-            {{ login_byline }}
+            <span>{{ login_byline }}</span>
         </h1>
     {% else %}
       <img src="{% static 'material/admin/images/login-logo-'|add:current_theme|add:'.jpg' %}" alt="Logo">

@@ -108,3 +108,43 @@ def material_paginator_number(cl, i):
             mark_safe(' class="end"' if i == cl.paginator.num_pages else ''),
             i,
         )
+
+
+@register.simple_tag
+def material_paginator_previous(cl):
+    """
+    Generate the previous button, disabled or functional
+    """
+    if cl.page_num == 1:
+        return format_html(
+            '''<li class="disabled">
+                <a href="#"><i class="material-icons">chevron_left</i></a>
+               </li>'''
+        )
+    else:
+        return format_html(
+            '''<li class="waves-effect">
+                 <a href="{}"><i class="material-icons">chevron_left</i></a>
+               </li>''',
+            cl.get_query_string({PAGE_VAR: cl.page_num - 1})
+        )
+
+
+@register.simple_tag
+def material_paginator_next(cl):
+    """
+    Generate the previous button, disabled or functional
+    """
+    if cl.page_num == cl.paginator.num_pages:
+        return format_html(
+            '''<li class="disabled">
+                <a href="#"><i class="material-icons">chevron_right</i></a>
+               </li>'''
+        )
+    else:
+        return format_html(
+            '''<li class="waves-effect">
+                 <a href="{}"><i class="material-icons">chevron_right</i></a>
+               </li>''',
+            cl.get_query_string({PAGE_VAR: cl.page_num + 1})
+        )

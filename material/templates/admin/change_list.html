@@ -18,14 +18,32 @@
   {% endif %}
 
   <div id="content-main" class="list-content">
+    {% block object-tools %}
+      <ul>
+        {% block object-tools-items %}
+          {% if has_add_permission %}
+            <li>
+              {% url cl.opts|admin_urlname:'add' as add_url %}
+              <div class="fixed-action-btn">
+                <a href="{% add_preserved_filters add_url is_popup to_field %}"
+                   class="btn-floating btn-large waves-effect waves-light">
+                  <i class="material-icons" aria-hidden="true">add</i>
+                </a>
+              </div>
+            </li>
+          {% endif %}
+        {% endblock %}
+      </ul>
+    {% endblock %}
     {# 2 columns: main content (75%) and sidebar with filters (25%) #}
     <div id="object-list-wrapper">
       <!-- List Actions bar -->
-      <div id="list-actions-bar">
+      <div id="list-actions-bar" style="justify-content: {% if action_form and actions_on_top and cl.show_admin_actions %}space-between{% else %}flex-end{% endif %}">
         {% if action_form and actions_on_top and cl.show_admin_actions %}{% admin_actions %}{% endif %}
         {% block search %}{% search_form cl %}{% endblock %}
       </div>
       <!-- END List Actions bar -->
+      <!-- Result Table and Date Filters -->
       <div class="module{% if cl.has_filters %} filtered{% endif %}" id="changelist">
 
         {% block date_hierarchy %}{% date_hierarchy cl %}{% endblock %}
@@ -40,13 +58,14 @@
 
           {% block result_list %}
             {% result_list cl %}
-            {% if action_form and actions_on_bottom and cl.show_admin_actions %}{% admin_actions %}{% endif %}
           {% endblock %}
           {% block pagination %}{% pagination cl %}{% endblock %}
         </form>
       </div>
+      <!-- END Result Table and Date Filters -->
     </div>
     <div class="side-wrapper">
+      <!-- Filters -->
       <div class="card">
         {% block filters %}
           {% if cl.has_filters %}
@@ -57,6 +76,7 @@
           {% endif %}
         {% endblock %}
       </div>
+      <!-- END Filters -->
     </div>
   </div>
 {% endblock %}

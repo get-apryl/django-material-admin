@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.contrib import admin
+from django.contrib.auth import get_permission_codename
 from django.db import models
 from django.forms import SplitDateTimeField, forms
 
@@ -38,3 +39,10 @@ class MaterialModelAdminMixin(admin.ModelAdmin):
             'material/admin/js/RelatedObjectLookups.min.js',
         ]
         return super().media + forms.Media(js=['admin/js/%s' % url for url in js] + material_js)
+
+    def has_module_permission(self, request):
+        # We tie module permission to view permission for the model, so that things are
+        # hidden on the index page if we remove the view permission.
+        opts = self.opts
+        codename = get_permission_codename('view', opts)
+        return request.user.has_perm("%s.%s" % (opts.app_label, codename))

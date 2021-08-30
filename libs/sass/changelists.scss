@@ -101,8 +101,64 @@ label.label {
   background: var(--card-bg);
   color: var(--card-fg);
 
+  table {
+    thead, tbody {
+      th, td {
+        padding: 0 4px;
+        max-width: 200px;
+
+        .text a {
+          padding: unset;
+        }
+      }
+    }
+  }
+
   &.module {
     margin: 0;
+  }
+
+  .paginator {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background: var(--card-bg);
+    color: var(--card-fg);
+    font-size: 1rem;
+    line-height: 1.25;
+    height: 76px;
+
+    .result-counts {
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+    > ul, div {
+      margin: 4px 8px;
+
+      li {
+        a {
+          &:visited, &:link {
+            background: unset;
+            color: var(--primary);
+            padding: 0 10px;
+          }
+        }
+
+        &.disabled a {
+          color: var(--disabled-fg);
+        }
+      }
+
+      li#previous, li#next {
+        > a {
+          line-height: 0;
+          padding-top: 0;
+          padding-bottom: 0;
+        }
+      }
+    }
   }
 }
 
@@ -122,6 +178,9 @@ label.label {
 
 .change-list .filtered {
   min-height: 40px;
+  table tbody th {
+    padding-right: unset;
+  }
 }
 
 .fixed-action-btn {
@@ -167,8 +226,37 @@ label.label {
 }
 
 #result_list {
-  thead tr {
-    background: var(--card-bg);
+  thead {
+    tr {
+      background: var(--card-bg);
+    }
+
+    th {
+      .text, .sortable-col {
+        a, label {
+          text-transform: capitalize;
+          font-size: 1rem;
+          font-weight: 700;
+          line-height: 1rem;
+          color: var(--body-fg);
+        }
+      }
+      .sortable-col {
+        display: inline-flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+
+        a {
+          padding-right: 4px;
+
+          .icon {
+            height: 20px;
+            fill: var(--body-quiet-color);
+          }
+        }
+      }
+    }
   }
 
   th {
@@ -193,13 +281,7 @@ label.label {
     }
   }
 
-  th .text {
-    a, label {
-      text-transform: capitalize;
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 14px;
-    }
+  .sortable-col {
   }
 }
 
