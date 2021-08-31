@@ -19,8 +19,8 @@ div.breadcrumbs {
   color: var(--breadcrumbs-fg);
 }
 
-.pagination li.active, .datepicker-date-display, .timepicker-digital-display, .active .collapsible-header, .scrollspy.active div.collapsible-header i {
-  color: white;
+.datepicker-date-display, .timepicker-digital-display, .active .collapsible-header, .scrollspy.active div.collapsible-header i {
+  color: var(--primary-fg);
   background: var(--primary);
 }
 
@@ -87,26 +87,6 @@ ul#save-dropdown {
 textarea.materialize-textarea:focus:not([readonly]), div.collapsible-header i {
   color: var(--primary);
   border-color: var(--primary);
-}
-
-a {
-  color: var(--primary);
-  border-color: var(--primary);
-
-  &:link, &:visited, &.choose-item.active i, &.remove-item.active i {
-    color: var(--primary);
-    border-color: var(--primary);
-  }
-
-  &.selector-choose-all.active, &.selector-clear-all.active {
-    color: var(--primary);
-    border-color: var(--primary);
-
-    i {
-      color: var(--primary);
-      border-color: var(--primary);
-    }
-  }
 }
 
 i {

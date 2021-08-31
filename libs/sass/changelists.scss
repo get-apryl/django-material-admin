@@ -118,7 +118,7 @@ label.label {
     margin: 0;
   }
 
-  .paginator {
+  .pagination-wrapper {
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -252,7 +252,7 @@ label.label {
 
           .icon {
             height: 20px;
-            fill: var(--body-quiet-color);
+            fill: var(--body-fg);
           }
         }
       }

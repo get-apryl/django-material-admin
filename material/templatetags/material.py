@@ -103,7 +103,7 @@ def material_paginator_number(cl, i):
         return format_html('<li class="active"><a>{}</a></li></li> ', i)
     else:
         return format_html(
-            '<li class="waves-effect"><a href="{}"{}>{}</a></li> ',
+            '<li class="waves-effect waves-primary"><a href="{}"{}>{}</a></li> ',
             cl.get_query_string({PAGE_VAR: i}),
             mark_safe(' class="end"' if i == cl.paginator.num_pages else ''),
             i,
@@ -123,7 +123,7 @@ def material_paginator_previous(cl):
         )
     else:
         return format_html(
-            '''<li class="waves-effect">
+            '''<li class="waves-effect waves-primary">
                  <a href="{}"><i class="material-icons">chevron_left</i></a>
                </li>''',
             cl.get_query_string({PAGE_VAR: cl.page_num - 1})
@@ -143,7 +143,7 @@ def material_paginator_next(cl):
         )
     else:
         return format_html(
-            '''<li class="waves-effect">
+            '''<li class="waves-effect waves-primary">
                  <a href="{}"><i class="material-icons">chevron_right</i></a>
                </li>''',
             cl.get_query_string({PAGE_VAR: cl.page_num + 1})

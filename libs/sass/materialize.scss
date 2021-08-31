@@ -2780,7 +2780,6 @@ img.responsive-img, video.responsive-video {
 
 .pagination li {
   display: inline-block;
-  border-radius: 6px;
   text-align: center;
   vertical-align: middle;
 
@@ -2794,10 +2793,11 @@ img.responsive-img, video.responsive-video {
 
   &.active {
     a {
+      background: var(--primary);
       color: var(--card-bg);
+      border-radius: 6px;
+      border: 1px solid var(--primary);
     }
-
-    background-color: var(--primary);
   }
 
   &.disabled a {
@@ -5975,6 +5975,10 @@ body.keyboard-focused .dropdown-content li:focus {
 
   &.waves-teal .waves-ripple {
     background-color: rgba(0, 150, 136, 0.7);
+  }
+
+  &.waves-primary .waves-ripple {
+    background-color: var(--primary)
   }
 
   input {
