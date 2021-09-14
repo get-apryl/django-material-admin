@@ -1,7 +1,19 @@
 #menu-bar {
   &.sidenav {
     .user-view {
-      padding: 40px 40px 0;
+      min-height: 226px;
+
+      .background {
+
+        > img {
+          width: 300px;
+        }
+      }
+      a:link, a:hover, a:visited {
+        span {
+          color: var(--sidenav-fg);
+        }
+      }
     }
 
     li > a {

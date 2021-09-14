@@ -1,6 +1,5 @@
 from django.apps import apps
 from django.contrib.admin.sites import AdminSite
-from django.templatetags.static import static
 from django.urls import NoReverseMatch, reverse, path
 from django.utils.functional import LazyObject
 from django.utils.module_loading import import_string
@@ -45,7 +44,7 @@ class MaterialAdminSite(AdminSite):
         self.favicon = self.favicon or MATERIAL_ADMIN_SITE['FAVICON']
         self.main_bg_color = self.main_bg_color or MATERIAL_ADMIN_SITE['MAIN_BG_COLOR']
         self.main_hover_color = self.main_hover_color or MATERIAL_ADMIN_SITE['MAIN_HOVER_COLOR']
-        self.profile_picture = MATERIAL_ADMIN_SITE['PROFILE_PICTURE'] or static('material/admin/images/cyberpunk_640.png')
+        self.profile_picture = self.profile_picture or MATERIAL_ADMIN_SITE['PROFILE_PICTURE']
         self.profile_bg = self.profile_bg or MATERIAL_ADMIN_SITE['PROFILE_BG']
         self.login_logo = self.login_logo or MATERIAL_ADMIN_SITE['LOGIN_LOGO']
         self.login_logo_width = self.login_logo_width or MATERIAL_ADMIN_SITE['LOGIN_LOGO_WIDTH']

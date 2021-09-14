@@ -7,8 +7,8 @@
         <img src="{{ profile_bg }}" alt="{% trans 'Profile background' %}" />
       </div>
       <img class="circle" src="{{ profile_picture }}" alt="{% trans 'Profile picture' %}">
-      <a href="#"><span class="grey-text text-lighten-3 name">{{ user.first_name }} {{ user.last_name }}</span></a>
-      <a href="#"><span class="white-text text-lighten-1 email">{{ user.email }}</span></a>
+      <a href="#"><span class="name">{{ user.first_name }} {{ user.last_name }}</span></a>
+      <a href="#"><span class="email">{{ user.email }}</span></a>
     </div>
   </li>
   {% for app in available_apps %}

@@ -195,5 +195,6 @@ $theme-colors: (
     --selected-row: #{map.get($theme-colors, "selected-bg-dark")};
     --hover-row: #{map.get($brand-colors, "middleBlueSelected")};
     --divider: #{map.get($theme-colors, "divider-dark")};
+    --sidenav-fg: #{map.get($brand-colors, "darkCornFlowerBlue")};
   }
 }

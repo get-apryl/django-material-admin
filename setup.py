@@ -11,7 +11,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name="django-material-admin",
-    version="2021.09.09",
+    version="2021.09.14",
     license='MIT License',
     packages=find_packages(),
     author=["Anton Maistrenko", "Melvyn Sopacua"],
