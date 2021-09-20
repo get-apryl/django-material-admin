@@ -37,6 +37,14 @@
     {% endblock %}
     {# 2 columns: main content (75%) and sidebar with filters (25%) #}
     <div id="object-list-wrapper">
+      <form id="changelist-form"
+            method="post"{% if cl.formset.is_multipart %}
+            enctype="multipart/form-data"{% endif %}
+            novalidate>{% csrf_token %}
+        {% if cl.formset %}
+          <div>{{ cl.formset.management_form }}</div>
+        {% endif %}
+      </form>
       <!-- List Actions bar -->
       <div id="list-actions-bar" style="justify-content: {% if action_form and actions_on_top and cl.show_admin_actions %}space-between{% else %}flex-end{% endif %}">
         {% if action_form and actions_on_top and cl.show_admin_actions %}{% admin_actions %}{% endif %}
@@ -48,19 +56,11 @@
 
         {% block date_hierarchy %}{% date_hierarchy cl %}{% endblock %}
 
-        <form id="changelist-form"
-              method="post"{% if cl.formset.is_multipart %}
-              enctype="multipart/form-data"{% endif %}
-              novalidate>{% csrf_token %}
-          {% if cl.formset %}
-            <div>{{ cl.formset.management_form }}</div>
-          {% endif %}
 
           {% block result_list %}
             {% result_list cl %}
           {% endblock %}
           {% block pagination %}{% pagination cl %}{% endblock %}
-        </form>
       </div>
       <!-- END Result Table and Date Filters -->
     </div>

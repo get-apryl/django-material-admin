@@ -67,7 +67,9 @@
                 <label for="_selected_action_{{ forloop.parentloop.counter }}">
                   <input class="action-select" name="_selected_action"
                          id="_selected_action_{{ forloop.parentloop.counter }}" type="checkbox"
-                         value="{{ item|admin_change_list_value }}" />
+                         value="{{ item|admin_change_list_value }}"
+                         form="changelist-form"
+                  />
                   <span></span>
                 </label>
               </td>
