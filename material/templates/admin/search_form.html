@@ -8,7 +8,6 @@
   <script type="application/javascript">
   function handleInput(elm) {
     const resetButton = document.querySelector('#search-reset');
-    console.log(elm, elm.value.length);
     if (elm.value.length > 0) {
       if (resetButton.classList.contains('hidden')) {
         resetButton.classList.remove('hidden')
@@ -20,10 +19,18 @@
 
   function handleReset(elm) {
     const resetButton = document.querySelector('#search-reset');
+    const queryString = window.location.search
+    let params = new URLSearchParams(queryString)
+    const currentSearchValue = params.get('{{ search_var }}')
+    const formMatchesQuery = elm.form.elements['{{ search_var }}'].value === currentSearchValue
 
     elm.form.elements['{{ search_var }}'].value = '';
-    elm.form.elements['{{ search_var }}'].focus();
-    resetButton.classList.add('hidden');
+    if (formMatchesQuery) {
+      elm.form.submit()
+    } else {
+      elm.form.elements['{{ search_var }}'].focus();
+      resetButton.classList.add('hidden');
+    }
   }
 
   </script>
