@@ -3,6 +3,22 @@ import typing as t
 from django import forms
 from django.contrib.admin import widgets
 
+StrKeyDict = t.Dict[str, t.Any]
+OptStrKeyDict = t.Optional[StrKeyDict]
+
+class BaseEditableWidget(forms.Widget):
+    classes: t.List[str] = ['materialize-editable']
+
+    def __init__(self, attrs: OptStrKeyDict = None):
+        attrs = attrs or {}
+        self.classes.extend(attrs.pop('class', '').split(' '))
+        super().__init__(attrs={'class': ' '.join(self.classes), **(attrs or {})})
+
+
+
+class MaterialAdminEditableTextInput(BaseEditableWidget, widgets.AdminTextInputWidget):
+    pass
+
 
 class MaterialAdminDateWidget(widgets.AdminDateWidget):
     """Date widget with material specific styling"""
@@ -15,7 +31,7 @@ class MaterialAdminDateWidget(widgets.AdminDateWidget):
     @property
     def media(self):
         return forms.Media(
-            js=['material/admin/js/widgets/TimeServerDiff.js', 'material/admin/js/widgets/DateInput.js'],
+            js=['material/admin/js/widgets/DateInput.js'],
             css={'all': ('material/admin/css/date-input.min.css',)}
         )
 
@@ -61,6 +77,11 @@ class MaterialAdminTextareaWidget(widgets.AdminTextareaWidget):
         super().__init__(attrs={'class': 'materialize-textarea', **(attrs or {})})
 
 
+class MaterialAdminEditableTextArea(BaseEditableWidget, widgets.AdminTextareaWidget):
+    def __init__(self, attrs=None):
+        super().__init__(attrs={'class': 'materialize-textarea', **(attrs or {})})
+
+
 class MaterialAdminNumberWidget(widgets.AdminTextInputWidget):
     """Degrade NumberInput to TextInput for better UI, but set inputMode"""
     def __init__(self, attrs: t.Optional[t.Dict[str, t.Any]] = None):
@@ -71,3 +92,4 @@ class MaterialAdminNumberWidget(widgets.AdminTextInputWidget):
             attrs.pop('max', None)
         attrs.update(type='text')
         super(MaterialAdminNumberWidget, self).__init__(attrs=attrs)
+

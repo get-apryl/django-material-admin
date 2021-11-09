@@ -17,14 +17,18 @@ form.change-form {
 }
 
 fieldset {
+  max-width: 850px;
+
   &.module {
-    box-shadow: none;
+    box-shadow: 0 2px 2px 0 var(--top-shadow), 0 3px 1px -2px var(--middle-shadow), 0 1px 5px 0 var(--bottom-shadow);
     margin: 0 0 1rem;
     padding: 2rem;
+    background-color: var(--card-bg);
+
   }
 
-  &.aligned {
-    border: 1px solid var(--primary);
+  .materialize-editable[readonly] {
+    border-bottom-style: dashed;
   }
 
   &.collapse.collapsed h2, a.collapse-toggle, &.collapsed a.collapse-toggle {
@@ -258,4 +262,25 @@ div.url {
 
 .inline-related.has_original .delete {
   display: none;
+}
+
+#edit-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 997;
+}
+
+#save-fab {
+  position: fixed;
+  bottom: 24px;
+  right: calc(24px + 56px + 8px); /* margin + fab-line-height + margin */
+  z-index: 997;
+}
+
+#cancel-fab {
+  position: fixed;
+  bottom: 24px;
+  right: calc(24px + 56px * 2 + 8px * 2); /* margin + fab-line-height + margin */
+  z-index: 997;
 }

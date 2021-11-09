@@ -44,7 +44,7 @@
 
           {% block after_field_sets %}{% endblock %}
           {% block after_related_objects %}{% endblock %}
-          {% block submit_buttons_bottom %}{% submit_row %}{% endblock %}
+{#          {% block submit_buttons_bottom %}{% submit_row %}{% endblock %}#}
           {% block admin_change_form_document_ready %}
             <script type="text/javascript"
               id="django-admin-form-add-constants"
@@ -54,6 +54,39 @@
               {% endif %}>
             </script>
           {% endblock %}
+          <div id="edit-fab">
+            <button class="btn btn-floating btn-large waves-effect waves-light" onclick="window.toggleEditable()" type="button">
+              <i class="material-icons">edit</i>
+            </button>
+          </div>
+          <div id="save-fab" class="hide">
+            <button name="_save" class="btn btn-floating btn-large waves-light waves-effect" type="submit">
+              <i class="material-icons">save</i>
+            </button>
+          </div>
+          <div id="cancel-fab" class="hide">
+            <button name="_cancel" class="btn btn-floating btn-large waves-light waves-effect" type="button" onclick="window.cancelEdit()">
+              <i class="material-icons">cancel</i>
+            </button>
+          </div>
+          <div id="loader-modal" class="modal">
+            <div class="modal-content">
+              <h2>Reloading form without saving...</h2>
+              <div class="preloader-wrapper big active">
+                <div class="spinner-layer spinner-blue-only">
+                  <div class="circle-clipper left">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="gap-patch">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="circle-clipper right">
+                    <div class="circle"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {# JavaScript for prepopulated fields #}

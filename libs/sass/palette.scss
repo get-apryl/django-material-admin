@@ -51,7 +51,7 @@ $theme-colors: (
   "secondary-selected-dark": map.get($brand-colors, "darkCornFlowerBlueSelected"),
   "body-fg": map.get($brand-colors, "darkGray"),
   "body-fg-dark": $blueGrey-lighten-4,
-  "body-bg": $grey-lighten-3,
+  "body-bg": $grey-lighten-1,
   "body-bg-dark": $grey-darken-3,
   "body-bg-darkened": $grey-lighten-4,
   "body-bg-darkened-dark": lighten($grey-darken-4, 4%),
