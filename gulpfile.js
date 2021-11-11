@@ -14,6 +14,10 @@ const paths = {
   scripts: {
     src: 'libs/js/*.js',
     dest: 'material/static/material/admin/js/'
+  },
+  copy: {
+    src: 'node_modules/cuid/dist/cuid.js',
+    dest: 'material/static/material/admin/js/',
   }
 };
 
@@ -44,5 +48,9 @@ gulp.task('uglify-js', function() {
     }))
     .pipe(gulp.dest(paths.scripts.dest))
 });
+
+gulp.task('copy', function() {
+  return gulp.src(paths.copy.src).pipe(gulp.dest(paths.copy.dest))
+})
 
 gulp.task('default', gulp.series('sass','uglify-js'));

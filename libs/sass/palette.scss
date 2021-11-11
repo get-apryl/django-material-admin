@@ -75,6 +75,8 @@ $theme-colors: (
   "selected-bg-dark": map.get($brand-colors, "darkCornFlowerBlueSelected"),
   "selected-fg": map.get($brand-colors, "darkGray"),
   "selected-fg-dark": map.get($brand-colors, "white"),
+  "dropdown-bg": $grey-lighten-3,
+  "dropdown-bg-dark": $blueGrey-darken-4,
   "panel-bg": $grey-lighten-3,
   "panel-bg-dark": $blueGrey-darken-4,
   "panel-fg": map.get($brand-colors, "darkCornFlowerBlue"),

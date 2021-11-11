@@ -28,5 +28,8 @@
     "gulp-minify": "^3.1.0",
     "gulp-rename": "^2.0.0",
     "gulp-uglify": "^3.0.2"
+  },
+  "devDependencies": {
+    "cuid": "^2.1.8"
   }
 }

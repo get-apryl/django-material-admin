@@ -1,3 +1,12 @@
+window.initEditable = function() {
+    var editable = document.querySelectorAll('.materialize-editable');
+    if (editable.length) {
+        editable.forEach((elm) => {
+            elm.readOnly = true;
+        })
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     var datepickers = document.querySelectorAll('.datepicker');
     if (datepickers.length) {
@@ -20,17 +29,13 @@ document.addEventListener('DOMContentLoaded', function() {
             outDuration: 300,
         });
     }
-    var editable = document.querySelectorAll('.materialize-editable');
-    if (editable.length) {
-        editable.forEach((elm) => {
-            elm.readOnly = true
-        } )
-    }
+    initEditable();
 });
 
 window.toggleEditable = function () {
     var editable = document.querySelectorAll('.materialize-editable');
     if (editable.length) {
+        document.querySelector('#edit-fab').remove()
         editable.forEach((elm) => {
             elm.readOnly = !elm.readOnly
         })
@@ -44,18 +49,33 @@ window.toggleEditable = function () {
             cancelButtonContainer.classList.remove('hide')
             cancelButtonContainer.classList.add('show')
         }
+        var addInlineButtonContainers = document.querySelectorAll('.inline-buttons-placeholder')
+        addInlineButtonContainers.forEach((btn) => {
+            if (btn.classList.contains('hide')) {
+                btn.classList.remove('hide')
+                btn.classList.add('show')
+            } else {
+                btn.classList.remove('show')
+                btn.classList.add('hide')
+            }
+        })
+        var deleteButtonContainers = document.querySelectorAll('.stacked-inline-close-container')
+        deleteButtonContainers.forEach((btn) => {
+            if (btn.classList.contains('hide')) {
+                btn.classList.remove('hide')
+                btn.classList.add('show')
+            } else {
+                btn.classList.remove('show')
+                btn.classList.add('hide')
+            }
+        })
     }
 }
 
 window.cancelEdit = function (e) {
-    var saveButtonContainer = document.querySelector('#save-fab')
-    var cancelButtonContainer = document.querySelector('#cancel-fab')
-    var loaderModal = document.querySelector('#loader-modal')
-    saveButtonContainer.classList.remove('show')
-    saveButtonContainer.classList.add('hide')
-    cancelButtonContainer.classList.remove('show')
-    cancelButtonContainer.classList.add('hide')
-    var modal = M.Modal.init(loaderModal)
-    modal.open()
-    window.setTimeout(window.location.reload.bind(window.location), 1000)
+    var saveButton = document.querySelector('#save-fab button')
+    saveButton.disabled = true
+    var cancelButton = document.querySelector('#cancel-fab button')
+    cancelButton.disabled = true
+    location.href = e.dataset.listViewUrl
 }

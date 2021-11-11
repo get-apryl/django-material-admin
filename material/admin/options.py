@@ -1,3 +1,7 @@
+from __future__ import annotations
+
+import typing as t
+
 from django.conf import settings
 from django.contrib import admin
 from django.contrib.auth import get_permission_codename
@@ -5,6 +9,9 @@ from django.db import models
 from django.forms import SplitDateTimeField, forms
 
 from material.admin import widgets
+
+if t.TYPE_CHECKING:
+    from django.http import HttpRequest
 
 FORMFIELD_FOR_DBFIELD_MATERIAL = {
     models.DateField: {'widget': widgets.MaterialAdminDateWidget},
@@ -17,8 +24,31 @@ FORMFIELD_FOR_DBFIELD_MATERIAL = {
     models.IntegerField: {'widget': widgets.MaterialAdminNumberWidget},
 }
 
+class EditableFieldsMixin(admin.options.BaseModelAdmin):
+    editable_text_inputs = None
+    editable_text_areas = None
 
-class MaterialModelAdminMixin(admin.ModelAdmin):
+    def __init__(self):
+        super().__init__()
+        self.editable_text_inputs = self.editable_text_inputs or []
+        self.editable_text_areas = self.editable_text_areas or []
+
+    def formfield_for_dbfield(
+            self, db_field: models.Field, request: HttpRequest, **kwargs
+    ):
+        if db_field.name in self.editable_text_inputs:
+            return db_field.formfield(
+                widget=widgets.MaterialAdminEditableTextInput, **kwargs
+            )
+        if db_field.name in self.editable_text_areas:
+            return db_field.formfield(
+                widget=widgets.MaterialAdminEditableTextArea, **kwargs
+            )
+
+        return super().formfield_for_dbfield(db_field, request, **kwargs)
+
+
+class MaterialModelAdminMixin(admin.ModelAdmin, EditableFieldsMixin):
     def __init__(self, model, admin_site):
         super().__init__(model, admin_site)
         self.formfield_overrides.update(FORMFIELD_FOR_DBFIELD_MATERIAL)
@@ -37,6 +67,7 @@ class MaterialModelAdminMixin(admin.ModelAdmin):
         ]
         material_js = [
             'material/admin/js/RelatedObjectLookups.min.js',
+            'material/admin/js/cuid.js',
         ]
         return super().media + forms.Media(js=['admin/js/%s' % url for url in js] + material_js)
 

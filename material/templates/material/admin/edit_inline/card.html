@@ -1,0 +1,48 @@
+{% load i18n admin_urls static %}
+<fieldset class="aligned inline-card">
+  <legend></legend>
+  <div class="js-inline-admin-formset inline-group"
+       id="{{ inline_admin_formset.formset.prefix }}-group"
+       data-inline-type="stacked"
+       data-inline-formset="{{ inline_admin_formset.inline_formset_data }}">
+    <h2><span class="card-title">{{ inline_admin_formset.opts.verbose_name_plural|capfirst }}</span>
+      <span class="inline-buttons-placeholder hide"></span>
+    </h2>
+
+    {{ inline_admin_formset.formset.management_form }}
+    {{ inline_admin_formset.formset.non_form_errors }}
+    <div class="inline-card-form {{ inline_admin_formset.classes }}">
+
+      {% for inline_admin_form in inline_admin_formset %}
+        <div class="inline-related fw-card {% if inline_admin_form.original or inline_admin_form.show_url %} has_original{% endif %}{% if forloop.last and inline_admin_formset.has_add_permission %} empty-form last-related{% endif %}"
+             id="{{ inline_admin_formset.formset.prefix }}-{% if not forloop.last %}{{ forloop.counter0 }}{% else %}empty{% endif %}">
+          <h3>
+            <strong>{{ inline_admin_formset.opts.verbose_name|capfirst }}&nbsp;#{{ forloop.counter }}</strong>
+              <span class="stacked-inline-close-container hide">
+                {% if inline_admin_formset.formset.can_delete and inline_admin_formset.has_delete_permission %}
+                  <button class="stacked-inline-close btn btn-small red white-text">
+                    {% trans "Delete" %}
+                    <i class="material-icons right" aria-hidden="true">delete_forever</i>
+                  </button>
+                  {%  else %}
+                  <button class="btn btn-small disabled">{% trans "No delete permission" %}</button>
+                {% endif %}
+              </span>
+          </h3>
+          {% if inline_admin_form.form.non_field_errors %}
+            {{ inline_admin_form.form.non_field_errors }}
+          {% endif %}
+          {% for fieldset in inline_admin_form %}
+            {% include "admin/includes/fieldset.html" %}
+          {% endfor %}
+          {% if inline_admin_form.needs_explicit_pk_field %}
+            {{ inline_admin_form.pk_field.field }}
+          {% endif %}
+          {% if inline_admin_form.fk_field %}
+            {{ inline_admin_form.fk_field.field }}
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</fieldset>

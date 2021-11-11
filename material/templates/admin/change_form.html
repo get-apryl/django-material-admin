@@ -60,13 +60,15 @@
             </button>
           </div>
           <div id="save-fab" class="hide">
-            <button name="_save" class="btn btn-floating btn-large waves-light waves-effect" type="submit">
-              <i class="material-icons">save</i>
+            <button name="_save" class="btn btn-floating btn-large waves-light waves-effect primary" type="submit">
+              <i class="material-icons">check</i>
             </button>
           </div>
           <div id="cancel-fab" class="hide">
-            <button name="_cancel" class="btn btn-floating btn-large waves-light waves-effect" type="button" onclick="window.cancelEdit()">
-              <i class="material-icons">cancel</i>
+            <button name="_cancel" class="btn btn-floating btn-large waves-light waves-effect red" type="button"
+                    onclick="window.cancelEdit(this)" data-list-view-url="{% url opts|admin_urlname:"changelist" %}"
+            >
+              <i class="material-icons">clear</i>
             </button>
           </div>
           <div id="loader-modal" class="modal">

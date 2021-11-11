@@ -7973,13 +7973,20 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
 
 .select-dropdown.dropdown-content li {
   &:hover {
-    background-color: var(--panel-hover-bg);
-    color: var(--panel-hover-fg);
+    background-color: var(--primary);
+    color: var(--primary-fg);
   }
 
   &.selected {
-    background-color: var(--panel-hover-bg);
-    color: var(--panel-hover-fg);
+    background-color: var(--selected-bg);
+    color: var(--selected-fg);
+
+    span:hover {
+      color: inherit;
+    }
+  }
+  span:hover {
+    color: var(--primary-fg)
   }
 }
 

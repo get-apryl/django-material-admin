@@ -93,3 +93,7 @@ class MaterialAdminNumberWidget(widgets.AdminTextInputWidget):
         attrs.update(type='text')
         super(MaterialAdminNumberWidget, self).__init__(attrs=attrs)
 
+
+class MaterialAdminCuidWidget(BaseEditableWidget, widgets.AdminTextInputWidget):
+    def __init__(self, attrs=None):
+        super().__init__(attrs={'class': 'materialize-cuid', **(attrs or {})})

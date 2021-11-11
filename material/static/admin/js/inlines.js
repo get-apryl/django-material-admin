@@ -48,6 +48,9 @@ function initTextareaInline() {
                     var numCols = this.eq(-1).children().length;
                     $parent.append('<tr class="' + options.addCssClass + '"><td colspan="' + numCols + '"><a href="#" class="add-inline-link"><i class="material-icons" aria-hidden="true">add</i>' + options.addText + "</a></tr>");
                     addButton = $parent.find("tr:last a");
+                } else if ($this[0].classList.contains('fw-card')) {
+                    $parent.parent().find('.inline-buttons-placeholder').prepend('<button type="button" class="btn btn-primary btn-small add-inline-button"><i class="material-icons" aria-hidden="true">add</i><span>' + options.addText + "</span></button>");
+                    addButton = $parent.parent().find('.inline-buttons-placeholder button');
                 } else {
                     // Otherwise, insert it immediately after the last form:
                     $this.parent().after('<div><a href="#" class="add-inline-link"><i class="material-icons" aria-hidden="true">add</i><span>' + options.addText + "</span></a></div>");
@@ -69,11 +72,35 @@ function initTextareaInline() {
                     // If they're laid out as an ordered/unordered list,
                     // insert an <li> after the last list item:
                     row.append('<li><a class="' + options.deleteCssClass + '" href="#">' + options.deleteText + "</a></li>");
+                } else if (row[0].classList.contains('fw-card')) {
+                    // Material card style: inject in the container if it is not
+                    // already there. If it is, replace it.
+                    var container = row.find('.stacked-inline-close-container')
+                    container.children('*').remove()
+                    container.append('<button class="stacked-inline-close btn btn-small red white-text" type="button">' + options.deleteText + '<i class="material-icons right" aria-hidden="true">delete_forever</i></button>');
                 } else {
                     // Otherwise, just insert the remove button as the
                     // last child element of the form's container:
                     row.children(":first").append('<span><a class="' + options.deleteCssClass + '" href="#">' + options.deleteText + "</a></span>");
                 }
+                row.find(".materialize-cuid").each((idx, cur) => {
+                    cur.value = cuid()
+                })
+                var _datePickers = row[0].querySelectorAll('.datepicker')
+                if (_datePickers.length) {
+                    M.Datepicker.init(_datePickers, datepickerOptions);
+                }
+                // Needed or not? For now: not
+                // var dropdowns = row[0].querySelectorAll('.dropdown-menu');
+                // if (dropdowns.length) {
+                //     M.Dropdown.init(dropdowns, {
+                //         alignment: 'right',
+                //         constrainWidth: false,
+                //         coverTrigger: false,
+                //         inDuration: 400,
+                //         outDuration: 300,
+                //     });
+                // }
                 row.find("*").each(function() {
                     updateElementIndex(this, options.prefix, totalForms.val());
                 });
@@ -82,12 +109,13 @@ function initTextareaInline() {
                 // Update number of total forms
                 $(totalForms).val(parseInt(totalForms.val(), 10) + 1);
                 nextIndex += 1;
-                // Hide add button in case we've hit the max, except we want to add infinitely
+                // Hide add button in case we've hit the max, except when we
+                // want to add infinitely
                 if ((maxForms.val() !== '') && (maxForms.val() - totalForms.val()) <= 0) {
                     addButton.parent().hide();
                 }
                 // The delete button of each row triggers a bunch of other things
-                row.find("a." + options.deleteCssClass).on('click', function(e1) {
+                row.find("a." + options.deleteCssClass + ', button.stacked-inline-close').on('click', function(e1) {
                     e1.preventDefault();
                     // Remove the parent form containing this button:
                     row.remove();
@@ -121,6 +149,7 @@ function initTextareaInline() {
                 }
                 $(document).trigger('formset:added', [row, options.prefix]);
                 initInline();
+                row[0].scrollIntoView()
             });
         }
         return this;
@@ -300,6 +329,8 @@ function initTextareaInline() {
             if (closeLabel.length) {
                 closeLabel.click();
                 $parent.hide()
+            } else if($(this).is("button")) {
+                $(this).closest(".inline-related").remove()
             } else {
                 $parent.remove();
             }

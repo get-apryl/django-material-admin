@@ -19,12 +19,11 @@ form.change-form {
 fieldset {
   max-width: 850px;
 
-  &.module {
+  &.module, &.aligned.inline-card {
     box-shadow: 0 2px 2px 0 var(--top-shadow), 0 3px 1px -2px var(--middle-shadow), 0 1px 5px 0 var(--bottom-shadow);
     margin: 0 0 1rem;
     padding: 2rem;
     background-color: var(--card-bg);
-
   }
 
   .materialize-editable[readonly] {
@@ -33,6 +32,27 @@ fieldset {
 
   &.collapse.collapsed h2, a.collapse-toggle, &.collapsed a.collapse-toggle {
     color: rgb(65, 118, 144);
+  }
+
+  .inline-card-form {
+    margin: 8px -8px;
+    padding: 8px;
+    background-color: var(--darkened-bg);
+    box-shadow: 0 2px 2px 0 var(--top-shadow), 0 3px 1px -2px var(--middle-shadow), 0 1px 5px 0 var(--bottom-shadow);
+  }
+
+  .inline-related h3 {
+    border-top: none;
+    border-bottom: none;
+    padding: 8px 8px 12px 10px;
+    color: var(--primary);
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  .inline-related fieldset.module {
+    padding: 4px;
   }
 }
 
@@ -147,13 +167,26 @@ a.add-related {
   display: none;
 }
 
-.inline-group .tabular tr.add-row td a.add-inline-link, .add-inline-link {
+.inline-group .tabular tr.add-row td a.add-inline-link {
   background-image: none;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 16px;
   margin-top: 10px;
+}
+
+.inline-buttons-placeholder {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  .add-inline-button {
+    background-image: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .form-row {
@@ -237,12 +270,8 @@ tr {
 }
 
 .stacked-inline-close {
-  text-align: right;
-  cursor: pointer;
-  position: absolute;
-  bottom: 1px;
-  right: 1px;
-  margin: 0 1% 1% 0;
+  display: inline-block;
+  margin-left: 0.5rem;
 }
 
 .inline-related {
@@ -274,13 +303,13 @@ div.url {
 #save-fab {
   position: fixed;
   bottom: 24px;
-  right: calc(24px + 56px + 8px); /* margin + fab-line-height + margin */
+  right: 24px; // Replaces edit button
   z-index: 997;
 }
 
 #cancel-fab {
   position: fixed;
   bottom: 24px;
-  right: calc(24px + 56px * 2 + 8px * 2); /* margin + fab-line-height + margin */
+  right: calc(24px + 56px + 8px); /* margin + fab-line-height + margin */
   z-index: 997;
 }
