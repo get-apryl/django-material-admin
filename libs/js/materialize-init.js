@@ -69,6 +69,18 @@ window.toggleEditable = function () {
                 btn.classList.add('hide')
             }
         })
+        var readOnlyCbContainers = document.querySelectorAll('.checkbox-readonly-container')
+        readOnlyCbContainers.forEach((cb) => {
+            cb.classList.add('hide')
+        })
+        var editableCbContainers = document.querySelectorAll('.checkbox-editable-container.hide')
+        editableCbContainers.forEach((cb) => {
+            cb.classList.remove('hide')
+        })
+        document.querySelectorAll('.checkbox-label.hide')
+          .forEach((cb) => {cb.classList.remove('hide')})
+        document.querySelectorAll('.checkbox-label-editable-ro')
+          .forEach((cb) => {cb.classList.add('hide')})
     }
 }
 

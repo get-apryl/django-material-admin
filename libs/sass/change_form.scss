@@ -234,19 +234,24 @@ form .aligned {
   display: flex;
 }
 
-.checkbox-label label {
-  color: #666;
-  font-size: 14px;
+.checkbox-label label, .checkbox-label-editable-ro output {
+  color: var(--body-quiet-color);
   margin-top: -6px;
-  cursor: pointer;
+  margin-left: 8px;
   width: 160px;
+}
+.checkbox-label label {
+  cursor: pointer;
 }
 
 label.checkbox-block {
   width: 25px;
   height: 25px;
   margin-top: -7px;
-  cursor: pointer;
+
+  .checkbox-editable-container {
+    cursor: pointer;
+  }
 
   span {
     pointer-events: none;

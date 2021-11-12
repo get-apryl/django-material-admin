@@ -8,6 +8,7 @@ OptStrKeyDict = t.Optional[StrKeyDict]
 
 class BaseEditableWidget(forms.Widget):
     classes: t.List[str] = ['materialize-editable']
+    editable_widget = True
 
     def __init__(self, attrs: OptStrKeyDict = None):
         attrs = attrs or {}
@@ -80,6 +81,11 @@ class MaterialAdminTextareaWidget(widgets.AdminTextareaWidget):
 class MaterialAdminEditableTextArea(BaseEditableWidget, widgets.AdminTextareaWidget):
     def __init__(self, attrs=None):
         super().__init__(attrs={'class': 'materialize-textarea', **(attrs or {})})
+
+
+class MaterialAdminEditableCheckbox(BaseEditableWidget, forms.CheckboxInput):
+    template_name = 'material/admin/widgets/checkbox.html'
+    classes: t.List[str] = ['materialize-editable-checkbox', 'hide']
 
 
 class MaterialAdminNumberWidget(widgets.AdminTextInputWidget):
