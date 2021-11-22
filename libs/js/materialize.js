@@ -11635,6 +11635,11 @@ $jscomp.polyfill = function (e, r, p, m) {
        * @member FormSelect#options
        */
       _this68.options = $.extend({}, FormSelect.defaults, options);
+      if (_this68.$el.hasClass('materialize-editable-select')) {
+        _this68.options = $.extend(_this68.options, {classes: 'materialize-editable-select'});
+        _this68.el.disabled = true;
+        console.info(_this68)
+      }
 
       _this68.isMultiple = _this68.$el.prop('multiple');
 

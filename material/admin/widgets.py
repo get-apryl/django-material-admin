@@ -12,8 +12,9 @@ class BaseEditableWidget(forms.Widget):
 
     def __init__(self, attrs: OptStrKeyDict = None):
         attrs = attrs or {}
-        self.classes.extend(attrs.pop('class', '').split(' '))
-        super().__init__(attrs={'class': ' '.join(self.classes), **(attrs or {})})
+        classes = self.__class__.classes.copy()
+        classes.extend(attrs.pop('class', '').split(' '))
+        super().__init__(attrs={'class': ' '.join(classes), **(attrs or {})})
 
 
 
@@ -90,15 +91,25 @@ class MaterialAdminEditableCheckbox(BaseEditableWidget, forms.CheckboxInput):
 
 class MaterialAdminNumberWidget(widgets.AdminTextInputWidget):
     """Degrade NumberInput to TextInput for better UI, but set inputMode"""
+    inputmode = 'numeric'
     def __init__(self, attrs: t.Optional[t.Dict[str, t.Any]] = None):
         attrs = attrs or {}
-        if attrs:
-            attrs.pop('step', None)
-            attrs.pop('min', None)
-            attrs.pop('max', None)
-        attrs.update(type='text')
-        super(MaterialAdminNumberWidget, self).__init__(attrs=attrs)
+        attrs.pop('step', None)
+        attrs.pop('min', None)
+        attrs.pop('max', None)
+        attrs.update(type='text', inputmode=self.inputmode)
+        super().__init__(attrs=attrs)
 
+
+class MaterialAdminMoneyAmountWidget(MaterialAdminNumberWidget):
+    inputmode = 'decimal'
+
+class MaterialAdminEditableMoneyAmountWidget(BaseEditableWidget, MaterialAdminMoneyAmountWidget):
+    pass
+
+
+class MaterialAdminEditableSelect(BaseEditableWidget, forms.Select):
+    classes = ['materialize-editable-select']
 
 class MaterialAdminCuidWidget(BaseEditableWidget, widgets.AdminTextInputWidget):
     def __init__(self, attrs=None):

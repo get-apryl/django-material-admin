@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initEditable();
 });
 
-window.toggleEditable = function () {
+window.makeEditable = function () {
     var editable = document.querySelectorAll('.materialize-editable');
     if (editable.length) {
         document.querySelector('#edit-fab').remove()
@@ -81,6 +81,17 @@ window.toggleEditable = function () {
           .forEach((cb) => {cb.classList.remove('hide')})
         document.querySelectorAll('.checkbox-label-editable-ro')
           .forEach((cb) => {cb.classList.add('hide')})
+        var editableSelects = document.querySelectorAll('select.materialize-editable-select')
+        editableSelects.forEach((item) => {
+            item.classList.replace('materialize-editable-select', 'materialize-editable-select-enabled')
+            var cloned = item.cloneNode(true)
+            var grandparent = item.parentElement.parentElement
+            item.parentElement.remove()
+            cloned.disabled = false
+            grandparent.firstElementChild.insertAdjacentElement('afterend', cloned)
+        })
+        // redraw
+        M.FormSelect.init(document.querySelectorAll('.materialize-editable-select-enabled'))
     }
 }
 

@@ -13,7 +13,11 @@ form.change-form {
 
 .required label, label.required {
   font-weight: bold;
-  color: #5f5e5e;
+  color: var(--body-fg);
+  &::before {
+    content: '* ';
+    color: #ff3d00;
+  }
 }
 
 fieldset {
@@ -317,4 +321,19 @@ div.url {
   bottom: 24px;
   right: calc(24px + 56px + 8px); /* margin + fab-line-height + margin */
   z-index: 997;
+}
+
+.select-wrapper {
+  input.select-dropdown:disabled {
+    color: var(--disabled-fg);
+  }
+  &.materialize-editable-select input.select-dropdown:disabled {
+    color: var(--body-fg);
+    label {
+      color: var(--body-fg);
+    }
+  }
+  &.disabled .caret {
+    display: none;
+  }
 }
