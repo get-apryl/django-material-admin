@@ -101,6 +101,12 @@ function initTextareaInline() {
                 //         outDuration: 300,
                 //     });
                 // }
+                var formSelects = row.find("select.materialize-editable-select");
+                if (formSelects.length) {
+                    formSelects.each((idx, cur) => {
+                        cur.classList.replace('materialize-editable-select', 'materialize-editable-select-enabled');
+                    })
+                }
                 row.find("*").each(function() {
                     updateElementIndex(this, options.prefix, totalForms.val());
                 });

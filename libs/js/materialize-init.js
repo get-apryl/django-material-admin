@@ -34,42 +34,32 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 window.makeEditable = function () {
+    document.querySelector('#edit-fab').remove()
+    var saveButtonContainer = document.querySelector('#save-fab')
+    if (saveButtonContainer.classList.contains('hide')) {
+        saveButtonContainer.classList.replace('hide', 'show')
+    }
+    var cancelButtonContainer = document.querySelector('#cancel-fab')
+    if (cancelButtonContainer.classList.contains('hide')) {
+        cancelButtonContainer.classList.replace('hide', 'show')
+    }
+    // ------ Inlines
+    var addInlineButtonContainers = document.querySelectorAll('.inline-buttons-placeholder')
+    addInlineButtonContainers.forEach((btn) => {
+        if (btn.classList.contains('hide')) {
+            btn.classList.replace('hide', 'show')
+        }
+    })
+    var deleteButtonContainers = document.querySelectorAll('.stacked-inline-close-container')
+    deleteButtonContainers.forEach((btn) => {
+        if (btn.classList.contains('hide')) {
+            btn.classList.replace('hide', 'show')
+        }
+    })
     var editable = document.querySelectorAll('.materialize-editable');
     if (editable.length) {
-        document.querySelector('#edit-fab').remove()
         editable.forEach((elm) => {
             elm.readOnly = !elm.readOnly
-        })
-        var saveButtonContainer = document.querySelector('#save-fab')
-        if (saveButtonContainer.classList.contains('hide')) {
-            saveButtonContainer.classList.remove('hide')
-            saveButtonContainer.classList.add('show')
-        }
-        var cancelButtonContainer = document.querySelector('#cancel-fab')
-        if (cancelButtonContainer.classList.contains('hide')) {
-            cancelButtonContainer.classList.remove('hide')
-            cancelButtonContainer.classList.add('show')
-        }
-        // ------ Inlines
-        var addInlineButtonContainers = document.querySelectorAll('.inline-buttons-placeholder')
-        addInlineButtonContainers.forEach((btn) => {
-            if (btn.classList.contains('hide')) {
-                btn.classList.remove('hide')
-                btn.classList.add('show')
-            } else {
-                btn.classList.remove('show')
-                btn.classList.add('hide')
-            }
-        })
-        var deleteButtonContainers = document.querySelectorAll('.stacked-inline-close-container')
-        deleteButtonContainers.forEach((btn) => {
-            if (btn.classList.contains('hide')) {
-                btn.classList.remove('hide')
-                btn.classList.add('show')
-            } else {
-                btn.classList.remove('show')
-                btn.classList.add('hide')
-            }
         })
         // ------ Checkboxes
         var readOnlyCbContainers = document.querySelectorAll('.checkbox-readonly-container')
@@ -84,24 +74,6 @@ window.makeEditable = function () {
           .forEach((cb) => {cb.classList.remove('hide')})
         document.querySelectorAll('.checkbox-label-editable-ro')
           .forEach((cb) => {cb.classList.add('hide')})
-        // ------ Select
-        var editableSelects = document.querySelectorAll('select.materialize-editable-select')
-        editableSelects.forEach((item) => {
-            item.classList.replace('materialize-editable-select', 'materialize-editable-select-enabled')
-            var cloned = item.cloneNode(true)
-            cloned.disabled = false
-            var parent = item.parentElement
-            var grandparent = parent.parentElement // save before removal of parent
-            if (parent.classList.contains('select-wrapper')) {
-                parent.remove()
-                grandparent.firstElementChild.insertAdjacentElement('afterend', cloned)
-            } else {
-                // Empty form for cloning
-                item.replaceWith(cloned)
-            }
-        })
-        // redraw
-        M.FormSelect.init(document.querySelectorAll('.materialize-editable-select-enabled'))
         // ------ Date pickers
         document.querySelectorAll('.materialize-editable.datepicker').forEach((el) => {
             el.classList.replace('materialize-editable', 'materialize-editable-enabled');
@@ -111,7 +83,29 @@ window.makeEditable = function () {
             calendar.classList.replace('hide', 'show');
         })
         datepickerOptions['format'] = get_format('DATE_INPUT_FORMATS')[0].replace('%Y', 'yyyy').replace('%m', 'mm').replace('%d', 'dd');
-        M.Datepicker.init(document.querySelectorAll('.materialize-editable-enabled.datepicker'))
+        M.Datepicker.init(document.querySelectorAll('.materialize-editable-enabled.datepicker'), datepickerOptions)
+    }
+    // ------ Select
+    var editableSelects = document.querySelectorAll('select.materialize-editable-select')
+    if (editableSelects.length) {
+        editableSelects.forEach((item) => {
+            var parent = item.parentElement
+            var grandparent = parent.parentElement // save before removal of parent
+            if (parent.classList.contains('select-wrapper')) {
+                var cloned = item.cloneNode(true)
+                cloned.disabled = false
+                cloned.classList.replace('materialize-editable-select', 'materialize-editable-select-enabled')
+                parent.remove()
+                var helpTextElement = grandparent.querySelector('.help')
+                if (helpTextElement) {
+                    helpTextElement.insertAdjacentElement('beforebegin', cloned)
+                } else {
+                    grandparent.appendChild(cloned)
+                }
+            }
+        })
+        // redraw
+        M.FormSelect.init(document.querySelectorAll('.materialize-editable-select-enabled'))
     }
 }
 
