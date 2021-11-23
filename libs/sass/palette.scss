@@ -6,6 +6,7 @@ $text-font: Roboto;
 
 /* Color names */
 $teal-lighten-1: #477091;
+$grey: #9e9e9e;
 $grey-darken-1: #757575;
 $grey-darken-3: #424242;
 $grey-darken-4: #212121;
@@ -105,6 +106,9 @@ $theme-colors: (
   "disabled-fg-dark": rgba(255, 255, 255, 0.40),
   "divider": $grey-300,
   "divider-dark": $grey-darken-3,
+  "input-border": $grey,
+  "inline-card-bg": $grey-lighten-3,
+  "inline-card-bg-dark": lighten($grey-darken-4, 8%),
 );
 
 :root {
@@ -155,6 +159,9 @@ $theme-colors: (
   --selected-row: #{map.get($theme-colors, "selected-bg")};
   --hover-row: #{map.get($brand-colors, "darkCornFlowerBlueSelected")};
   --divider: #{map.get($theme-colors, "divider")};
+  --sidenav-fg: #{map.get($brand-colors, "middleBlue")};
+  --input-border: #{map.get($theme-colors, "input-border")};
+  --inline-card-bg: #{map.get($theme-colors, "inline-card-bg")};
 }
 
 @media (prefers-color-scheme: dark) {
@@ -204,5 +211,7 @@ $theme-colors: (
     --hover-row: #{map.get($brand-colors, "middleBlueSelected")};
     --divider: #{map.get($theme-colors, "divider-dark")};
     --sidenav-fg: #{map.get($brand-colors, "darkCornFlowerBlue")};
+    --input-border: #{map.get($theme-colors, "input-border")};
+    --inline-card-bg: #{map.get($theme-colors, "inline-card-bg-dark")};
   }
 }

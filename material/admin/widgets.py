@@ -6,15 +6,15 @@ from django.contrib.admin import widgets
 StrKeyDict = t.Dict[str, t.Any]
 OptStrKeyDict = t.Optional[StrKeyDict]
 
-class BaseEditableWidget(forms.Widget):
+class BaseEditableWidget:
     classes: t.List[str] = ['materialize-editable']
     editable_widget = True
 
-    def __init__(self, attrs: OptStrKeyDict = None):
+    def __init__(self, attrs: OptStrKeyDict = None, **kwargs):
         attrs = attrs or {}
         classes = self.__class__.classes.copy()
         classes.extend(attrs.pop('class', '').split(' '))
-        super().__init__(attrs={'class': ' '.join(classes), **(attrs or {})})
+        super().__init__(attrs={'class': ' '.join(classes), **(attrs or {})}, **kwargs)
 
 
 
@@ -36,6 +36,13 @@ class MaterialAdminDateWidget(widgets.AdminDateWidget):
             js=['material/admin/js/widgets/DateInput.js'],
             css={'all': ('material/admin/css/date-input.min.css',)}
         )
+
+
+class MaterialAdminEditableDateWidget(BaseEditableWidget, MaterialAdminDateWidget):
+    classes = ['materialize-editable', 'datepicker']
+    def __init__(self, attrs=None, format=None):
+        attrs = {'size': '10', 'materialize_editable': True, **(attrs or {})}
+        super().__init__(attrs=attrs, format=format)
 
 
 class MaterialAdminSplitDateTime(forms.SplitDateTimeWidget):

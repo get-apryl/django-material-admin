@@ -57,6 +57,7 @@ fieldset {
   }
   .inline-related fieldset.module {
     padding: 4px;
+    background: var(--inline-card-bg)
   }
 }
 
@@ -73,6 +74,28 @@ fieldset {
     background: #79aec8;
     border: none;
     color: white;
+  }
+
+  input.select-dropdown:disabled {
+    color: var(--disabled-fg);
+  }
+
+  &.materialize-editable-select {
+    input.select-dropdown:disabled {
+      color: var(--body-fg);
+
+      label {
+        color: var(--body-fg);
+      }
+    }
+
+    input[type="text"]:not(.browser-default):disabled, input[type="text"]:not(.browser-default)[readonly="readonly"] {
+      border-bottom: 1px dashed var(--input-border);
+    }
+  }
+
+  &.disabled .caret {
+    display: none;
   }
 }
 

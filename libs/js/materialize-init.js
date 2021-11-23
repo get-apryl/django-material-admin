@@ -8,7 +8,8 @@ window.initEditable = function() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    var datepickers = document.querySelectorAll('.datepicker');
+    var datepickers = document.querySelectorAll('.datepicker:not(.materialize-editable)');
+    console.info(datepickers)
     if (datepickers.length) {
         datepickerOptions['format'] = get_format('DATE_INPUT_FORMATS')[0].replace('%Y', 'yyyy').replace('%m', 'mm').replace('%d', 'dd');
         M.Datepicker.init(datepickers, datepickerOptions);
@@ -49,6 +50,7 @@ window.makeEditable = function () {
             cancelButtonContainer.classList.remove('hide')
             cancelButtonContainer.classList.add('show')
         }
+        // ------ Inlines
         var addInlineButtonContainers = document.querySelectorAll('.inline-buttons-placeholder')
         addInlineButtonContainers.forEach((btn) => {
             if (btn.classList.contains('hide')) {
@@ -69,6 +71,7 @@ window.makeEditable = function () {
                 btn.classList.add('hide')
             }
         })
+        // ------ Checkboxes
         var readOnlyCbContainers = document.querySelectorAll('.checkbox-readonly-container')
         readOnlyCbContainers.forEach((cb) => {
             cb.classList.add('hide')
@@ -81,17 +84,34 @@ window.makeEditable = function () {
           .forEach((cb) => {cb.classList.remove('hide')})
         document.querySelectorAll('.checkbox-label-editable-ro')
           .forEach((cb) => {cb.classList.add('hide')})
+        // ------ Select
         var editableSelects = document.querySelectorAll('select.materialize-editable-select')
         editableSelects.forEach((item) => {
             item.classList.replace('materialize-editable-select', 'materialize-editable-select-enabled')
             var cloned = item.cloneNode(true)
-            var grandparent = item.parentElement.parentElement
-            item.parentElement.remove()
             cloned.disabled = false
-            grandparent.firstElementChild.insertAdjacentElement('afterend', cloned)
+            var parent = item.parentElement
+            var grandparent = parent.parentElement // save before removal of parent
+            if (parent.classList.contains('select-wrapper')) {
+                parent.remove()
+                grandparent.firstElementChild.insertAdjacentElement('afterend', cloned)
+            } else {
+                // Empty form for cloning
+                item.replaceWith(cloned)
+            }
         })
         // redraw
         M.FormSelect.init(document.querySelectorAll('.materialize-editable-select-enabled'))
+        // ------ Date pickers
+        document.querySelectorAll('.materialize-editable.datepicker').forEach((el) => {
+            el.classList.replace('materialize-editable', 'materialize-editable-enabled');
+            var today = el.parentElement.querySelector('.today.hide')
+            var calendar = el.parentElement.querySelector('.calendar.hide')
+            today.classList.replace('hide', 'show');
+            calendar.classList.replace('hide', 'show');
+        })
+        datepickerOptions['format'] = get_format('DATE_INPUT_FORMATS')[0].replace('%Y', 'yyyy').replace('%m', 'mm').replace('%d', 'dd');
+        M.Datepicker.init(document.querySelectorAll('.materialize-editable-enabled.datepicker'))
     }
 }
 
