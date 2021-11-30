@@ -9,7 +9,6 @@ window.initEditable = function() {
 
 document.addEventListener('DOMContentLoaded', function() {
     var datepickers = document.querySelectorAll('.datepicker:not(.materialize-editable)');
-    console.info(datepickers)
     if (datepickers.length) {
         datepickerOptions['format'] = get_format('DATE_INPUT_FORMATS')[0].replace('%Y', 'yyyy').replace('%m', 'mm').replace('%d', 'dd');
         M.Datepicker.init(datepickers, datepickerOptions);

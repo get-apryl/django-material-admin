@@ -21,7 +21,8 @@ form.change-form {
 }
 
 fieldset {
-  max-width: 850px;
+  width: 85%;
+  max-width: 1300px;
 
   &.module, &.aligned.inline-card {
     box-shadow: 0 2px 2px 0 var(--top-shadow), 0 3px 1px -2px var(--middle-shadow), 0 1px 5px 0 var(--bottom-shadow);
