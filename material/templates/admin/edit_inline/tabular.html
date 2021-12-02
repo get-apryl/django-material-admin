@@ -12,10 +12,10 @@
 
         <thead>
           <tr>
-            <th scope="row"class="original"></th>
+            <th scope="row" class="original"></th>
             {% for field in inline_admin_formset.fields %}
               {% if not field.widget.is_hidden %}
-                <th scope="row"class="column-{{ field.name }}{% if field.required %} required{% endif %}">{{ field.label|capfirst }}
+                <th scope="row" class="column-{{ field.name }}{% if field.required %} required{% endif %}">{{ field.label|capfirst }}
                   {% if field.help_text %}
                     <i class="help help-tooltip material-icons small-icon" aria-hidden="true"
                        title="{{ field.help_text|striptags }}">help_outline</i>
@@ -23,7 +23,7 @@
                 </th>
               {% endif %}
             {% endfor %}
-            {% if inline_admin_formset.formset.can_delete %}<th scope="row"class="center">{% trans "Delete?" %}</th>{% endif %}
+            {% if inline_admin_formset.formset.can_delete %}<th scope="row" class="center">{% trans "Delete?" %}</th>{% endif %}
           </tr>
         </thead>
 

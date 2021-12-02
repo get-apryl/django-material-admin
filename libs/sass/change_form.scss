@@ -13,22 +13,52 @@ form.change-form {
 
 .required label, label.required {
   font-weight: bold;
-  color: #5f5e5e;
+  color: var(--body-fg);
+  &::before {
+    content: '* ';
+    color: #ff3d00;
+  }
 }
 
 fieldset {
-  &.module {
-    box-shadow: none;
+  width: 85%;
+  max-width: 1300px;
+
+  &.module, &.aligned.inline-card {
+    box-shadow: 0 2px 2px 0 var(--top-shadow), 0 3px 1px -2px var(--middle-shadow), 0 1px 5px 0 var(--bottom-shadow);
     margin: 0 0 1rem;
     padding: 2rem;
+    background-color: var(--card-bg);
   }
 
-  &.aligned {
-    border: 1px solid var(--primary);
+  .materialize-editable[readonly] {
+    border-bottom-style: dashed;
   }
 
   &.collapse.collapsed h2, a.collapse-toggle, &.collapsed a.collapse-toggle {
     color: rgb(65, 118, 144);
+  }
+
+  .inline-card-form {
+    margin: 8px -8px;
+    padding: 8px;
+    background-color: var(--darkened-bg);
+    box-shadow: 0 2px 2px 0 var(--top-shadow), 0 3px 1px -2px var(--middle-shadow), 0 1px 5px 0 var(--bottom-shadow);
+  }
+
+  .inline-related h3 {
+    border-top: none;
+    border-bottom: none;
+    padding: 8px 8px 12px 10px;
+    color: var(--primary);
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  .inline-related fieldset.module {
+    padding: 4px;
+    background: var(--inline-card-bg)
   }
 }
 
@@ -45,6 +75,28 @@ fieldset {
     background: #79aec8;
     border: none;
     color: white;
+  }
+
+  input.select-dropdown:disabled {
+    color: var(--disabled-fg);
+  }
+
+  &.materialize-editable-select {
+    input.select-dropdown:disabled {
+      color: var(--body-fg);
+
+      label {
+        color: var(--body-fg);
+      }
+    }
+
+    input[type="text"]:not(.browser-default):disabled, input[type="text"]:not(.browser-default)[readonly="readonly"] {
+      border-bottom: 1px dashed var(--input-border);
+    }
+  }
+
+  &.disabled .caret {
+    display: none;
   }
 }
 
@@ -143,13 +195,26 @@ a.add-related {
   display: none;
 }
 
-.inline-group .tabular tr.add-row td a.add-inline-link, .add-inline-link {
+.inline-group .tabular tr.add-row td a.add-inline-link {
   background-image: none;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 16px;
   margin-top: 10px;
+}
+
+.inline-buttons-placeholder {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  .add-inline-button {
+    background-image: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .form-row {
@@ -197,19 +262,24 @@ form .aligned {
   display: flex;
 }
 
-.checkbox-label label {
-  color: #666;
-  font-size: 14px;
+.checkbox-label label, .checkbox-label-editable-ro output {
+  color: var(--body-quiet-color);
   margin-top: -6px;
-  cursor: pointer;
+  margin-left: 8px;
   width: 160px;
+}
+.checkbox-label label {
+  cursor: pointer;
 }
 
 label.checkbox-block {
   width: 25px;
   height: 25px;
   margin-top: -7px;
-  cursor: pointer;
+
+  .checkbox-editable-container {
+    cursor: pointer;
+  }
 
   span {
     pointer-events: none;
@@ -233,12 +303,8 @@ tr {
 }
 
 .stacked-inline-close {
-  text-align: right;
-  cursor: pointer;
-  position: absolute;
-  bottom: 1px;
-  right: 1px;
-  margin: 0 1% 1% 0;
+  display: inline-block;
+  margin-left: 0.5rem;
 }
 
 .inline-related {
@@ -258,4 +324,40 @@ div.url {
 
 .inline-related.has_original .delete {
   display: none;
+}
+
+#edit-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 997;
+}
+
+#save-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px; // Replaces edit button
+  z-index: 997;
+}
+
+#cancel-fab {
+  position: fixed;
+  bottom: 24px;
+  right: calc(24px + 56px + 8px); /* margin + fab-line-height + margin */
+  z-index: 997;
+}
+
+.select-wrapper {
+  input.select-dropdown:disabled {
+    color: var(--disabled-fg);
+  }
+  &.materialize-editable-select input.select-dropdown:disabled {
+    color: var(--body-fg);
+    label {
+      color: var(--body-fg);
+    }
+  }
+  &.disabled .caret {
+    display: none;
+  }
 }

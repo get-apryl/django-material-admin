@@ -21,7 +21,7 @@
       <div>
         {% if is_popup %}<input type="hidden" name="{{ is_popup_var }}" value="1">{% endif %}
         {% if to_field %}<input type="hidden" name="{{ to_field_var }}" value="{{ to_field }}">{% endif %}
-        {% if save_on_top %}{% block submit_buttons_top %}{% submit_row %}{% endblock %}{% endif %}
+{#        {% if save_on_top %}{% block submit_buttons_top %}{% submit_row %}{% endblock %}{% endif %}#}
         {% if errors %}
           <p class="errornote">
             {% if errors|length == 1 %}{% trans "Please correct the error below." %}{% else %}{% trans "Please correct the errors below." %}{% endif %}
@@ -44,7 +44,7 @@
 
           {% block after_field_sets %}{% endblock %}
           {% block after_related_objects %}{% endblock %}
-          {% block submit_buttons_bottom %}{% submit_row %}{% endblock %}
+{#          {% block submit_buttons_bottom %}{% submit_row %}{% endblock %}#}
           {% block admin_change_form_document_ready %}
             <script type="text/javascript"
               id="django-admin-form-add-constants"
@@ -54,6 +54,23 @@
               {% endif %}>
             </script>
           {% endblock %}
+          <div id="edit-fab">
+            <button class="btn btn-floating btn-large waves-effect waves-light" onclick="window.makeEditable()" type="button">
+              <i class="material-icons">edit</i>
+            </button>
+          </div>
+          <div id="save-fab" class="hide">
+            <button name="_save" class="btn btn-floating btn-large waves-light waves-effect primary" type="submit">
+              <i class="material-icons">check</i>
+            </button>
+          </div>
+          <div id="cancel-fab" class="hide">
+            <button name="_cancel" class="btn btn-floating btn-large waves-light waves-effect red" type="button"
+                    onclick="window.cancelEdit(this)" data-list-view-url="{% url opts|admin_urlname:"changelist" %}"
+            >
+              <i class="material-icons">clear</i>
+            </button>
+          </div>
         </div>
 
         {# JavaScript for prepopulated fields #}
@@ -88,5 +105,12 @@
 {% block footer %}
   {{ block.super }}
   <script type="text/javascript" src="{% static 'material/admin/js/inline-forms.min.js' %}"></script>
+  {% if add %}
+    <script type="text/javascript">
+      window.addEventListener('load', () => {
+        window.makeEditable()
+      });
+    </script>
+  {% endif %}
 {% endblock %}
 

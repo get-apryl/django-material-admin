@@ -1,0 +1,27 @@
+{% if field.widget.editable_widget %}
+  <div class="action-checkbox">
+    <label class="checkbox-block">
+      {{ field.field }}
+    </label>
+  </div>
+  <div class="checkbox-label hide">
+    <label for="{{ field.field.auto_id }}">
+      {{ field.field.label }}
+    </label>
+  </div>
+  <div class="checkbox-label-editable-ro">
+    <output>{{ field.field.label }}</output>
+  </div>
+{% else %}
+  <div class="action-checkbox">
+    <label class="checkbox-block">
+      {{ field.field }}
+      <span></span>
+    </label>
+  </div>
+  <div class="checkbox-label">
+    <label for="{{ field.field.auto_id }}">
+      {{ field.field.label }}
+    </label>
+  </div>
+{% endif %}

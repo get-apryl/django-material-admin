@@ -1,0 +1,7 @@
+<div class="checkbox-readonly-container">
+  <i class="material-icons {% if widget.attrs.checked %}green {% else %}red {% endif %}white-text">{% if widget.attrs.checked %}check{% else %}clear{% endif %}</i>
+</div>
+<div class="checkbox-editable-container hide">
+  {% include "django/forms/widgets/input.html" %}
+  <span></span>
+</div>
