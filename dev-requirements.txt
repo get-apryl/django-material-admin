@@ -1,0 +1,10 @@
+build
+django-admin-sortable2==1.0
+django-daterangefilter==1.0.0
+django-modeltranslation==0.15.1
+Django==3.2
+filefield-cache==0.0.5
+Pillow==8.4.0
+psycopg2-binary==2.8.6
+twine==3.2.0
+whitenoise==5.2.0
