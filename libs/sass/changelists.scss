@@ -112,6 +112,15 @@ label.label {
         }
       }
     }
+    tr.row1 {
+      background: inherit;
+    }
+    tr.row2 {
+      background: var(--row-even);
+      &:hover {
+        background: var(--row-even-hover);
+      }
+    }
   }
 
   &.module {

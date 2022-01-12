@@ -162,6 +162,8 @@ $theme-colors: (
   --sidenav-fg: #{map.get($brand-colors, "middleBlue")};
   --input-border: #{map.get($theme-colors, "input-border")};
   --inline-card-bg: #{map.get($theme-colors, "inline-card-bg")};
+  --row-even: #{transparentize(map.get($theme-colors, "secondary"), 0.85)};
+  --row-even-hover: #{transparentize(map.get($theme-colors, "secondary"), 0.65)};
 }
 
 @media (prefers-color-scheme: dark) {
@@ -213,5 +215,7 @@ $theme-colors: (
     --sidenav-fg: #{map.get($brand-colors, "darkCornFlowerBlue")};
     --input-border: #{map.get($theme-colors, "input-border")};
     --inline-card-bg: #{map.get($theme-colors, "inline-card-bg-dark")};
+    --row-even: #{transparentize(map.get($theme-colors, "secondary-dark"), 0.85)};
+    --row-even-hover: #{transparentize(map.get($theme-colors, "secondary-dark"), 0.45)};
   }
 }
