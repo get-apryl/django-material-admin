@@ -17,7 +17,7 @@
   .app .card .app-item {
 
     a {
-      background: var(--body-bg);
+      background: var(--card-bg);
       color: var(--primary);
       display: block;
       border-radius: 4px;
@@ -28,6 +28,10 @@
       margin-top: 10px;
       margin-bottom: 10px;
       margin-right: 0;
+
+      &:hover {
+        color: var(--app-hover);
+      }
     }
 
     i {

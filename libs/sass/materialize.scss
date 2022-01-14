@@ -2096,11 +2096,11 @@
 }
 
 .grey.darken-2 {
-  background-color: #616161 !important;
+  background-color: $grey-darken-2 !important;
 }
 
 .grey-text.text-darken-2 {
-  color: #616161 !important;
+  color: $grey-darken-2 !important;
 }
 
 .grey.darken-3 {
@@ -5001,7 +5001,7 @@ small {
 .card {
   position: relative;
   margin: 0.5rem 0 1rem 0;
-  background-color: var(--body-bg);
+  background-color: var(--card-bg);
   -webkit-transition: -webkit-box-shadow .25s;
   transition: -webkit-box-shadow .25s;
   transition: box-shadow .25s;
