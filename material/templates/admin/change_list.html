@@ -6,7 +6,14 @@
   {{ block.super }}
   <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/changelists.min.css' %}">
 {% endblock %}
-
+{% if not is_popup %}
+  {% block breadcrumbs %}
+    <div class="breadcrumbs">
+      <a href="{% url 'admin:index' %}">{% translate 'Home' %}</a>
+      &rsaquo; {{ cl.opts.verbose_name_plural|capfirst }}
+    </div>
+  {% endblock %}
+{% endif %}
 {% block content %}
   {# FIXME: Find a place for this #}
   {% if cl.formset.errors %}

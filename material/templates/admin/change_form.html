@@ -8,6 +8,20 @@
   <link rel="stylesheet" type="text/css" href="{% static 'material/admin/css/object_tools-responsive.min.css' %}">
 {% endblock %}
 
+{% if not is_popup %}
+  {% block breadcrumbs %}
+    <div class="breadcrumbs">
+      <a href="{% url 'admin:index' %}">{% translate 'Home' %}</a>
+      &rsaquo; {% if has_view_permission %}
+      <a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a>{% else %}
+      {{ opts.verbose_name_plural|capfirst }}{% endif %}
+      &rsaquo;
+      {% if add %}{% blocktranslate with name=opts.verbose_name %}Add {{ name }}{% endblocktranslate %}{% else %}
+        {{ original|truncatewords:"18" }}{% endif %}
+    </div>
+  {% endblock %}
+{% endif %}
+
 {% block content %}
   <div id="content-main">
     <form {% if has_file_field %}enctype="multipart/form-data" {% endif %}
@@ -21,7 +35,6 @@
       <div>
         {% if is_popup %}<input type="hidden" name="{{ is_popup_var }}" value="1">{% endif %}
         {% if to_field %}<input type="hidden" name="{{ to_field_var }}" value="{{ to_field }}">{% endif %}
-{#        {% if save_on_top %}{% block submit_buttons_top %}{% submit_row %}{% endblock %}{% endif %}#}
         {% if errors %}
           <p class="errornote">
             {% if errors|length == 1 %}{% trans "Please correct the error below." %}{% else %}{% trans "Please correct the errors below." %}{% endif %}
@@ -44,7 +57,6 @@
 
           {% block after_field_sets %}{% endblock %}
           {% block after_related_objects %}{% endblock %}
-{#          {% block submit_buttons_bottom %}{% submit_row %}{% endblock %}#}
           {% block admin_change_form_document_ready %}
             <script type="text/javascript"
               id="django-admin-form-add-constants"
@@ -54,23 +66,25 @@
               {% endif %}>
             </script>
           {% endblock %}
+          {% if has_change_permission %}
           <div id="edit-fab">
             <button class="btn btn-floating btn-large waves-effect waves-light" onclick="window.makeEditable()" type="button">
-              <i class="material-icons">edit</i>
+              <i class="material-icons" title="edit">edit</i>
             </button>
           </div>
           <div id="save-fab" class="hide">
             <button name="_save" class="btn btn-floating btn-large waves-light waves-effect primary" type="submit">
-              <i class="material-icons">check</i>
+              <i class="material-icons" title="save">check</i>
             </button>
           </div>
           <div id="cancel-fab" class="hide">
             <button name="_cancel" class="btn btn-floating btn-large waves-light waves-effect red" type="button"
                     onclick="window.cancelEdit(this)" data-list-view-url="{% url opts|admin_urlname:"changelist" %}"
             >
-              <i class="material-icons">clear</i>
+              <i class="material-icons" title="cancel">clear</i>
             </button>
           </div>
+          {% endif %}
         </div>
 
         {# JavaScript for prepopulated fields #}
@@ -78,28 +92,8 @@
 
       </div>
     </form>
-    {% if not object_tools %}
-      {% block object-tools %}
-        {% if change %}
-          <div class="side-wrapper-tools">
-            <i class="material-icons minimize tools" aria-hidden="true" title="{% trans 'Minimize' %}">close</i>
-            <div class="card">
-              <div class="card-content">
-                <h4><i class="material-icons prefix" aria-hidden="true">perm_data_setting</i>{% trans 'Tools' %}</h4>
-                {% if not is_popup %}
-                  <ul class="material-object-tools collection with-header">
-                    {% block object-tools-items %}
-                      {% change_form_object_tools %}
-                    {% endblock %}
-                  </ul>
-                {% endif %}
-              </div>
-            </div>
-          </div>
-        {% endif %}
-      {% endblock %}
-    {% endif %}
   </div>
+  {% block static_bar %}{% endblock static_bar %}
 {% endblock %}
 
 {% block footer %}

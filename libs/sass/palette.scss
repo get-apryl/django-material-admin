@@ -8,6 +8,7 @@ $text-font: Roboto;
 $teal-lighten-1: #477091;
 $grey: #9e9e9e;
 $grey-darken-1: #757575;
+$grey-darken-2: #616161;
 $grey-darken-3: #424242;
 $grey-darken-4: #212121;
 $grey-lighten-3: #eeeeee;
@@ -160,8 +161,12 @@ $theme-colors: (
   --hover-row: #{map.get($brand-colors, "darkCornFlowerBlueSelected")};
   --divider: #{map.get($theme-colors, "divider")};
   --sidenav-fg: #{map.get($brand-colors, "middleBlue")};
+  --user-view: #{map.get($brand-colors, "middleBlueDark")};
   --input-border: #{map.get($theme-colors, "input-border")};
   --inline-card-bg: #{map.get($theme-colors, "inline-card-bg")};
+  --row-even: #{transparentize(map.get($theme-colors, "secondary"), 0.85)};
+  --row-even-hover: #{transparentize(map.get($theme-colors, "secondary"), 0.65)};
+  --app-hover: #{map.get($brand-colors, "darkCornFlowerBlueLight")};
 }
 
 @media (prefers-color-scheme: dark) {
@@ -213,5 +218,8 @@ $theme-colors: (
     --sidenav-fg: #{map.get($brand-colors, "darkCornFlowerBlue")};
     --input-border: #{map.get($theme-colors, "input-border")};
     --inline-card-bg: #{map.get($theme-colors, "inline-card-bg-dark")};
+    --row-even: #{transparentize(map.get($theme-colors, "secondary-dark"), 0.85)};
+    --row-even-hover: #{transparentize(map.get($theme-colors, "secondary-dark"), 0.45)};
+    --app-hover: #{map.get($brand-colors, "middleBlueLight")};
   }
 }

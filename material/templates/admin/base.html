@@ -48,6 +48,12 @@
         </div>
         <!-- END Header -->
       {% endif %}
+      {% block breadcrumbs %}
+        <div class="breadcrumbs">
+          <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+          {% if title %} &rsaquo; {{ title }}{% endif %}
+        </div>
+      {% endblock %}
       {% block messages %}
         {% if messages %}
           <ul class="messagelist">

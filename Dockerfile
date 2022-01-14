@@ -3,7 +3,7 @@ MAINTAINER Anton Maistrenko
 
 ENV PYTHONUNBUFFERED 1
 
-COPY ./requirements.txt /requirements.txt
+COPY ./dev-requirements.txt /requirements.txt
 
 RUN pip install -r requirements.txt
 
