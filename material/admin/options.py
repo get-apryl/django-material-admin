@@ -30,6 +30,7 @@ class EditableFieldsMixin(admin.options.BaseModelAdmin):
     editable_checkboxes = None
     editable_choicefields = None
     editable_datepickers = None
+    editable_autocompletes = None
 
     def __init__(self):
         super().__init__()
@@ -38,6 +39,7 @@ class EditableFieldsMixin(admin.options.BaseModelAdmin):
         self.editable_checkboxes = self.editable_checkboxes or []
         self.editable_choicefields = self.editable_choicefields or []
         self.editable_datepickers = self.editable_datepickers or []
+        self.editable_autocompletes = self.editable_autocompletes or []
 
     def formfield_for_dbfield(
             self, db_field: models.Field, request: HttpRequest, **kwargs
@@ -64,6 +66,14 @@ class EditableFieldsMixin(admin.options.BaseModelAdmin):
         if db_field.name in self.editable_datepickers:
             return db_field.formfield(
                 widget=widgets.MaterialAdminEditableDateWidget
+            )
+
+        if db_field.name in self.editable_autocompletes:
+            return db_field.formfield(
+                widget=widgets.MaterialAdminAutocompleteWidget(
+                    db_field.remote_field, getattr(self, 'admin_site', None),
+                    **kwargs
+                )
             )
 
         return super().formfield_for_dbfield(db_field, request, **kwargs)
@@ -93,6 +103,11 @@ class MaterialModelAdminMixin(admin.ModelAdmin, EditableFieldsMixin):
         return super().media + forms.Media(js=['admin/js/%s' % url for url in js] + material_js)
 
     def has_module_permission(self, request):
+        # Because of the MRO setup in MaterialAdminSite.register() we need to do this
+        # hack to allow overriding the default implementation.
+        model_admin_override = getattr(self, '_has_module_permission', None)
+        if model_admin_override and callable(model_admin_override):
+            return model_admin_override(request)
         # We tie module permission to view permission for the model, so that things are
         # hidden on the index page if we remove the view permission.
         opts = self.opts

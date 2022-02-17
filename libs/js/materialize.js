@@ -11778,6 +11778,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         $(this.wrapper).addClass('select-wrapper ' + this.options.classes);
         this.$el.before($(this.wrapper));
         this.wrapper.appendChild(this.el);
+        $(this.wrapper).siblings('label').addClass('active')
 
         if (this.el.disabled) {
           this.wrapper.classList.add('disabled');

@@ -64,8 +64,17 @@ fieldset {
 
 .input-field label + div {
   padding-top: 40px;
+  &.related-wrapper, &.select-wrapper {
+    padding-top: 0;
+  }
 }
 
+.input-field > label:not(.label-icon) {
+  &.offset {
+    transform: translateY(-14px) scale(.8);
+    transform-origin: 0 0;
+  }
+}
 .selector-available select, .selector-chosen select {
   display: block;
 }
@@ -360,4 +369,12 @@ div.url {
   &.disabled .caret {
     display: none;
   }
+}
+
+.materialize-hidden-autocomplete {
+  display: none;
+}
+
+input[type="text"].materialize-editable-autocomplete {
+  border-bottom: 1px dashed var(--input-border);
 }

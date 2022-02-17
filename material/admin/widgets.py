@@ -2,6 +2,7 @@ import typing as t
 
 from django import forms
 from django.contrib.admin import widgets
+from django.utils.safestring import mark_safe
 
 StrKeyDict = t.Dict[str, t.Any]
 OptStrKeyDict = t.Optional[StrKeyDict]
@@ -121,3 +122,23 @@ class MaterialAdminEditableSelect(BaseEditableWidget, forms.Select):
 class MaterialAdminCuidWidget(BaseEditableWidget, widgets.AdminTextInputWidget):
     def __init__(self, attrs=None):
         super().__init__(attrs={'class': 'materialize-cuid', **(attrs or {})})
+
+
+class MaterialAdminAutocompleteWidget(widgets.AutocompleteSelect):
+    def __init__(self, field, admin_site, attrs=None, choices=(), using=None, display_field: str = ''):
+        self.display_field = display_field
+        super().__init__(field, admin_site, attrs, choices, using)
+
+    def render(self, name, value, attrs=None, renderer=None):
+        _ac = super().render(name, value, attrs=attrs, renderer=renderer)
+        hidden = mark_safe(
+            f'<div class="materialize-hidden-autocomplete">\n{_ac}\n</div>'
+        )
+        if value and self.display_field:
+            obj = self.field.remote_field.model.objects.get(pk=value)
+            value = getattr(obj, self.display_field, None)
+
+        value = value or '-'
+        return mark_safe(
+            f'<input id="id_{name}" name="{name}" value="{value}" type="text" class="materialize-editable-autocomplete" readonly>\n{hidden}'
+        )
