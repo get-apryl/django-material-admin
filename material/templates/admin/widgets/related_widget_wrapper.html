@@ -1,5 +1,6 @@
 {% load i18n static %}
 
+{% if not is_autocomplete %}
 <div class="related-wrapper">
     {% block links %}
         <div class="related-wrapper-row">
@@ -32,3 +33,4 @@
     {% endblock %}
     {{ rendered_widget }}
 </div>
+{% endif %}

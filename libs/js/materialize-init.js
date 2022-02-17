@@ -30,6 +30,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     initEditable();
+    // Set labels correctly
+    $('.related-wrapper').each(function () {
+        $(this).siblings('label').addClass('active')
+    })
 });
 
 window.makeEditable = function () {
@@ -105,6 +109,18 @@ window.makeEditable = function () {
         })
         // redraw
         M.FormSelect.init(document.querySelectorAll('.materialize-editable-select-enabled'))
+    }
+    // ------ Autocompletes
+    var editableAutocompleteWrappers = document.querySelectorAll('.materialize-hidden-autocomplete')
+    var editableAutocompleteInputs = document.querySelectorAll('.materialize-editable-autocomplete')
+    if (editableAutocompleteWrappers.length === editableAutocompleteInputs.length && editableAutocompleteInputs.length > 0) {
+        editableAutocompleteWrappers.forEach((item) => {
+            item.style.display = 'block'
+            item.style.marginTop = '18px'
+        })
+        editableAutocompleteInputs.forEach((item) => {
+            item.style.display = 'none'
+        })
     }
 }
 
