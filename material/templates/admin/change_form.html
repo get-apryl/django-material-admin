@@ -42,7 +42,6 @@
           {{ adminform.form.non_field_errors }}
         {% endif %}
         <div class="module">
-          {% block additional_submit_row %}{% additional_submit_row %}{% endblock %}
           {% block field_sets %}
             {% for fieldset in adminform %}
               {% include "admin/includes/fieldset.html" %}

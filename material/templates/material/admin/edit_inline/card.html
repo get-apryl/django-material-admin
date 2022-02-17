@@ -6,7 +6,7 @@
        data-inline-type="stacked"
        data-inline-formset="{{ inline_admin_formset.inline_formset_data }}">
     <h2><span class="card-title">{{ inline_admin_formset.opts.verbose_name_plural|capfirst }}</span>
-      <span class="inline-buttons-placeholder hide"></span>
+      {% if can_add_related %}<span class="inline-buttons-placeholder hide"></span>{% endif %}
     </h2>
 
     {{ inline_admin_formset.formset.management_form }}

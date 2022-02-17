@@ -147,6 +147,10 @@ input.valid[type=text]:not(.browser-default) {
 
     width: 100%;
   }
+
+  &.hidden {
+    display: none;
+  }
 }
 
 .dropdown-content.select-dropdown {
