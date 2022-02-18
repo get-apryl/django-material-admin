@@ -77,6 +77,8 @@ window.makeEditable = function () {
           .forEach((cb) => {cb.classList.remove('hide')})
         document.querySelectorAll('.checkbox-label-editable-ro')
           .forEach((cb) => {cb.classList.add('hide')})
+        document.querySelectorAll('label.checkbox-block')
+          .forEach((cb) => {cb.classList.add('editable')})
         // ------ Date pickers
         document.querySelectorAll('.materialize-editable.datepicker').forEach((el) => {
             el.classList.replace('materialize-editable', 'materialize-editable-enabled');
