@@ -64,7 +64,7 @@ fieldset {
 
 .input-field label + div {
   padding-top: 40px;
-  &.related-wrapper, &.select-wrapper {
+  &.related-wrapper, &.select-wrapper, &.date-block {
     padding-top: 0;
   }
 }

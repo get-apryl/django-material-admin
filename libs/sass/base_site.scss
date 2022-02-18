@@ -128,7 +128,7 @@ input.valid[type=text]:not(.browser-default) {
 .aligned > .form-row {
   overflow: visible;
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
   font-size: 1rem;
 
   label {

@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     initEditable();
     // Set labels correctly
-    $('.related-wrapper').each(function () {
+    $('.date-input.date-block, .related-wrapper').each(function () {
         $(this).siblings('label').addClass('active')
     })
 });
