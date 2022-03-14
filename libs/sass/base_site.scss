@@ -128,18 +128,20 @@ input.valid[type=text]:not(.browser-default) {
 .aligned > .form-row {
   overflow: visible;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   font-size: 1rem;
 
   label {
     font-size: inherit;
   }
 
-  .readonly-field > label {
-    transform: scale(0.8);
-    transform-origin: 0 24px;
+  .readonly-field {
+    translate: 0 -14px;
+    > label {
+      transform: scale(0.8);
+      transform-origin: 0 24px;
+    }
   }
-
   .input-field {
     &:not(:first-child) {
       margin-left: 20px;
