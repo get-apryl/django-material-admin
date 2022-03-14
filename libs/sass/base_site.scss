@@ -121,8 +121,13 @@ input.valid[type=text]:not(.browser-default) {
   border-bottom-color: #477091;
 }
 
-.input-field > .btn {
-  width: auto;
+.input-field {
+  & > .btn {
+    width: auto;
+  }
+  & > ul.errorlist {
+    margin-top: 14px !important;
+  }
 }
 
 .aligned > .form-row {
