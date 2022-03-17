@@ -56,9 +56,10 @@ fieldset {
     align-items: center;
     width: 100%;
   }
-  .inline-related fieldset.module {
+  .inline-related fieldset.module, .inline-card-form fieldset.module {
     padding: 4px;
-    background: var(--inline-card-bg)
+    background: var(--inline-card-bg);
+    width: 100%;
   }
 }
 
