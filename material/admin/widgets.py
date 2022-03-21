@@ -3,6 +3,7 @@ import typing as t
 from django import forms
 from django.contrib.admin import widgets
 from django.utils.safestring import mark_safe
+from djmoney.forms import MoneyWidget
 
 StrKeyDict = t.Dict[str, t.Any]
 OptStrKeyDict = t.Optional[StrKeyDict]
@@ -104,17 +105,38 @@ class MaterialAdminEditableCheckbox(BaseEditableWidget, forms.CheckboxInput):
 class MaterialAdminNumberWidget(widgets.AdminTextInputWidget):
     """Degrade NumberInput to TextInput for better UI, but set inputMode"""
     inputmode = 'numeric'
+    placeholder = '-'
+
     def __init__(self, attrs: t.Optional[t.Dict[str, t.Any]] = None):
         attrs = attrs or {}
         attrs.pop('step', None)
         attrs.pop('min', None)
         attrs.pop('max', None)
-        attrs.update(type='text', inputmode=self.inputmode)
+        attrs.update(type='text', inputmode=self.inputmode, placeholder=self.placeholder)
         super().__init__(attrs=attrs)
+
+
+class MaterialAdminMoneyWidget(MoneyWidget):
+    template_name = "material/admin/widgets/money.html"
+
+    @property
+    def media(self):
+        return forms.Media(
+            css={'all': ('material/admin/css/money_widget.min.css',)}
+        )
 
 
 class MaterialAdminMoneyAmountWidget(MaterialAdminNumberWidget):
     inputmode = 'decimal'
+
+    def __init__(self, attrs: t.Optional[t.Dict[str, t.Any]]):
+        attrs = attrs or {}
+        if 'class' in attrs:
+            attrs['class'] += ' amount'
+        else:
+            attrs['class'] = 'amount'
+
+        super().__init__(attrs)
 
 class MaterialAdminEditableMoneyAmountWidget(BaseEditableWidget, MaterialAdminMoneyAmountWidget):
     pass
