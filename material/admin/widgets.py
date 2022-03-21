@@ -23,6 +23,10 @@ class MaterialAdminEditableTextInput(BaseEditableWidget, widgets.AdminTextInputW
     pass
 
 
+class MaterialAdminEditableUrlInput(BaseEditableWidget, widgets.AdminURLFieldWidget):
+    classes = ['materialize-editable', 'vURLField']
+
+
 class MaterialAdminDateWidget(widgets.AdminDateWidget):
     """Date widget with material specific styling"""
     template_name = 'material/admin/widgets/date.html'

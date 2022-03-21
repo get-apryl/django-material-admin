@@ -384,3 +384,11 @@ div.url {
 input[type="text"].materialize-editable-autocomplete {
   border-bottom: 1px dashed var(--input-border);
 }
+
+input[type="url"].vURLField {
+  padding-right: calc(24px + 1rem);
+}
+
+.input-field > .url {
+  background: transparent;
+}
