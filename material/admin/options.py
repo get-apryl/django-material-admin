@@ -46,9 +46,6 @@ class EditableFieldsMixin(admin.options.BaseModelAdmin):
     def formfield_for_dbfield(
             self, db_field: models.Field, request: HttpRequest, **kwargs
     ):
-        if db_field.name in self.get_readonly_fields(request):
-            return super().formfield_for_dbfield(db_field, request, **kwargs)
-
         if db_field.name in self.editable_text_inputs:
             return db_field.formfield(
                 widget=widgets.MaterialAdminEditableTextInput, **kwargs

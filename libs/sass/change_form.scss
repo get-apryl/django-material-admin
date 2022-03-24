@@ -245,7 +245,7 @@ a.add-related {
 }
 
 form .aligned {
-  div.help, input + div.help {
+  div.help, input + div.help, textarea.materialize-textarea + div.help {
     margin-left: -10px;
   }
 

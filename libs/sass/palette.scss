@@ -46,17 +46,25 @@ $theme-colors: (
   "secondary": map.get($brand-colors, "middleBlue"),
   "secondary-dark": map.get($brand-colors, "darkCornFlowerBlue"),
   "secondary-fg": map.get($brand-colors, "darkGray"),
-  "secondary-fg-dark": map.get($brand-colors, "white"),
+  "secondary-fg-dark": desaturate(map.get($brand-colors, "middleBlue"), 25%),
   "secondary-lighter": map.get($brand-colors, "middleBlueLight"),
   "secondary-lighter-dark": map.get($brand-colors, "darkCornFlowerBlueLight"),
   "secondary-darker": map.get($brand-colors, "middleBlueDark"),
   "secondary-darker-dark": map.get($brand-colors, "darkCornFlowerBlueDark"),
   "secondary-selected": map.get($brand-colors, "middleBlueSelected"),
   "secondary-selected-dark": map.get($brand-colors, "darkCornFlowerBlueSelected"),
+  "secondary-hover": lighten(map.get($brand-colors, "middleBlue"), 10%),
+  "secondary-hover-dark": darken(map.get($brand-colors, "darkCornFlowerBlue"), 10%),
+  "secondary-focus": lighten(map.get($brand-colors, "middleBlue"), 20%),
+  "secondary-focus-dark": darken(map.get($brand-colors, "darkCornFlowerBlue"), 20%),
+  "secondary-hover-fg": lighten(map.get($brand-colors, "darkGray"), 10%),
+  "secondary-hover-fg-dark": desaturate(darken(map.get($brand-colors, "middleBlue"), 10%), 25%),
+  "secondary-focus-fg": lighten(map.get($brand-colors, "darkGray"), 20%),
+  "secondary-focus-fg-dark": desaturate(darken(map.get($brand-colors, "middleBlue"), 20%), 25%),
   "body-fg": map.get($brand-colors, "darkGray"),
   "body-fg-dark": $blueGrey-lighten-4,
   "body-bg": $grey-lighten-1,
-  "body-bg-dark": $grey-darken-3,
+  "body-bg-dark": 'black',
   "body-bg-darkened": $grey-lighten-4,
   "body-bg-darkened-dark": lighten($grey-darken-4, 4%),
   "body-quiet-color": lighten(map.get($brand-colors, "darkGray"), 15%),
@@ -66,6 +74,8 @@ $theme-colors: (
   "card-fg": map.get($brand-colors, "darkGray"),
   "card-fg-dark": $blueGrey-lighten-4,
   "error-fg": map.get($brand-colors, "lightCoral"),
+  "error-fg-dark": desaturate(map.get($brand-colors, "lightCoral"), 25%),
+  "error-bg": 'transparent',
   "link-fg": map.get($brand-colors, "darkCornFlowerBlue"),
   "link-fg-dark": map.get($brand-colors, "middleBlue"),
   "link-hover-color": lighten(map.get($brand-colors, "darkCornFlowerBlue"), 10%),
@@ -122,6 +132,10 @@ $theme-colors: (
   --secondary-lighter: #{map.get($theme-colors, "secondary-lighter")};
   --secondary-darker: #{map.get($theme-colors, "secondary-darker")};
   --secondary-selected: #{map.get($theme-colors, "secondary-selected")};
+  --secondary-hover: #{map.get($theme-colors, "secondary-hover")};
+  --secondary-hover-fg: #{map.get($theme-colors, "secondary-hover-fg")};
+  --secondary-focus: #{map.get($theme-colors, "secondary-focus")};
+  --secondary-focus-fg: #{map.get($theme-colors, "secondary-focus-fg")};
   --body-fg: #{map.get($theme-colors, "body-fg")};
   --body-bg: #{map.get($theme-colors, "body-bg")};
   --body-quiet-color: #{map.get($theme-colors, "body-quiet-color")};
@@ -137,6 +151,7 @@ $theme-colors: (
   --link-hover-color: #{map.get($theme-colors, "link-hover-color")};
   --link-selected-fg: #{map.get($theme-colors, "link-selected-fg")};
   --error-fg: #{map.get($theme-colors, "error-fg")};
+  --error-bg: #{map.get($theme-colors, "error-bg")};
   --message-success-bg: #{map.get($theme-colors, "message-success-bg")};
   --message-warning-bg: #{map.get($theme-colors, "message-warning-bg")};
   --message-error-bg: #{map.get($theme-colors, "message-error-bg")};
@@ -176,10 +191,14 @@ $theme-colors: (
     --primary-lighter: #{map.get($theme-colors, "primary-lighter-dark")};
     --primary-darker: #{map.get($theme-colors, "primary-darker-dark")};
     --secondary: #{map.get($theme-colors, "secondary-dark")};
-    --secondary-fg: #{map.get($theme-colors, "secondar-fg-dark")};
+    --secondary-fg: #{map.get($theme-colors, "secondary-fg-dark")};
     --secondary-lighter: #{map.get($theme-colors, "secondary-lighter-dark")};
     --secondary-darker: #{map.get($theme-colors, "secondary-darker-dark")};
     --secondary-selected: #{map.get($theme-colors, "secondary-selected-dark")};
+    --secondary-hover: #{map.get($theme-colors, "secondary-hover-dark")};
+    --secondary-hover-fg: #{map.get($theme-colors, "secondary-hover-fg-dark")};
+    --secondary-focus: #{map.get($theme-colors, "secondary-focus-dark")};
+    --secondary-focus-fg: #{map.get($theme-colors, "secondary-focus-fg-dark")};
     --body-fg: #{map.get($theme-colors, "body-fg-dark")};
     --body-bg: #{map.get($theme-colors, "body-bg-dark")};
     --body-quiet-color: #{map.get($theme-colors, "body-quiet-color-dark")};
@@ -191,7 +210,7 @@ $theme-colors: (
     --link-fg: #{map.get($theme-colors, "link-fg-dark")};
     --link-hover-color: #{map.get($theme-colors, "link-hover-color-dark")};
     --link-selected-fg: #{map.get($theme-colors, "link-selected-fg-dark")};
-    --error-fg: #{map.get($theme-colors, "error-fg")};
+    --error-fg: #{map.get($theme-colors, "error-fg-dark")};
     --message-success-bg: #{map.get($theme-colors, "message-success-bg")};
     --message-warning-bg: #{map.get($theme-colors, "message-warning-bg")};
     --message-error-bg: #{map.get($theme-colors, "message-error-bg")};

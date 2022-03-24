@@ -102,7 +102,7 @@
 {% block footer %}
   {{ block.super }}
   <script type="text/javascript" src="{% static 'material/admin/js/inline-forms.min.js' %}"></script>
-  {% if add %}
+  {% if add or adminform.errors %}
     <script type="text/javascript">
       window.addEventListener('load', () => {
         window.makeEditable()

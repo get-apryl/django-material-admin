@@ -9936,3 +9936,23 @@ ul li {
   line-height: unset;
 
 }
+
+/* Primary/Secondary color additions */
+.btn.primary {
+  background-color: var(--primary);
+  color: var(--primary-fg);
+}
+
+.btn.secondary {
+  background-color: var(--secondary);
+  color: var(--secondary-fg);
+
+  &:hover {
+    background-color: var(--secondary-hover);
+    color: var(--secondary-hover-fg)
+  }
+  &:focus {
+    background-color: var(--secondary-focus);
+    color: var(--secondary-focus-fg)
+  }
+}
