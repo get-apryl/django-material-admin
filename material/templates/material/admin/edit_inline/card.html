@@ -15,7 +15,7 @@
           {% endif %}
         </small>
       {% endwith %}
-      {% if can_add_related %}<span class="inline-buttons-placeholder hide"></span>{% endif %}
+      {% if inline_admin_formset.has_add_permission %}<span class="inline-buttons-placeholder hide"></span>{% endif %}
     </h2>
 
     {{ inline_admin_formset.formset.management_form }}
@@ -53,6 +53,7 @@
         </div>
       {% endfor %}
     </div>
+    {% if inline_admin_formset.has_add_permission and inline_admin_formset.forms|length > 3 %}<span class="inline-buttons-placeholder hide"></span>{% endif %}
   </div>
   {% block after_formset %}{% endblock after_formset %}
 </fieldset>
