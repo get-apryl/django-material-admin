@@ -99,17 +99,17 @@ p.errornote {
 
 .errorlist + .input-field {
   input, span.select2-selection, textarea {
-    border-bottom: 2px solid #ba2121;
+    border-bottom: 2px solid var(--error-fg);
   }
 
   label {
-    color: #ba2121;
+    color: var(--error-fg);
   }
 }
 
 .error-toast {
   background: #f8d7da;
-  color: #ba2121;
+  color: var(--error-fg);
 }
 
 .warning-toast {
@@ -121,25 +121,45 @@ input.valid[type=text]:not(.browser-default) {
   border-bottom-color: #477091;
 }
 
-.input-field > .btn {
-  width: auto;
+.input-field {
+  & > .btn {
+    width: auto;
+  }
+  & > ul.errorlist {
+    margin-top: 14px !important;
+    background: var(--error-bg);
+  }
 }
 
 .aligned > .form-row {
   overflow: visible;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   font-size: 1rem;
+
+  &.errors.one-field {
+    flex-direction: column;
+    .errorlist {
+      width: 100%;
+      background: none;
+      padding: 0;
+    }
+  }
 
   label {
     font-size: inherit;
   }
 
-  .readonly-field > label {
-    transform: scale(0.8);
-    transform-origin: 0 24px;
+  .readonly-field {
+    translate: 0 -14px;
+    > label {
+      transform: scale(0.8);
+      transform-origin: 0 24px;
+    }
   }
-
+  .errorlist + .input-field:not(:first-child) {
+    margin-left: 0;
+  }
   .input-field {
     &:not(:first-child) {
       margin-left: 20px;

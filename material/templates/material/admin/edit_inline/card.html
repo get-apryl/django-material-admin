@@ -6,7 +6,16 @@
        data-inline-type="stacked"
        data-inline-formset="{{ inline_admin_formset.inline_formset_data }}">
     <h2><span class="card-title">{{ inline_admin_formset.opts.verbose_name_plural|capfirst }}</span>
-      {% if can_add_related %}<span class="inline-buttons-placeholder hide"></span>{% endif %}
+      {% with inline_admin_formset.forms|length as qt %}
+        <small class="right" style="color: var(--body-quiet-color); text-transform: none">{{ qt }}
+          {% if qt == 1 %}
+            {{ inline_admin_formset.opts.verbose_name }}
+          {% else %}
+            {{ inline_admin_formset.opts.verbose_name_plural }}
+          {% endif %}
+        </small>
+      {% endwith %}
+      {% if inline_admin_formset.has_add_permission %}<span class="inline-buttons-placeholder hide"></span>{% endif %}
     </h2>
 
     {{ inline_admin_formset.formset.management_form }}
@@ -44,5 +53,7 @@
         </div>
       {% endfor %}
     </div>
+    {% if inline_admin_formset.has_add_permission and inline_admin_formset.forms|length > 3 %}<span class="inline-buttons-placeholder hide"></span>{% endif %}
   </div>
+  {% block after_formset %}{% endblock after_formset %}
 </fieldset>

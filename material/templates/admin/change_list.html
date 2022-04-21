@@ -80,6 +80,9 @@
             <h5>{% trans 'Filter' %}</h5>
             {% for spec in cl.filter_specs %}{% admin_list_filter cl spec %}{% endfor %}
             </div>
+            <div class="card-action">
+              <a href="{{ cl.clear_all_filters_qs }}"><span class="red-text">&#10006;</span> <span class="grey-text">{% translate "Clear all filters" %}</span></a>
+            </div>
           {% endif %}
         {% endblock %}
       </div>

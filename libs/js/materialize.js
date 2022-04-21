@@ -7087,7 +7087,7 @@ $jscomp.polyfill = function (e, r, p, m) {
      * @param {Event} e
      */
     document.addEventListener('focus', function (e) {
-      if ($(e.target).is(input_selector)) {
+      if ($(e.target).is(input_selector) && !$(e.target)[0].hasAttribute('readonly')) {
         $(e.target).siblings('label, .prefix').addClass('active');
       }
     }, true);

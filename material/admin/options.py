@@ -31,6 +31,7 @@ class EditableFieldsMixin(admin.options.BaseModelAdmin):
     editable_choicefields = None
     editable_datepickers = None
     editable_autocompletes = None
+    editable_urlfields = None
 
     def __init__(self):
         super().__init__()
@@ -40,13 +41,11 @@ class EditableFieldsMixin(admin.options.BaseModelAdmin):
         self.editable_choicefields = self.editable_choicefields or []
         self.editable_datepickers = self.editable_datepickers or []
         self.editable_autocompletes = self.editable_autocompletes or []
+        self.editable_urlfields = self.editable_urlfields or []
 
     def formfield_for_dbfield(
             self, db_field: models.Field, request: HttpRequest, **kwargs
     ):
-        if db_field.name in self.get_readonly_fields(request):
-            return super().formfield_for_dbfield(db_field, request, **kwargs)
-
         if db_field.name in self.editable_text_inputs:
             return db_field.formfield(
                 widget=widgets.MaterialAdminEditableTextInput, **kwargs
@@ -77,6 +76,11 @@ class EditableFieldsMixin(admin.options.BaseModelAdmin):
                     db_field.remote_field, getattr(self, 'admin_site', None),
                     **kwargs
                 )
+            )
+
+        if db_field.name in self.editable_urlfields:
+            return db_field.formfield(
+                widget=widgets.MaterialAdminEditableUrlInput
             )
 
         return super().formfield_for_dbfield(db_field, request, **kwargs)
