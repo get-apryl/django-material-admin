@@ -5,6 +5,7 @@ from django.utils.functional import LazyObject
 from django.utils.module_loading import import_string
 from django.utils.text import capfirst
 
+from material.admin.forms import BackofficeAuthenticationForm
 from material.admin.options import MaterialModelAdminMixin
 from material.admin.settings import MATERIAL_ADMIN_SITE
 from material.admin.views import ThemesView
@@ -21,6 +22,7 @@ class MaterialAdminSite(AdminSite):
     login_logo_width = None
     login_logo_height = None
     login_byline = None
+    login_form = BackofficeAuthenticationForm
     logout_bg = None
     logout_bgcolor = None
     no_logout_bgimage = False
