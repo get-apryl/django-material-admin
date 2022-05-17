@@ -2143,6 +2143,10 @@
   color: transparent !important;
 }
 
+.muted-text {
+  color: var(--body-quiet-color) !important;
+}
+
 /*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -3056,7 +3060,7 @@ table {
     transition: background-color .25s ease;
 
     &:hover {
-      background: var(--hover-row);
+      background: var(--row-hover);
     }
   }
 

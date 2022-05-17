@@ -80,6 +80,11 @@
               <i class="material-icons" title="save">check</i>
             </button>
           </div>
+          <div id="continue-fab" class="hide">
+            <button name="_continue" class="btn btn-floating btn-large waves-light waves-effect secondary" type="submit">
+              <i class="material-icons" title="save and continue editing">chevron_right</i>
+            </button>
+          </div>
           <div id="cancel-fab" class="hide">
             <button name="_cancel" class="btn btn-floating btn-large waves-light waves-effect red" type="button"
                     onclick="window.cancelEdit(this)" data-list-view-url="{% url opts|admin_urlname:"changelist" %}"

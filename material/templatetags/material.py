@@ -10,7 +10,6 @@ from django.template import Library
 from django.template.defaultfilters import stringfilter
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
-
 from material.admin.settings import MATERIAL_ADMIN_SITE
 
 register = Library()
@@ -148,3 +147,13 @@ def material_paginator_next(cl):
                </li>''',
             cl.get_query_string({PAGE_VAR: cl.page_num + 1})
         )
+
+def subtract(value, arg):
+    try:
+        return int(value) - int(arg)
+    except (ValueError, TypeError):
+        return value - arg
+    except Exception:
+        return ''
+
+register.filter('subtract', subtract)

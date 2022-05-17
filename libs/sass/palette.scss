@@ -173,7 +173,7 @@ $theme-colors: (
   --disabled-fg: #{map.get($theme-colors, "disabled-fg")};
   --disabled-bg: #{map.get($theme-colors, "disabled-bg")};
   --selected-row: #{map.get($theme-colors, "selected-bg")};
-  --hover-row: #{map.get($brand-colors, "darkCornFlowerBlueSelected")};
+  --row-hover: #{map.get($brand-colors, "darkCornFlowerBlueSelected")};
   --divider: #{map.get($theme-colors, "divider")};
   --sidenav-fg: #{map.get($brand-colors, "middleBlue")};
   --user-view: #{map.get($brand-colors, "middleBlueDark")};
@@ -232,7 +232,7 @@ $theme-colors: (
     --disabled-fg: #{map.get($theme-colors, "disabled-fg-dark")};
     --disabled-bg: #{map.get($theme-colors, "disabled-bg-dark")};
     --selected-row: #{map.get($theme-colors, "selected-bg-dark")};
-    --hover-row: #{map.get($brand-colors, "middleBlueSelected")};
+    --row-hover: #{map.get($brand-colors, "middleBlueSelected")};
     --divider: #{map.get($theme-colors, "divider-dark")};
     --sidenav-fg: #{map.get($brand-colors, "darkCornFlowerBlue")};
     --input-border: #{map.get($theme-colors, "input-border")};
