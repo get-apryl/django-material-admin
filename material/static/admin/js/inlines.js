@@ -87,9 +87,13 @@ function initTextareaInline() {
                 // But the fields are repeated (there's an initial and current),
                 // so make sure they have the same ID, or we risk triggering
                 // unwanted behaviour like a forced insert instead of update.
+                // The ID field MUST have the materialize-cuid class. The
+                // sibling field with the initial value does not have the class,
+                // but it SHALL be the next sibling.
                 var newId = cuid()
                 row.find(".materialize-cuid").each((idx, cur) => {
                     cur.value = newId
+                    cur.nextSibling.value = newId
                 })
                 var _datePickers = row[0].querySelectorAll('.datepicker')
                 if (_datePickers.length) {
