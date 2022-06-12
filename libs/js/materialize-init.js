@@ -45,6 +45,10 @@ window.makeEditable = function () {
     if (saveButtonContainer.classList.contains('hide')) {
         saveButtonContainer.classList.replace('hide', 'show')
     }
+    var continueButtonContainer = document.querySelector('#continue-fab')
+    if (continueButtonContainer.classList.contains('hide')) {
+        continueButtonContainer.classList.replace('hide', 'show')
+    }
     var cancelButtonContainer = document.querySelector('#cancel-fab')
     if (cancelButtonContainer.classList.contains('hide')) {
         cancelButtonContainer.classList.replace('hide', 'show')
@@ -56,7 +60,7 @@ window.makeEditable = function () {
             btn.classList.replace('hide', 'show')
         }
     })
-    var deleteButtonContainers = document.querySelectorAll('.stacked-inline-close-container')
+    var deleteButtonContainers = document.querySelectorAll('.stacked-inline-close-container, td.delete')
     deleteButtonContainers.forEach((btn) => {
         if (btn.classList.contains('hide')) {
             btn.classList.replace('hide', 'show')

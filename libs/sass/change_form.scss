@@ -150,45 +150,6 @@ td.original {
   display: flex;
 }
 
-.inline-group {
-  overflow: visible;
-
-  .tabular td.original p, .inline-related {
-    overflow: visible;
-  }
-
-  .tabular {
-    tr.form-row td {
-      padding-bottom: 18px;
-
-      &.delete {
-        vertical-align: bottom;
-      }
-    }
-
-    td {
-      .inline-show-change-link {
-        z-index: 1;
-        i {
-          font-size: 18px;
-        }
-      }
-
-      .datetimeshortcuts {
-        position: absolute;
-        bottom: 0;
-        left: 2px;
-      }
-
-      .timezonewarning {
-        position: absolute;
-        font-size: 9px;
-        top: 0;
-      }
-    }
-  }
-}
-
 .related-wrapper-row {
   position: relative;
 }
@@ -203,28 +164,6 @@ a.add-related {
 
 .inline-deletelink {
   display: none;
-}
-
-.inline-group .tabular tr.add-row td a.add-inline-link {
-  background-image: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  margin-top: 10px;
-}
-
-.inline-buttons-placeholder {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-
-  .add-inline-button {
-    background-image: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
 }
 
 .form-row {
@@ -265,12 +204,88 @@ form .aligned {
 }
 
 .inline-group {
+  overflow: visible;
+
+  .tabular {
+    tr {
+      &.form-row td {
+        padding-bottom: 18px;
+
+        &.delete {
+          vertical-align: bottom;
+        }
+      }
+      &.add-row td button {
+        float: right;
+      }
+    }
+
+    td {
+      .inline-show-change-link {
+        z-index: 1;
+        i {
+          font-size: 18px;
+        }
+      }
+
+      .datetimeshortcuts {
+        position: absolute;
+        bottom: 0;
+        left: 2px;
+      }
+
+      .timezonewarning {
+        position: absolute;
+        font-size: 9px;
+        top: 0;
+      }
+      &.original p {
+        overflow: visible;
+      }
+    }
+  }
+
   .aligned label {
     width: 100%;
   }
 
-  .inline-related .aligned label.checkbox-block {
+  .inline-related {
+    overflow: visible;
+    fieldset {
+      width: 70%;
+      tr:nth-child(2n+1),
+      .row-form-errors {
+        background: inherit;
+        &:hover {
+          background: var(--row-hover);
+        }
+      }
+      tr:nth-child(2n),
+      tr:nth-child(2n) .errorlist,
+      tr:nth-child(2n+1) + .row-form-errors,
+      tr:nth-child(2n+1) + .row-form-errors .errorlist {
+        background: var(--row-even);
+        &:hover {
+          background: var(--row-even-hover);
+        }
+      }
+    }
+    .aligned label.checkbox-block {
     width: 25px;
+    }
+  }
+
+  span.inline-buttons-placeholder {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .add-inline-button {
+    background-image: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -361,10 +376,17 @@ div.url {
   z-index: 997;
 }
 
-#cancel-fab {
+#continue-fab {
   position: fixed;
   bottom: 24px;
   right: calc(24px + 56px + 8px); /* margin + fab-line-height + margin */
+  z-index: 997;
+}
+
+#cancel-fab {
+  position: fixed;
+  bottom: 24px;
+  right: calc(24px + (56px * 2) + (8px * 2)); /* margin + fab-line-height*2 + margin*2 */
   z-index: 997;
 }
 

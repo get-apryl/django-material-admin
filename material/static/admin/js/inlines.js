@@ -46,8 +46,8 @@ function initTextareaInline() {
                     // If forms are laid out as table rows, insert the
                     // "add" button in a new table row:
                     var numCols = this.eq(-1).children().length;
-                    $parent.append('<tr class="' + options.addCssClass + '"><td colspan="' + numCols + '"><a href="#" class="add-inline-link"><i class="material-icons" aria-hidden="true">add</i>' + options.addText + "</a></tr>");
-                    addButton = $parent.find("tr:last a");
+                    $parent.append('<tr class="' + options.addCssClass + '"><td colspan="' + numCols + '" class="hide inline-buttons-placeholder"><button type="button" class="btn btn-primary btn-small add-inline-button"><i class="material-icons" aria-hidden="true">add</i><span>' + options.addText + "</span></button></tr>");
+                    addButton = $parent.find("tr.add-row td button.add-inline-button");
                 } else if ($this[0].classList.contains('fw-card')) {
                     $parent.parent().find('.inline-buttons-placeholder').prepend('<button type="button" class="btn btn-primary btn-small add-inline-button"><i class="material-icons" aria-hidden="true">add</i><span>' + options.addText + "</span></button>");
                     addButton = $parent.parent().find('.inline-buttons-placeholder button');
@@ -83,8 +83,17 @@ function initTextareaInline() {
                     // last child element of the form's container:
                     row.children(":first").append('<span><a class="' + options.deleteCssClass + '" href="#">' + options.deleteText + "</a></span>");
                 }
+                // Each inline form has one ID field which can be a CUID field.
+                // But the fields are repeated (there's an initial and current),
+                // so make sure they have the same ID, or we risk triggering
+                // unwanted behaviour like a forced insert instead of update.
+                // The ID field MUST have the materialize-cuid class. The
+                // sibling field with the initial value does not have the class,
+                // but it SHALL be the next sibling.
+                var newId = cuid()
                 row.find(".materialize-cuid").each((idx, cur) => {
-                    cur.value = cuid()
+                    cur.value = newId
+                    cur.nextSibling.value = newId
                 })
                 var _datePickers = row[0].querySelectorAll('.datepicker')
                 if (_datePickers.length) {

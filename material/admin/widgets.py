@@ -150,6 +150,10 @@ class MaterialAdminCuidWidget(BaseEditableWidget, widgets.AdminTextInputWidget):
         super().__init__(attrs={'class': 'materialize-cuid', **(attrs or {})})
 
 
+class MaterialAdminHiddenCuidWidget(forms.HiddenInput):
+    def __init__(self, attrs=None):
+        super().__init__(attrs={'class': 'materialize-cuid', **(attrs or {})})
+
 class MaterialAdminAutocompleteWidget(widgets.AutocompleteSelect):
     def __init__(self, field, admin_site, attrs=None, choices=(), using=None, display_field: str = ''):
         self.display_field = display_field
