@@ -1,4 +1,4 @@
-{% load i18n admin_urls static %}
+{% load i18n admin_urls static material %}
 <fieldset class="aligned inline-card">
   <legend></legend>
   <div class="js-inline-admin-formset inline-group"
@@ -6,7 +6,7 @@
        data-inline-type="stacked"
        data-inline-formset="{{ inline_admin_formset.inline_formset_data }}">
     <h2><span class="card-title">{{ inline_admin_formset.opts.verbose_name_plural|capfirst }}</span>
-      {% with inline_admin_formset.forms|length as qt %}
+      {% with qt=inline_admin_formset.forms|length|subtract:inline_admin_formset.formset.extra %}
         <small class="right" style="color: var(--body-quiet-color); text-transform: none">{{ qt }}
           {% if qt == 1 %}
             {{ inline_admin_formset.opts.verbose_name }}
@@ -15,6 +15,7 @@
           {% endif %}
         </small>
       {% endwith %}
+
       {% if inline_admin_formset.has_add_permission %}<span class="inline-buttons-placeholder hide"></span>{% endif %}
     </h2>
 
