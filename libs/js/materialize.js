@@ -11624,7 +11624,7 @@ $jscomp.polyfill = function (e, r, p, m) {
       // Don't init if browser default version
       var _this68 = _possibleConstructorReturn(this, (FormSelect.__proto__ || Object.getPrototypeOf(FormSelect)).call(this, FormSelect, el, options));
 
-      if (_this68.$el.hasClass('browser-default')) {
+      if (_this68.$el.hasClass('browser-default') || _this68.$el.attr('data-autocomplete-light-url')) {
         return _possibleConstructorReturn(_this68);
       }
 
@@ -11774,6 +11774,7 @@ $jscomp.polyfill = function (e, r, p, m) {
       value: function _setupDropdown() {
         var _this71 = this;
 
+        console.log(this)
         this.wrapper = document.createElement('div');
         $(this.wrapper).addClass('select-wrapper ' + this.options.classes);
         this.$el.before($(this.wrapper));
