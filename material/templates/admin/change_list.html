@@ -26,23 +26,21 @@
 
   <div id="content-main" class="list-content">
     {% block object-tools %}
-      <ul>
+      <ul id="object-tools-list">
         {% block object-tools-items %}
           {% if has_add_permission %}
             <li>
               {% url cl.opts|admin_urlname:'add' as add_url %}
-              <div class="fixed-action-btn">
                 <a href="{% add_preserved_filters add_url is_popup to_field %}"
                    class="btn-floating btn-large waves-effect waves-light">
                   <i class="material-icons" aria-hidden="true">add</i>
                 </a>
-              </div>
             </li>
           {% endif %}
         {% endblock %}
       </ul>
     {% endblock %}
-    {# 2 columns: main content (75%) and sidebar with filters (25%) #}
+    {# 2 columns: main content (80%) and sidebar with filters (20%) #}
     <div id="object-list-wrapper">
       <form id="changelist-form"
             method="post"{% if cl.formset.is_multipart %}
