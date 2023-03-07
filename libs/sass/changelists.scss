@@ -342,3 +342,20 @@ table thead th .text span {
     margin-top: 0 !important;
   }
 }
+
+#object-tools-list {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  min-width: calc(64px + 2 * 8px);
+  max-width: 20%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: row;
+
+  > li {
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+}
