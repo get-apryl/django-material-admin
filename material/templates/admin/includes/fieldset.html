@@ -19,7 +19,7 @@
               {% if field.is_readonly %}
                 <div class="readonly-field">
                   {{ field.label_tag }}
-                  <output>{{ field.contents }}</output>
+                  <output name="{{ field.field.name }}">{{ field.contents }}</output>
                 </div>
               {% else %}
                 {{ field.label_tag }}

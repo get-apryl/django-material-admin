@@ -138,6 +138,11 @@ class MaterialAdminMoneyAmountWidget(MaterialAdminNumberWidget):
 
         super().__init__(attrs)
 
+
+class MaterialAdminMoneyStaticCurrencyWidget(forms.Widget):
+    template_name = "material/admin/widgets/money-static.html"
+
+
 class MaterialAdminEditableMoneyAmountWidget(BaseEditableWidget, MaterialAdminMoneyAmountWidget):
     pass
 

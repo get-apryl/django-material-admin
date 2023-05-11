@@ -5,6 +5,7 @@
 .money-widget {
   display: flex;
   flex-direction: row;
+  align-items: center;
 
   input.amount {
     min-width: 5rem;
