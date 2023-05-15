@@ -1,3 +1,4 @@
+import decimal
 import typing as t
 
 from django import forms
@@ -137,6 +138,14 @@ class MaterialAdminMoneyAmountWidget(MaterialAdminNumberWidget):
             attrs['class'] = 'amount'
 
         super().__init__(attrs)
+
+    def format_value(self, value):
+        if isinstance(value, decimal.Decimal):
+            return str(
+                value.quantize(decimal.Decimal('0.01'), rounding=decimal.ROUND_HALF_UP)
+            )
+        else:
+            return super().format_value(value)
 
 
 class MaterialAdminMoneyStaticCurrencyWidget(forms.Widget):
