@@ -1,0 +1,7 @@
+<output class="amount calculated" name="{{ widget.name }}_calculated">
+  {{ widget.value }}
+</output>
+<input
+  type="hidden" name="{{ widget.name }}"
+  {% if widget.value != None %}value="{{ widget.value|stringformat:'s' }}"{% endif %}
+>

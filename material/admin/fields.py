@@ -8,6 +8,7 @@ from .widgets import (
     MaterialAdminMoneyAmountWidget,
     MaterialAdminEditableSelect,
     MaterialAdminMoneyStaticCurrencyWidget,
+    MaterialAdminCalculatedMoneyAmountWidget,
 )
 
 
@@ -63,3 +64,7 @@ class EditableAdminMoneyStaticCurrencyField(AdminMoneyField):
     def __init__(self, *args, **kwargs):
         currency_widget = MaterialAdminMoneyStaticCurrencyWidget()
         super().__init__(currency_widget=currency_widget, **kwargs)
+
+
+class CalculatedAdminMoneyField(EditableAdminMoneyStaticCurrencyField):
+    amount_widget = MaterialAdminCalculatedMoneyAmountWidget

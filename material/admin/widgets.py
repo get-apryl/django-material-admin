@@ -129,7 +129,7 @@ class MaterialAdminMoneyWidget(MoneyWidget):
 class MaterialAdminMoneyAmountWidget(MaterialAdminNumberWidget):
     inputmode = 'decimal'
 
-    def __init__(self, attrs: t.Optional[t.Dict[str, t.Any]]):
+    def __init__(self, attrs: t.Optional[t.Dict[str, t.Any]] = None):
         attrs = attrs or {}
         if 'class' in attrs:
             attrs['class'] += ' amount'
@@ -140,11 +140,15 @@ class MaterialAdminMoneyAmountWidget(MaterialAdminNumberWidget):
 
 
 class MaterialAdminMoneyStaticCurrencyWidget(forms.Widget):
-    template_name = "material/admin/widgets/money-static.html"
+    template_name = "material/admin/widgets/currency-static.html"
 
 
 class MaterialAdminEditableMoneyAmountWidget(BaseEditableWidget, MaterialAdminMoneyAmountWidget):
     pass
+
+
+class MaterialAdminCalculatedMoneyAmountWidget(MaterialAdminMoneyAmountWidget):
+    template_name = "material/admin/widgets/amount-calculated.html"
 
 
 class MaterialAdminEditableSelect(BaseEditableWidget, forms.Select):
