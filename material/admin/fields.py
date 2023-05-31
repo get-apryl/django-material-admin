@@ -1,12 +1,14 @@
 from django.forms import DecimalField, ChoiceField
 from djmoney.forms.fields import MoneyField
-from djmoney.settings import CURRENCY_CHOICES, DECIMAL_PLACES
+from djmoney.settings import CURRENCY_CHOICES
 
 from .widgets import (
     MaterialAdminMoneyWidget,
     MaterialAdminEditableMoneyAmountWidget,
     MaterialAdminMoneyAmountWidget,
     MaterialAdminEditableSelect,
+    MaterialAdminMoneyStaticCurrencyWidget,
+    MaterialAdminCalculatedMoneyAmountWidget,
 )
 
 
@@ -21,16 +23,16 @@ class AdminMoneyField(MoneyField):
             max_value=None,
             min_value=None,
             max_digits=None,
-            decimal_places=DECIMAL_PLACES,
             default_amount=None,
             default_currency=None,
             **kwargs,
     ):
+        kwargs.pop('decimal_places', None)
         amount_field = DecimalField(
             max_value=max_value,
             min_value=min_value,
             max_digits=max_digits,
-            decimal_places=decimal_places,
+            decimal_places=2,
             **kwargs,
         )
         currency_field = ChoiceField(choices=currency_choices)
@@ -43,6 +45,7 @@ class AdminMoneyField(MoneyField):
 
         # The two fields that this widget comprises
         fields = (amount_field, currency_field)
+        # We bypass MoneyField here, as it hardcodes the DecimalField
         super(MoneyField, self).__init__(fields, **kwargs)
 
         # set the initial value to the default currency so that the
@@ -55,3 +58,14 @@ class EditableAdminMoneyField(AdminMoneyField):
     def __init__(self, *, currency_choices=CURRENCY_CHOICES, **kwargs):
         currency_widget = MaterialAdminEditableSelect(choices=currency_choices)
         super().__init__(currency_widget=currency_widget, **kwargs)
+
+class EditableAdminMoneyStaticCurrencyField(AdminMoneyField):
+    amount_widget = MaterialAdminEditableMoneyAmountWidget
+
+    def __init__(self, *args, **kwargs):
+        currency_widget = MaterialAdminMoneyStaticCurrencyWidget()
+        super().__init__(currency_widget=currency_widget, **kwargs)
+
+
+class CalculatedAdminMoneyField(EditableAdminMoneyStaticCurrencyField):
+    amount_widget = MaterialAdminCalculatedMoneyAmountWidget

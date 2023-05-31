@@ -8,7 +8,7 @@
     <div class="form-row{% if line.errors %} errors{% if line.fields|length_is:'1' %} one-field{% endif %}{% endif %}{% if not line.has_visible_field %} hidden{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% endfor %}">
       {% if line.fields|length_is:'1' %}{{ line.errors }}{% endif %}
       {% for field in line %}
-        <div class="input-field{% if field.is_checkbox %} checkbox-row{% endif %}"{% if not line.fields|length_is:'1' %} class="fieldBox{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% if not field.is_readonly and field.errors %} errors{% endif %}{% if field.field.is_hidden %} hidden{% endif %}"{% endif %}>
+        <div class="input-field{% if field.is_checkbox %} checkbox-row{% endif %}{% if not line.fields|length_is:'1' %} fieldBox{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% if not field.is_readonly and field.errors %} errors{% endif %}{% if field.field.is_hidden %} hidden{% endif %}{% endif %}">
           {% if not line.fields|length_is:'1' and not field.is_readonly %}{{ field.errors }}{% endif %}
           {% if field.field.is_hidden %}
             {{ field.field }}
@@ -19,7 +19,7 @@
               {% if field.is_readonly %}
                 <div class="readonly-field">
                   {{ field.label_tag }}
-                  <output>{{ field.contents }}</output>
+                  <output name="{{ field.field.name }}">{{ field.contents }}</output>
                 </div>
               {% else %}
                 {{ field.label_tag }}

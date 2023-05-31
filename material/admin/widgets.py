@@ -1,3 +1,4 @@
+import decimal
 import typing as t
 
 from django import forms
@@ -129,7 +130,7 @@ class MaterialAdminMoneyWidget(MoneyWidget):
 class MaterialAdminMoneyAmountWidget(MaterialAdminNumberWidget):
     inputmode = 'decimal'
 
-    def __init__(self, attrs: t.Optional[t.Dict[str, t.Any]]):
+    def __init__(self, attrs: t.Optional[t.Dict[str, t.Any]] = None):
         attrs = attrs or {}
         if 'class' in attrs:
             attrs['class'] += ' amount'
@@ -138,8 +139,25 @@ class MaterialAdminMoneyAmountWidget(MaterialAdminNumberWidget):
 
         super().__init__(attrs)
 
+    def format_value(self, value):
+        if isinstance(value, decimal.Decimal):
+            return str(
+                value.quantize(decimal.Decimal('0.01'), rounding=decimal.ROUND_HALF_UP)
+            )
+        else:
+            return super().format_value(value)
+
+
+class MaterialAdminMoneyStaticCurrencyWidget(forms.Widget):
+    template_name = "material/admin/widgets/currency-static.html"
+
+
 class MaterialAdminEditableMoneyAmountWidget(BaseEditableWidget, MaterialAdminMoneyAmountWidget):
     pass
+
+
+class MaterialAdminCalculatedMoneyAmountWidget(MaterialAdminMoneyAmountWidget):
+    template_name = "material/admin/widgets/amount-calculated.html"
 
 
 class MaterialAdminEditableSelect(BaseEditableWidget, forms.Select):

@@ -1,1 +1,1 @@
-.input-field>label+div.money-widget{padding-top:initial}.money-widget{display:flex;flex-direction:row}.money-widget input.amount{min-width:5rem;margin-right:1rem;width:30%}.money-widget .select-wrapper{min-width:7rem;width:70%}
+.input-field>label+div.money-widget{padding-top:initial}.money-widget{display:flex;flex-direction:row;align-items:center;height:3rem}.money-widget .amount.calculated,.money-widget input.amount{min-width:5rem;margin-right:1rem;width:30%}.money-widget .select-wrapper,.money-widget output.currency{min-width:7rem;width:70%}

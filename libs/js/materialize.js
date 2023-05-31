@@ -11774,7 +11774,6 @@ $jscomp.polyfill = function (e, r, p, m) {
       value: function _setupDropdown() {
         var _this71 = this;
 
-        console.log(this)
         this.wrapper = document.createElement('div');
         $(this.wrapper).addClass('select-wrapper ' + this.options.classes);
         this.$el.before($(this.wrapper));

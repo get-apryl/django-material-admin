@@ -5,14 +5,15 @@
 .money-widget {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  height: 3rem;
 
-  input.amount {
+  input.amount, .amount.calculated {
     min-width: 5rem;
     margin-right: 1rem;
     width: 30%;
   }
-
-  .select-wrapper {
+  .select-wrapper, output.currency {
     min-width: 7rem;
     width: 70%;
   }
