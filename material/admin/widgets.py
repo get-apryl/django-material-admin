@@ -47,8 +47,17 @@ class MaterialAdminDateWidget(widgets.AdminDateWidget):
 
 class MaterialAdminEditableDateWidget(BaseEditableWidget, MaterialAdminDateWidget):
     classes = ['materialize-editable', 'datepicker']
+
     def __init__(self, attrs=None, format=None):
         attrs = {'size': '10', 'materialize_editable': True, **(attrs or {})}
+        super().__init__(attrs=attrs, format=format)
+
+
+class MaterialAdminEnabledDateWidget(BaseEditableWidget, MaterialAdminDateWidget):
+    classes = ['materialize-editable-enabled', 'datepicker']
+
+    def __init__(self, attrs=None, format=None):
+        attrs = {'size': '10', 'materialize_editable': False, **(attrs or {})}
         super().__init__(attrs=attrs, format=format)
 
 
