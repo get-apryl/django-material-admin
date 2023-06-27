@@ -421,13 +421,15 @@ input[type="url"].vURLField {
   background: transparent;
 }
 
-.materialize-hidden-autocomplete > .select2-container--default .select2-selection--single {
-  background-color: transparent;
-  border: 1px solid var(--input-border);
-  border-radius: 4px;
+.materialize-hidden-autocomplete , .materialize-dal-autocomplete {
+  > .select2-container--default .select2-selection--single {
+    background-color: transparent;
+    border: 1px solid var(--input-border);
+    border-radius: 4px;
 
-  .select2-selection__rendered {
-    color: var(--body-fg);
+    .select2-selection__rendered {
+      color: var(--body-fg);
+    }
   }
 }
 
