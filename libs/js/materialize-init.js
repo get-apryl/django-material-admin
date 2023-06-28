@@ -40,7 +40,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 window.makeEditable = function () {
-    document.querySelector('#edit-fab').remove()
+    var editButton = $('#edit-fab')
+    if (editButton) editButton.remove()
+
     var saveButtonContainer = document.querySelector('#save-fab')
     if (saveButtonContainer.classList.contains('hide')) {
         saveButtonContainer.classList.replace('hide', 'show')
