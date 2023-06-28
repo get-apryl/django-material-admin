@@ -454,3 +454,12 @@ input[type="url"].vURLField {
     padding: 8px;
   }
 }
+
+.materialize-highlight {
+  margin-top: 3rem;
+  border: 1px solid var(--border-color);
+  padding: 0 1rem;
+  code.hljs {
+    background-color: var(--card-bg);
+  }
+}

@@ -1,0 +1,5 @@
+{% if widget.value %}
+  <div class="materialize-highlight" id="{{ widget.attrs.id }}"><code class="hljs language-json" style="white-space: pre-wrap">{{ widget.value }}</code></div>
+{% else %}
+  <div id="{{ widget.id }}">No Message</div>
+{% endif %}
