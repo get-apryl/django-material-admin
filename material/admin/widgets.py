@@ -1,4 +1,5 @@
 import decimal
+import json
 import typing as t
 
 from django import forms
@@ -190,3 +191,22 @@ class MaterialAdminAutocompleteWidget(widgets.AutocompleteSelect):
         return mark_safe(
             f'<input id="id_{name}" name="{name}" value="{value}" type="text" class="materialize-editable-autocomplete" readonly>\n{hidden}'
         )
+
+
+class MaterialJsonOutputWidget(forms.Textarea):
+    template_name = "material/admin/widgets/json.html"
+
+    class Media:
+        js = ["admin/js/highlight.min.js", "admin/js/highlight-init.js"]
+        css = {"screen": ["admin/css/highlight/night-owl.min.css"]}
+
+    def format_value(self, value):
+        if not value:
+            return value
+        try:
+            data = json.loads(value)
+        except json.JSONDecodeError:
+            return value
+        return json.dumps(data, indent=2)
+
+
