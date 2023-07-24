@@ -422,7 +422,7 @@ input[type="url"].vURLField {
 }
 
 .materialize-hidden-autocomplete , .materialize-dal-autocomplete {
-  > .select2-container--default .select2-selection--single {
+  > .select2-container .select2-selection--single, > .select2-container .select2-selection--multiple {
     background-color: transparent;
     border: 1px solid var(--input-border);
     border-radius: 4px;
@@ -433,7 +433,7 @@ input[type="url"].vURLField {
   }
 }
 
-.select2-container--default > .select2-dropdown {
+.select2-container > .select2-dropdown {
   background-color: var(--darkened-bg);
   border: 1px solid var(--input-border);
 

@@ -40,7 +40,7 @@ class EditableFieldsMixin(admin.options.BaseModelAdmin):
         self.editable_checkboxes = self.editable_checkboxes or []
         self.editable_choicefields = self.editable_choicefields or []
         self.editable_datepickers = self.editable_datepickers or []
-        self.editable_autocompletes = self.editable_autocompletes or []
+        self.editable_autocompletes = self.editable_autocompletes or {}
         self.editable_urlfields = self.editable_urlfields or []
 
     def formfield_for_dbfield(
@@ -70,20 +70,38 @@ class EditableFieldsMixin(admin.options.BaseModelAdmin):
                 widget=widgets.MaterialAdminEditableDateWidget
             )
 
-        if db_field.name in self.editable_autocompletes:
-            return db_field.formfield(
-                widget=widgets.MaterialAdminAutocompleteWidget(
-                    db_field.remote_field, getattr(self, 'admin_site', None),
-                    **kwargs
-                )
-            )
-
         if db_field.name in self.editable_urlfields:
             return db_field.formfield(
                 widget=widgets.MaterialAdminEditableUrlInput
             )
 
         return super().formfield_for_dbfield(db_field, request, **kwargs)
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name in self.editable_autocompletes:
+            if self.editable_autocompletes[db_field.name] is not None:
+                kwargs['display_field'] = self.editable_autocompletes[db_field.name]
+            return db_field.formfield(
+                widget=widgets.MaterialAdminAutocompleteWidget(
+                    db_field, getattr(self, 'admin_site', None),
+                    **kwargs
+                )
+            )
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+    def formfield_for_manytomany(self, db_field, request, **kwargs):
+        if db_field.name in self.editable_autocompletes:
+            if self.editable_autocompletes[db_field.name] is not None:
+                kwargs['display_field'] = self.editable_autocompletes[db_field.name]
+            return db_field.formfield(
+                widget=widgets.MaterialAdminAutocompleteMultipleWidget(
+                    db_field, getattr(self, 'admin_site', None),
+                    **kwargs
+                )
+            )
+
+        return super().formfield_for_manytomany(db_field, request, **kwargs)
+
 
 
 class MaterialModelAdminMixin(admin.ModelAdmin, EditableFieldsMixin):
