@@ -83,6 +83,21 @@
           </div>
         </div>
 
+        <div class="row">
+          <div class="col s12">
+            <div class="row">
+              <div class="input-field {% if form.otp_token.errors %}has-error{% endif %} col s12">
+                <i class="material-icons prefix" aria-hidden="true">lock</i>
+                <input type="text" id="otp_token-input" name="{{ form.otp_token.name }}"
+                       class="{% if form.otp_token.errors %}invalid{% endif %}"
+                       value="{{ form.otp_token.value|default_if_none:'' }}">
+                <label for="otp_token-input">{{ form.otp_token.label }}</label>
+                <div class="prefix-error">{{ form.otp.errors }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {% url 'admin_password_reset' as password_reset_url %}
         {% if password_reset_url %}
         <div class="password-reset-link">
