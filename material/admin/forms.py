@@ -1,8 +1,9 @@
+import pytz
 from django.contrib.admin.forms import AdminAuthenticationForm
 from django.forms import HiddenInput, CharField
-import pytz
 from django.utils import timezone
-from django.otp import OTPAdminAuthenticationForm
+from django_otp import OTPAdminAuthenticationForm
+
 
 class BackofficeAuthenticationForm(OTPAdminAuthenticationForm):
     timezone = CharField(widget=HiddenInput, max_length=64, required=False)
@@ -18,4 +19,3 @@ class BackofficeAuthenticationForm(OTPAdminAuthenticationForm):
             self.request.session['django_timezone'] = str(cleaned)
 
         return cleaned
-
