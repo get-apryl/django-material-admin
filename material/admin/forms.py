@@ -2,7 +2,7 @@ import pytz
 from django.contrib.admin.forms import AdminAuthenticationForm
 from django.forms import HiddenInput, CharField
 from django.utils import timezone
-from django_otp import OTPAdminAuthenticationForm
+from django_otp.admin import OTPAdminAuthenticationForm
 
 
 class BackofficeAuthenticationForm(OTPAdminAuthenticationForm):
