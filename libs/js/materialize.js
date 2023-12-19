@@ -8755,7 +8755,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     maxDate: null,
 
     // Number of years either side, or array of upper/lower range
-    yearRange: "c-100:c+20",
+    yearRange: 10,
 
     // used internally (don't config outside)
     minYear: 0,
